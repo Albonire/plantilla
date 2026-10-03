@@ -1,0 +1,90 @@
+import Seccion from '../../../components/ui/seccion.astro';
+import Subseccion from '../../../components/ui/subseccion.astro';
+import Video from '../../../components/ui/video.astro';
+import Embed from '../../../components/ui/embed.astro';
+import ResourceTag from '../../../components/ui/resource_tag.astro';
+import CamaraVinetas from '../../../components/libro/camara_vinetas.astro';
+import PaginaNoticia from '../../../components/libro/pagina_noticia.astro';
+import { DragSort } from '../../../components/islas/drag_sort';
+import act from '../../../data/actividades/unidad_4.json';
+
+export const cajas_noticia = act.noticia.preguntas.map((p, i) => ({ id: `q${i}`, titulo: p.pregunta }));
+export const items_noticia = act.noticia.preguntas.map((p, i) => ({ id: `a${i}`, texto: p.respuesta, caja: `q${i}` }));
+
+export const focos_noticia = [
+  { id: 'titular', x: 1, y: 12, w: 98, h: 24, movil: { x: 2, y: 8, w: 96, h: 19 }, titulo: 'El titular', texto: 'El titular es la frase grande que resume la noticia de forma llamativa.' },
+  { id: 'entrada', x: 1, y: 35, w: 98, h: 17, movil: { x: 2, y: 26, w: 96, h: 16 }, titulo: 'La entrada', texto: 'La entrada es el primer párrafo con la información más importante: qué pasó, quiénes, cuándo y dónde.' },
+  { id: 'cuerpo', x: 1, y: 51, w: 61, h: 27, movil: { x: 2, y: 41, w: 96, h: 37 }, titulo: 'El cuerpo', texto: 'El cuerpo explica todos los detalles adicionales sobre lo que pasó: cómo y por qué.' },
+  { id: 'cita', x: 1, y: 78, w: 61, h: 17, movil: { x: 2, y: 78, w: 96, h: 12 }, titulo: 'Una opinión dentro de la noticia', texto: 'Esta frase expresa un deseo y una opinión de la estudiante.' },
+  { id: 'recuadro', x: 63, y: 78, w: 36, h: 17, movil: { x: 2, y: 89, w: 96, h: 10 }, titulo: 'El recuadro', texto: 'El recuadro guarda los datos de la noticia. Esta noticia es inventada para practicar.' },
+];
+
+<Seccion id="desarrollo" titulo="Sigue las pistas" etiqueta="Desarrollo y materiales de estudio" titulo_visible={false}>
+
+<Video id="c4_video" descripcion="Un mensaje sospechoso le llega a Mateo. Sofía y él usan la lista LUPA para investigarlo." />
+
+<Subseccion id="hechos-opiniones" etiqueta="Hechos y opiniones" titulo="Lo que se puede comprobar y lo que alguien piensa">
+
+<div class="lectura">
+
+<p>{act.hechos_opiniones.definicion_hecho}</p>
+
+<p>{act.hechos_opiniones.definicion_opinion}</p>
+
+</div>
+
+<div class="max-w-reading rounded-soft bg-pure-white p-6">
+  <p class="text-body-sm font-medium text-stone-text">Palabras pista de opinión</p>
+  <ul class="mt-3 flex flex-wrap gap-2">
+    {act.hechos_opiniones.palabras_pista.map((p) => <li class="rounded-pill bg-sunshine-pop px-3 py-1 text-body-sm font-medium">{p}</li>)}
+  </ul>
+</div>
+
+<DragSort client:visible items={act.hechos_opiniones.items} cajas={act.hechos_opiniones.cajas} unidad={4} id="hechos" etiqueta="Recurso propio" instruccion="Pon cada frase en la caja de los hechos o en la de las opiniones." />
+
+</Subseccion>
+
+<Subseccion id="la-noticia" etiqueta="La noticia" titulo="La noticia, pieza por pieza">
+
+<p class="lectura">Baja despacio: la cámara se detiene en el titular, la entrada, el cuerpo y el recuadro. Recuerda: esta noticia es inventada para practicar.</p>
+
+<CamaraVinetas id="noticia-camara" titulo="La noticia pieza por pieza" ratio={1.4} ratio_movil={0.8} focos={focos_noticia} etiqueta_paso="Pieza">
+  <PaginaNoticia noticia={act.noticia} />
+</CamaraVinetas>
+
+<DragSort client:visible items={items_noticia} cajas={cajas_noticia} unidad={4} id="noticia" titulo="Responde las seis preguntas" etiqueta="Recurso propio" instruccion="Arrastra cada respuesta a la pregunta que responde." />
+
+<details class="max-w-reading rounded-soft bg-pure-white">
+  <summary class="flex min-h-12 cursor-pointer items-center px-5 text-body font-medium">{act.noticia.pregunta_extra.pregunta}</summary>
+  <p class="px-5 pb-5 text-body">{act.noticia.pregunta_extra.respuesta}</p>
+</details>
+
+<ResourceTag id="p4_noticia" />
+
+<Embed id="w4_noticia" etiqueta="Para practicar más" descripcion="Repasa cómo se presenta una noticia y sus partes." />
+
+</Subseccion>
+
+<Subseccion id="lista-lupa" etiqueta="La lista LUPA" titulo="¿En qué fuente confío?">
+
+<ol class="grid gap-4 md:grid-cols-2">
+  {act.lupa.letras.map((l) => (
+    <li class="flex gap-5 rounded-soft bg-pure-white p-6">
+      <span class="flex size-16 shrink-0 items-center justify-center rounded-full border-2 border-ink-black bg-coral-pop text-heading-sm font-medium" aria-hidden="true">{l.letra}</span>
+      <div>
+        <p class="text-subheading font-medium leading-snug"><span class="sr-only">Letra {l.letra}: </span>{l.pregunta}</p>
+        <p class="mt-1 text-body">{l.detalle}</p>
+      </div>
+    </li>
+  ))}
+</ol>
+
+<p class="max-w-reading rounded-soft bg-sunshine-pop p-6 text-subheading font-medium">Regla de oro: {act.lupa.regla_de_oro}</p>
+
+<Embed id="w4_laberinto" etiqueta="Para jugar" />
+
+<Embed id="w4_reinformados" etiqueta="Para practicar más" />
+
+</Subseccion>
+
+</Seccion>

@@ -1,0 +1,33 @@
+---
+// light button with a colored dot as the action signal
+interface Props {
+  href?: string;
+  color?: 'grass' | 'sky' | 'coral' | 'sun';
+  class?: string;
+  [atributo: string]: unknown;
+}
+const { href, color = 'grass', class: clase = '', ...resto } = Astro.props;
+const punto = {
+  grass: 'bg-fresh-grass',
+  sky: 'bg-sky-pop',
+  coral: 'bg-coral-pop',
+  sun: 'bg-sunshine-pop',
+}[color];
+const Etiqueta = href ? 'a' : 'button';
+const extra = href ? { href } : { type: 'button' };
+---
+
+<Etiqueta
+  {...extra}
+  {...resto}
+  class:list={[
+    'interfaz inline-flex min-h-11 items-center justify-center gap-3 rounded-pill bg-pure-white px-5 py-2 text-body-sm font-medium text-ink-black transition-colors hover:bg-sandstone',
+    clase,
+  ]}
+>
+  <slot />
+  <span
+    class:list={['size-2.5 shrink-0 rounded-full border-2 border-ink-black', punto]}
+    aria-hidden="true"
+  ></span>
+</Etiqueta>

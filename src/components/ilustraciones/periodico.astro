@@ -1,0 +1,64 @@
+---
+// folded newspaper
+interface Props {
+  size?: number;
+  class?: string;
+}
+const { size = 80, class: clase = '' } = Astro.props;
+---
+
+<svg
+  viewBox="0 0 100 88"
+  height={size}
+  width={(size * 100) / 88}
+  class={clase}
+  aria-hidden="true"
+  focusable="false"
+>
+  <!-- Shadow offset -->
+  <rect x="18" y="14" width="78" height="68" rx="6" fill="#2c2e2a" opacity="0.15"></rect>
+
+  <!-- Back page 2 -->
+  <rect x="20" y="4" width="78" height="68" rx="6" fill="#e0dbce" stroke="#2c2e2a" stroke-width="3"></rect>
+  <path d="M25 14 H80 M25 22 H60" stroke="#d5d5d4" stroke-width="3" stroke-linecap="round"></path>
+
+  <!-- Back page 1 -->
+  <rect x="14" y="10" width="78" height="68" rx="6" fill="#f5f1e4" stroke="#2c2e2a" stroke-width="3"></rect>
+
+  <!-- Front page -->
+  <rect x="8" y="16" width="78" height="68" rx="6" fill="#ffffff" stroke="#2c2e2a" stroke-width="3"></rect>
+
+  <!-- Front page highlight -->
+  <path d="M12 22 A 4 4 0 0 1 16 18 L80 18" stroke="#ffffff" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.8"></path>
+
+  <!-- Header -->
+  <rect x="16" y="24" width="62" height="10" rx="3" fill="#2c2e2a"></rect>
+  <!-- Header line shadow/detail -->
+  <rect x="16" y="36" width="62" height="2" rx="1" fill="#d5d5d4"></rect>
+
+  <!-- Image block -->
+  <g transform="translate(16, 42)">
+    <!-- Image shadow -->
+    <rect x="2" y="2" width="26" height="22" rx="3" fill="#2c2e2a" opacity="0.15"></rect>
+    <rect x="0" y="0" width="26" height="22" rx="3" fill="#2ba0ff" stroke="#2c2e2a" stroke-width="2.5"></rect>
+    <!-- Simple mountain/sun detail -->
+    <circle cx="20" cy="6" r="3" fill="#ffffff" opacity="0.8"></circle>
+    <path d="M0 16 L8 8 L14 14 L18 10 L26 18 V22 H0 Z" fill="#ffffff" opacity="0.4"></path>
+  </g>
+
+  <!-- Text lines right of image -->
+  <path
+    d="M48 45 H76 M48 53 H76 M48 61 H66"
+    stroke="#d5d5d4"
+    stroke-width="3.5"
+    stroke-linecap="round"
+  ></path>
+
+  <!-- Text lines bottom -->
+  <path
+    d="M16 71 H76 M16 78 H52"
+    stroke="#d5d5d4"
+    stroke-width="3.5"
+    stroke-linecap="round"
+  ></path>
+</svg>

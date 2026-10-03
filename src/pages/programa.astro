@@ -1,0 +1,194 @@
+---
+import Seccion from '../components/ui/seccion.astro';
+import ContentCard from '../components/ui/content_card.astro';
+import ButtonGhost from '../components/ui/button_ghost.astro';
+import CursoLayout from '../layouts/curso_layout.astro';
+import EncabezadoPagina from '../components/curso/encabezado_pagina.astro';
+import { paginas_caso } from '../config/paginas';
+
+const evidencias = [
+  ['Reto caso 1: bitácora del detective lector', '15 %'],
+  ['Reto caso 2: el sendero completo', '15 %'],
+  ['Reto caso 3: mis preguntas de detective', '15 %'],
+  ['Reto caso 4: análisis de una noticia con la lista LUPA', '15 %'],
+  ['Reto caso 5: mi texto de opinión', '15 %'],
+  ['Producto final: expediente del detective lector', '15 %'],
+  ['Autoevaluación y participación en las sesiones', '10 %'],
+];
+
+const otros = [
+  'Accesibilidad: botón "Escuchar" en las lecturas, opción de letra grande, opción para apagar el movimiento, uso completo con teclado.',
+  'Sin registro y sin recolección de datos: el progreso se guarda solo en el navegador del estudiante.',
+  'Funciona en celular, tableta y computador. Se recomienda audífonos para los videos.',
+  'Para familias: cada caso trae una sugerencia corta para conversar en casa sobre lo leído.',
+  'Todo el curso es digital. Los retos se responden dentro del sitio y se descargan como PDF para archivar o compartir.',
+  'Recursos digitales del curso: cada caso incluye un podcast de repaso, un video explicativo, una infografía y un mazo de tarjetas elaborados por el equipo con herramientas digitales a partir de los textos del curso, revisados por el equipo. Todos tienen transcripción o versión en texto.',
+];
+---
+
+<CursoLayout
+  titulo="Programa del curso"
+  descripcion="Competencias, ruta de aprendizaje, evaluación, momentos síncronos y asíncronos y otros aspectos del curso Aventura lectora."
+  ubicacion={{ tipo: 'programa' }}
+>
+  <EncabezadoPagina etiqueta="Antes de empezar" titulo="Programa del curso" color="sky-pop">
+    <p>Lo que vas a lograr, cómo se trabaja, cómo se evalúa y cuándo nos vemos.</p>
+  </EncabezadoPagina>
+
+  <Seccion
+    id="competencias"
+    titulo="Lo que vas a lograr"
+    etiqueta="Competencias y objetivos"
+    fondo="arena"
+  >
+    <ContentCard class="max-w-4xl">
+      <p class="max-w-reading text-reading">
+        Al finalizar el curso, el estudiante de quinto de primaria será capaz de: aplicar
+        estrategias de comprensión antes, durante y después de la lectura; reconocer la estructura
+        de distintos tipos de texto; formular preguntas en los tres niveles de comprensión lectora
+        (literal, inferencial y crítico); evaluar la confiabilidad de una fuente de información; y
+        construir y argumentar una opinión propia frente a un texto, articulando ideas con razones y
+        ejemplos.
+      </p>
+    </ContentCard>
+  </Seccion>
+
+  <Seccion id="ruta" titulo="Cómo funciona" etiqueta="Ruta de aprendizaje">
+    <p class="lectura">
+      Cada caso tiene cuatro pasos: abrir el caso, seguir las pistas, entrenar la lupa y cerrar el
+      caso. Al cerrar cada caso ganas una insignia para tu pasaporte de detective.
+    </p>
+    <ol class="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      {paginas_caso.map((m, i) => (
+        <li class="flex flex-col rounded-soft bg-pure-white p-7">
+          <span
+            class="flex size-12 items-center justify-center rounded-full border-2 border-ink-black bg-sunshine-pop text-subheading font-medium"
+            aria-hidden="true"
+          >
+            {i + 1}
+          </span>
+          <p class="mt-5 text-body-sm font-medium text-stone-text">
+            <span class="sr-only">Paso {i + 1}: </span>
+            {m.momento}
+          </p>
+          <h3 class="mt-1 text-heading-sm font-medium leading-tight tracking-tight">{m.titulo}</h3>
+          <p class="mt-3 text-body">{m.descripcion}</p>
+        </li>
+      ))}
+    </ol>
+    <p class="mt-10 max-w-3xl text-body text-stone-text">
+      Metodología: aprendizaje activo con gamificación narrativa. Cada estudiante es un detective de
+      la lectura y cada unidad es un caso. El docente acompaña, modela la lectura en voz alta, hace
+      preguntas y retroalimenta; el estudiante lee, pregunta, prueba hipótesis, explica sus
+      respuestas y escucha las de otros. Duración sugerida: 5 semanas, un caso por semana, más una
+      sesión final de socialización.
+    </p>
+  </Seccion>
+
+  <Seccion id="evaluacion" titulo="Cómo se evalúa" etiqueta="Evaluación">
+    <div class="grid gap-6 lg:grid-cols-3">
+      <div class="rounded-soft bg-pure-white p-7">
+        <h3 class="text-subheading font-medium">Formativa</h3>
+        <p class="mt-3 text-body">
+          Durante todo el curso: cuestionarios autocorregibles, sopa de letras, ruleta,
+          clasificaciones y pistas. Dan retroalimentación inmediata y no llevan nota.
+        </p>
+      </div>
+      <div class="rounded-soft bg-pure-white p-7">
+        <h3 class="text-subheading font-medium">Sumativa</h3>
+        <p class="mt-3 text-body">Un reto por caso y un producto final.</p>
+      </div>
+      <div class="rounded-soft bg-pure-white p-7">
+        <h3 class="text-subheading font-medium">Autoevaluación</h3>
+        <p class="mt-3 text-body">
+          Al cierre de cada caso, con tres frases: "Ya lo sé hacer", "Lo hago con ayuda", "Todavía
+          se me dificulta".
+        </p>
+      </div>
+    </div>
+
+    <div
+      class="mt-8 overflow-x-auto rounded-soft bg-pure-white p-2 md:p-4"
+      tabindex="0"
+      role="region"
+      aria-label="Tabla con desplazamiento horizontal"
+    >
+      <table class="w-full min-w-[28rem] text-left text-body-sm">
+        <caption class="px-4 pb-2 pt-4 text-left text-body font-medium">
+          Evidencias y su peso
+        </caption>
+        <thead>
+          <tr class="border-b border-hairline-mist">
+            <th scope="col" class="px-4 py-3 font-medium">
+              Evidencia
+            </th>
+            <th scope="col" class="px-4 py-3 text-right font-medium">
+              Peso
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {evidencias.map(([e, p]) => (
+            <tr class="border-b border-hairline-mist last:border-0">
+              <td class="px-4 py-3">{e}</td>
+              <td class="px-4 py-3 text-right">{p}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-6 max-w-3xl text-body text-stone-text">
+      Escala: la del Sistema Institucional de Evaluación de cada colegio, con los desempeños de la
+      escala nacional del Decreto 1290 de 2009 (Superior, Alto, Básico y Bajo). Cada reto trae su
+      rúbrica con esos cuatro niveles.
+    </p>
+  </Seccion>
+
+  <Seccion id="momentos" titulo="Síncrono y asíncrono" etiqueta="Momentos del curso" fondo="arena">
+    <div class="grid gap-6 lg:grid-cols-3">
+      <div class="rounded-soft bg-pure-white p-7">
+        <p class="text-body-sm font-medium text-stone-text">Por videollamada</p>
+        <h3 class="mt-1 text-subheading font-medium">Síncrono</h3>
+        <p class="mt-3 text-body">
+          Uno por caso, de 50 minutos: apertura del caso, lectura en voz alta compartida, dudas y
+          socialización del reto de la semana anterior.
+        </p>
+      </div>
+      <div class="rounded-soft bg-pure-white p-7">
+        <p class="text-body-sm font-medium text-stone-text">En este sitio web</p>
+        <h3 class="mt-1 text-subheading font-medium">Asíncrono</h3>
+        <p class="mt-3 text-body">
+          De 60 a 90 minutos por caso: recorrido de la unidad, actividades de práctica y reto del
+          caso. Se puede hacer desde cualquier computador, tableta o celular con internet.
+        </p>
+      </div>
+      <div class="rounded-soft bg-pure-white p-7">
+        <p class="text-body-sm font-medium text-stone-text">Al final del curso</p>
+        <h3 class="mt-1 text-subheading font-medium">Feria de detectives</h3>
+        <p class="mt-3 text-body">
+          Sesión final síncrona por videollamada. Cada estudiante presenta su expediente en PDF y
+          reproduce o lee su texto de opinión.
+        </p>
+      </div>
+    </div>
+  </Seccion>
+
+  <Seccion id="otros" titulo="Otros aspectos" etiqueta="Antes de empezar">
+    <ul class="grid max-w-4xl gap-4">
+      {otros.map((o) => (
+        <li class="rounded-soft bg-pure-white p-5 text-body">{o}</li>
+      ))}
+    </ul>
+    <div class="mt-12 flex flex-wrap gap-4">
+      <ButtonGhost href="/unidad/1" color="grass">
+        Empezar por el caso 1
+      </ButtonGhost>
+      <ButtonGhost href="/docentes" color="sky">
+        Para docentes
+      </ButtonGhost>
+      <ButtonGhost href="/referencias" color="sun">
+        Referencias
+      </ButtonGhost>
+    </div>
+  </Seccion>
+</CursoLayout>

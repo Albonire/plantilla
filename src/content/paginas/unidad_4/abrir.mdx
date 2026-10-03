@@ -1,0 +1,23 @@
+import Seccion from '../../../components/ui/seccion.astro';
+import ListaPistas from '../../../components/ui/lista_pistas.astro';
+import InfographicViewer from '../../../components/ui/infographic_viewer.astro';
+
+<Seccion id="introduccion" titulo="Introducción" etiqueta="Antes de empezar">
+
+<div class="lectura">
+
+Todos los días nos llegan noticias: por la radio, la televisión, el periódico y el celular. Algunas son ciertas, otras están incompletas y otras son inventadas para asustarnos o para que las compartamos sin pensar. En este caso vas a entrenar tu ojo de detective: vas a separar hechos de opiniones, vas a leer una noticia pieza por pieza y vas a usar la lista LUPA para decidir si confías en lo que lees.
+
+</div>
+
+</Seccion>
+
+<Seccion id="contenidos" titulo="Las pistas del caso" etiqueta="Contenidos">
+
+<ListaPistas items={props.unidad.contenidos} unidad={props.unidad.numero} />
+
+<div class="mt-14">
+  <InfographicViewer id="c4_infografia" />
+</div>
+
+</Seccion>

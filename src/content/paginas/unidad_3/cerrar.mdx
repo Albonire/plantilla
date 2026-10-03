@@ -1,0 +1,16 @@
+import Seccion from '../../../components/ui/seccion.astro';
+import { ChallengeCard } from '../../../components/islas/challenge_card';
+import datos_retos from '../../../data/retos.json';
+import { MuroDetective } from '../../../components/islas/muro_detective';
+
+<Seccion id="reto" titulo="Reto del caso" etiqueta="Actividad sumativa">
+
+<div class="flex flex-col gap-8">
+
+<MuroDetective client:visible muro_id="caso_3" titulo="Muro de preguntas del caso 3" etiqueta="Recurso propio" pregunta="Publica una pregunta de cada lupa y responde la de un compañero." columnas={[{ id: 'lupa1', titulo: 'Lupa 1: literal' }, { id: 'lupa2', titulo: 'Lupa 2: inferencial' }, { id: 'lupa3', titulo: 'Lupa 3: crítico' }]} ayuda_publicar="Escribe una pregunta en la columna de su nivel." />
+
+<ChallengeCard client:visible reto={datos_retos.retos[2]} unidad={3} titulo_caso={props.unidad.titulo} />
+
+</div>
+
+</Seccion>

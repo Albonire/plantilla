@@ -1,0 +1,124 @@
+---
+// speech bubble drawn in svg units. The text is wrapped by hand because svg has no automatic line breaks.
+interface Props {
+  x: number;
+  y: number;
+  ancho?: number;
+  texto: string;
+  tamano?: number;
+  // side of the tail and its horizontal position along the bubble
+  cola?: 'abajo' | 'arriba';
+  cola_x?: number;
+  fondo?: string;
+}
+const {
+  x,
+  y,
+  ancho = 200,
+  texto,
+  tamano = 15,
+  cola = 'abajo',
+  cola_x = 0.5,
+  fondo = '#ffffff',
+} = Astro.props;
+
+function partir(t: string, max: number): string[] {
+  const salida: string[] = [];
+  let actual = '';
+  for (const palabra of t.split(' ')) {
+    if ((actual + ' ' + palabra).trim().length > max && actual) {
+      salida.push(actual);
+      actual = palabra;
+    } else {
+      actual = (actual + ' ' + palabra).trim();
+    }
+  }
+  if (actual) salida.push(actual);
+  return salida;
+}
+
+const interlineado = tamano * 1.28;
+const max_chars = Math.floor((ancho - 24) / (tamano * 0.53));
+const lineas = partir(texto, max_chars);
+const alto = lineas.length * interlineado + 22;
+const cx = x + ancho * cola_x;
+---
+
+<g>
+  <!-- Sombra base -->
+  <rect
+    x={x + 4}
+    y={y + 4}
+    width={ancho}
+    height={alto}
+    rx="20"
+    fill="rgba(0,0,0,0.1)"
+  ></rect>
+  {cola === 'abajo' ? (
+    <path
+      d={`M${cx - 8} ${y + alto + 2} L${cx + 8} ${y + alto + 26} L${cx + 18} ${y + alto + 2}`}
+      fill="rgba(0,0,0,0.1)"
+    ></path>
+  ) : (
+    <path
+      d={`M${cx - 8} ${y + 6} L${cx + 2} ${y - 18} L${cx + 18} ${y + 6}`}
+      fill="rgba(0,0,0,0.1)"
+    ></path>
+  )}
+
+  <!-- Burbuja principal -->
+  <rect
+    x={x}
+    y={y}
+    width={ancho}
+    height={alto}
+    rx="20"
+    fill={fondo}
+    stroke="#2c2e2a"
+    stroke-width="3.5"
+  ></rect>
+  
+  <!-- Brillo / highlight interior -->
+  <path
+    d={`M${x + 8} ${y + 12} Q${x + 8} ${y + 8} ${x + 12} ${y + 8} L${x + ancho - 12} ${y + 8} Q${x + ancho - 8} ${y + 8} ${x + ancho - 8} ${y + 12}`}
+    stroke="rgba(255,255,255,0.6)"
+    stroke-width="4"
+    stroke-linecap="round"
+    fill="none"
+  ></path>
+
+  {cola === 'abajo' ? (
+    <path
+      d={`M${cx - 12} ${y + alto - 1.5} Q${cx} ${y + alto + 10} ${cx + 4} ${y + alto + 22} Q${cx + 10} ${y + alto + 10} ${cx + 14} ${y + alto - 1.5}`}
+      fill={fondo}
+      stroke="#2c2e2a"
+      stroke-width="3.5"
+      stroke-linejoin="round"
+    ></path>
+  ) : (
+    <path
+      d={`M${cx - 12} ${y + 1.5} Q${cx - 6} ${y - 10} ${cx - 2} ${y - 22} Q${cx + 6} ${y - 10} ${cx + 14} ${y + 1.5}`}
+      fill={fondo}
+      stroke="#2c2e2a"
+      stroke-width="3.5"
+      stroke-linejoin="round"
+    ></path>
+  )}
+
+  <rect
+    x={cx - 10}
+    y={cola === 'abajo' ? y + alto - 6 : y - 2}
+    width="22"
+    height="8"
+    fill={fondo}
+  ></rect>
+  
+  <!-- Texto -->
+  <text x={x + 14} y={y + 11 + tamano} font-size={tamano} font-weight="500" fill="#2c2e2a">
+    {lineas.map((l, i) => (
+      <tspan x={x + 14} dy={i === 0 ? 0 : interlineado}>
+        {l}
+      </tspan>
+    ))}
+  </text>
+</g>

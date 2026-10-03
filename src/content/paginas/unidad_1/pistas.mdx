@@ -1,0 +1,70 @@
+import Seccion from '../../../components/ui/seccion.astro';
+import Subseccion from '../../../components/ui/subseccion.astro';
+import Video from '../../../components/ui/video.astro';
+import Embed from '../../../components/ui/embed.astro';
+import LecturaConPausas from '../../../components/libro/lectura_con_pausas.astro';
+import EscenaCarrera from '../../../components/ilustraciones/escena_carrera.astro';
+import { InferenceClues } from '../../../components/islas/inference_clues';
+import { WordSearch } from '../../../components/islas/word_search';
+import { PredictionBoard } from '../../../components/islas/prediction_board';
+import { SayingCard } from '../../../components/islas/saying_card';
+import { QuestionWheel } from '../../../components/islas/question_wheel';
+import act from '../../../data/actividades/unidad_1.json';
+
+<Seccion id="desarrollo" titulo="Sigue las pistas" etiqueta="Desarrollo y materiales de estudio" titulo_visible={false}>
+
+<Subseccion id="antes" etiqueta="Secuencia didáctica 1" titulo="Antes de leer: ¿qué me dice el texto antes de leerlo?">
+
+<p class="lectura">Exploración: ¿qué recuerdo y qué puedo descubrir? Mira la imagen, encuentra las palabras y piensa qué va a pasar.</p>
+
+<figure>
+  <EscenaCarrera />
+  <figcaption class="mt-3 text-body-sm text-stone-text">La carrera está por empezar. ¿Quién crees que llegará primero?</figcaption>
+</figure>
+
+<WordSearch client:visible palabras={act.sopa.palabras} tamano={act.sopa.tamano} semilla={act.sopa.semilla} unidad={1} instruccion={act.sopa.instruccion} cierre={act.sopa.cierre} etiqueta="Recurso propio" />
+
+<PredictionBoard client:visible modo="escribir" unidad={1} preguntas={act.predicciones} />
+
+</Subseccion>
+
+<Subseccion id="lectura" etiqueta="Lectura" titulo="Lee con pausas: La liebre y la tortuga">
+
+<LecturaConPausas id="fabula" unidad={1} titulo={act.lectura.titulo} autoria={act.lectura.autoria} parrafos={act.lectura.parrafos} moraleja={act.lectura.moraleja} modo="carrera" descripcion_pista={act.lectura.carrera_descripcion} />
+
+<PredictionBoard client:visible modo="comparar" unidad={1} preguntas={act.predicciones} />
+
+<Video id="c1_video" descripcion="Sofía y Mateo muestran las tres etapas de la lectura con el caso de la liebre y la tortuga. Mira el video después de leer: cuenta cómo termina la carrera." />
+
+<Embed id="w1_fabula" etiqueta="Compara con otra versión" descripcion="Para docentes y familias: otra versión de la fábula con una guía para conversar en casa." />
+
+</Subseccion>
+
+<Subseccion id="durante" etiqueta="Secuencia didáctica 2" titulo="Durante la lectura: ¿qué se deduce?">
+
+<p class="lectura">{act.pistas_instruccion}</p>
+
+<InferenceClues client:visible pistas={act.pistas} unidad={1} etiqueta="Recurso propio" />
+
+<Embed id="w1_video" etiqueta="Actividad: Mensaje oculto" descripcion="Mira el video y descubre el mensaje que se esconde en él. Recurso de la web elegido por el equipo para practicar la inferencia." />
+
+<div class="max-w-reading rounded-soft bg-pure-white p-6">
+  <p class="text-body-sm font-medium text-stone-text">Después de ver el video, conversa</p>
+  <ul class="mt-3 space-y-2 text-body">
+    <li>¿Qué sucede?</li>
+    <li>¿Qué pistas te ayudaron a entenderlo?</li>
+    <li>¿Qué significa el mensaje?</li>
+  </ul>
+</div>
+
+</Subseccion>
+
+<Subseccion id="despues" etiqueta="Secuencia didáctica 3" titulo="Después de leer: formulo mi propia opinión">
+
+<SayingCard client:visible principal={act.refran.principal} apoyo={act.refran.apoyo} preguntas={act.refran.preguntas} unidad={1} etiqueta="Exploración: ¿qué pienso?" />
+
+<QuestionWheel client:visible preguntas={act.ruleta} etiqueta="Para la sesión síncrona o para jugar en pareja" />
+
+</Subseccion>
+
+</Seccion>

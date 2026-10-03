@@ -1,0 +1,23 @@
+import Seccion from '../../../components/ui/seccion.astro';
+import ListaPistas from '../../../components/ui/lista_pistas.astro';
+import InfographicViewer from '../../../components/ui/infographic_viewer.astro';
+
+<Seccion id="introduccion" titulo="Introducción" etiqueta="Antes de empezar">
+
+<div class="lectura">
+
+Un buen detective no se queda con lo primero que ve. Mira con atención lo que está escrito, busca las pistas que el texto deja escondidas y, al final, decide qué piensa. En este caso vamos a leer con tres lupas: la lupa de lo que dice el texto, la lupa de lo que el texto sugiere y la lupa de lo que yo pienso. Vas a leer un cuento nuevo, vas a jugar a clasificar preguntas y, al final, vas a inventar tus propias preguntas de detective.
+
+</div>
+
+</Seccion>
+
+<Seccion id="contenidos" titulo="Las pistas del caso" etiqueta="Contenidos">
+
+<ListaPistas items={props.unidad.contenidos} unidad={props.unidad.numero} />
+
+<div class="mt-14">
+  <InfographicViewer id="c3_infografia" />
+</div>
+
+</Seccion>

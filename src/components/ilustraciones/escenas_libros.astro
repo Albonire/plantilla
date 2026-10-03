@@ -1,0 +1,337 @@
+---
+// scenes for the side panel of "Los libros viajeros de la vereda": one scene per step of the reading
+const colores = ['#ff705d', '#2ba0ff', '#f5e211', '#8ed462', '#ffffff', '#e0dbce'];
+const libros = Array.from({ length: 12 }, (_, i) => ({
+  x: 44 + (i % 6) * 50,
+  fila: Math.floor(i / 6),
+  c: colores[i % colores.length],
+  h: 58 + ((i * 7) % 4) * 6,
+}));
+const casas = Array.from({ length: 9 }, (_, i) => ({ x: 34 + (i % 5) * 76, y: i < 5 ? 250 : 320 }));
+---
+
+<div class="relative aspect-square w-full overflow-hidden rounded-card bg-cream-paper" data-escenas>
+  <!-- 1: the shelf with twelve books -->
+  <svg
+    data-escena="1"
+    viewBox="0 0 400 400"
+    class="absolute inset-0 h-full w-full"
+    focusable="false"
+  >
+    <!-- Wall shadow -->
+    <rect x="0" y="0" width="400" height="400" fill="#f5f1e4"></rect>
+    <!-- Shelves with depth -->
+    <rect x="15" y="155" width="370" height="15" rx="5" fill="#6d543a"></rect>
+    <rect x="20" y="150" width="360" height="12" rx="4" fill="#8b6b4a"></rect>
+    <path d="M25 152 L375 152 M25 156 L375 156" stroke="#a4805a" stroke-width="1.5" stroke-linecap="round"></path>
+    
+    <rect x="15" y="275" width="370" height="15" rx="5" fill="#6d543a"></rect>
+    <rect x="20" y="270" width="360" height="12" rx="4" fill="#8b6b4a"></rect>
+    <path d="M25 272 L375 272 M25 276 L375 276" stroke="#a4805a" stroke-width="1.5" stroke-linecap="round"></path>
+
+    <!-- Books with spines and pages -->
+    {libros.map((l) => (
+      <g transform={`translate(${l.x}, ${(l.fila === 0 ? 150 : 270) - l.h})`}>
+        <rect x="3" y="3" width="34" height={l.h} rx="4" fill="#b0aba0" stroke="none"></rect> <!-- Shadow -->
+        <rect x="0" y="0" width="34" height={l.h} rx="4" fill="#ffffff" stroke="#2c2e2a" stroke-width="3"></rect> <!-- Pages back -->
+        <rect x="4" y="0" width="30" height={l.h} rx="3" fill={l.c} stroke="#2c2e2a" stroke-width="3"></rect> <!-- Spine -->
+        <!-- Spine details -->
+        <line x1="8" y1="8" x2="30" y2="8" stroke="#2c2e2a" stroke-width="2" stroke-linecap="round"></line>
+        <line x1="8" y1={l.h - 8} x2="30" y2={l.h - 8} stroke="#2c2e2a" stroke-width="2" stroke-linecap="round"></line>
+      </g>
+    ))}
+    <!-- Shelf support brackets -->
+    <path d="M50 162 L40 182 L50 182 Z M350 162 L360 182 L350 182 Z" fill="#6d543a" stroke="#2c2e2a" stroke-width="2" stroke-linejoin="round"></path>
+    <path d="M50 282 L40 302 L50 302 Z M350 282 L360 302 L350 302 Z" fill="#6d543a" stroke="#2c2e2a" stroke-width="2" stroke-linejoin="round"></path>
+
+    <text x="200" y="345" text-anchor="middle" font-size="26" font-weight="600" fill="#2c2e2a" style="text-shadow: 1px 1px 2px #e0dbce;">
+      12 libros, siempre los mismos
+    </text>
+  </svg>
+
+  <!-- 2: the teacher's idea -->
+  <svg
+    data-escena="2"
+    viewBox="0 0 400 400"
+    class="absolute inset-0 h-full w-full"
+    style="opacity:0"
+    focusable="false"
+  >
+    <!-- Background glow -->
+    <circle cx="200" cy="170" r="140" fill="#fcf6c5" opacity="0.6"></circle>
+    <!-- Idea bubble with shadow -->
+    <path d="M205 175 A 110 110 0 1 0 95 65 A 110 110 0 0 0 205 175 Z" fill="#d4c208" opacity="0.3"></path>
+    <circle cx="200" cy="170" r="110" fill="#f5e211" stroke="#2c2e2a" stroke-width="4"></circle>
+    
+    <!-- Bulb / Lightbulb icon organic -->
+    <g transform="translate(0, -10)">
+      <path
+        d="M160 200 C130 150 150 110 200 110 C250 110 270 150 240 200 C230 215 210 215 200 215 C190 215 170 215 160 200 Z"
+        fill="#ffffff"
+        stroke="#2c2e2a"
+        stroke-width="7"
+        stroke-linejoin="round"
+      ></path>
+      <!-- Bulb base -->
+      <path
+        d="M172 216 Q170 230 180 230 L220 230 Q230 230 228 216 Z"
+        fill="#b0aba0"
+        stroke="#2c2e2a"
+        stroke-width="5"
+        stroke-linejoin="round"
+      ></path>
+      <path
+        d="M176 226 H224 M182 236 H218"
+        stroke="#2c2e2a"
+        stroke-width="7"
+        stroke-linecap="round"
+      ></path>
+      <!-- Glow rays -->
+      <path d="M200 80 V60 M120 150 L100 135 M280 150 L300 135 M140 100 L125 85 M260 100 L275 85" stroke="#ffffff" stroke-width="6" stroke-linecap="round"></path>
+    </g>
+
+    <!-- Sign with shadow -->
+    <rect x="75" y="305" width="260" height="56" rx="28" fill="#d0ccc0"></rect>
+    <rect
+      x="70"
+      y="300"
+      width="260"
+      height="56"
+      rx="28"
+      fill="#ffffff"
+      stroke="#2c2e2a"
+      stroke-width="5"
+    ></rect>
+    <text x="200" y="336" text-anchor="middle" font-size="24" font-weight="600" fill="#2c2e2a">
+      Cada familia presta un libro
+    </text>
+  </svg>
+
+  <!-- 3: the trunk and the red notebook -->
+  <svg
+    data-escena="3"
+    viewBox="0 0 400 400"
+    class="absolute inset-0 h-full w-full"
+    style="opacity:0"
+    focusable="false"
+  >
+    <!-- Trunk Base Shadow -->
+    <rect x="75" y="205" width="260" height="130" rx="18" fill="#6d543a"></rect>
+    
+    <!-- Trunk Body -->
+    <rect x="70" y="200" width="260" height="130" rx="18" fill="#8b6b4a" stroke="#2c2e2a" stroke-width="6"></rect>
+    <path d="M90 220 V310 M310 220 V310" stroke="#a4805a" stroke-width="4" stroke-linecap="round"></path>
+    <path d="M120 220 V310 M280 220 V310" stroke="#a4805a" stroke-width="2" stroke-linecap="round" opacity="0.6"></path>
+
+    <!-- Trunk Lid -->
+    <path
+      d="M70 218 C70 120 330 120 330 218 Z"
+      fill="#a4805a"
+      stroke="#2c2e2a"
+      stroke-width="6"
+      stroke-linejoin="round"
+    ></path>
+    <!-- Lid texture -->
+    <path d="M100 190 C100 150 300 150 300 190" stroke="#8b6b4a" stroke-width="4" stroke-linecap="round" fill="none"></path>
+    
+    <!-- Lock -->
+    <rect x="182" y="238" width="36" height="30" rx="6" fill="#f5e211" stroke="#2c2e2a" stroke-width="5"></rect>
+    <circle cx="200" cy="250" r="4" fill="#2c2e2a"></circle>
+    <path d="M198 250 L198 260 L202 260 L202 250 Z" fill="#2c2e2a"></path>
+    <!-- Lock latch -->
+    <path d="M190 238 V226 C190 220 210 220 210 226 V238" stroke="#2c2e2a" stroke-width="5" fill="none"></path>
+
+    <!-- Notebook popping out -->
+    <g transform="rotate(-10 200 130)">
+      <!-- Notebook shadow -->
+      <rect x="154" y="54" width="100" height="130" rx="10" fill="#d25a48"></rect>
+      <!-- Notebook cover -->
+      <rect x="150" y="50" width="100" height="130" rx="10" fill="#ff705d" stroke="#2c2e2a" stroke-width="6"></rect>
+      <!-- Spine binding holes -->
+      <g fill="#2c2e2a">
+        <circle cx="156" cy="78" r="4"></circle>
+        <circle cx="156" cy="108" r="4"></circle>
+        <circle cx="156" cy="138" r="4"></circle>
+      </g>
+      <!-- Spiral rings -->
+      <path d="M148 78 Q140 70 156 70" stroke="#2c2e2a" stroke-width="3" fill="none"></path>
+      <path d="M148 108 Q140 100 156 100" stroke="#2c2e2a" stroke-width="3" fill="none"></path>
+      <path d="M148 138 Q140 130 156 130" stroke="#2c2e2a" stroke-width="3" fill="none"></path>
+
+      <!-- Label -->
+      <rect x="172" y="84" width="60" height="30" rx="6" fill="#ffffff" stroke="#2c2e2a" stroke-width="3"></rect>
+      <path d="M178 94 H226 M178 104 H210" stroke="#2ba0ff" stroke-width="3" stroke-linecap="round"></path>
+    </g>
+  </svg>
+
+  <!-- 4: the notebook on the shelf, with shaky hands -->
+  <svg
+    data-escena="4"
+    viewBox="0 0 400 400"
+    class="absolute inset-0 h-full w-full"
+    style="opacity:0"
+    focusable="false"
+  >
+    <!-- Shelf with shadow -->
+    <rect x="15" y="235" width="370" height="15" rx="5" fill="#6d543a"></rect>
+    <rect x="20" y="230" width="360" height="12" rx="5" fill="#8b6b4a"></rect>
+
+    <!-- Normal Books -->
+    {libros.slice(0, 6).map((l) => (
+      <g transform={`translate(${l.x}, ${230 - l.h})`}>
+        <rect x="0" y="0" width="34" height={l.h} rx="4" fill="#ffffff" stroke="#2c2e2a" stroke-width="3"></rect>
+        <rect x="4" y="0" width="30" height={l.h} rx="3" fill={l.c} stroke="#2c2e2a" stroke-width="3"></rect>
+        <line x1="8" y1="8" x2="30" y2="8" stroke="#2c2e2a" stroke-width="2" stroke-linecap="round"></line>
+        <line x1="8" y1={l.h - 8} x2="30" y2={l.h - 8} stroke="#2c2e2a" stroke-width="2" stroke-linecap="round"></line>
+      </g>
+    ))}
+
+    <!-- The Red Notebook (nervous) -->
+    <g transform="translate(330, 150)">
+      <!-- Motion lines / shaky effect -->
+      <path d="M-10 10 L-15 15 M-5 30 L-15 35 M55 10 L60 15 M50 30 L60 35 M20 -10 L15 -20 M35 -10 L40 -20" stroke="#2c2e2a" stroke-width="3" stroke-linecap="round"></path>
+      
+      <!-- Notebook body -->
+      <rect x="0" y="0" width="46" height="80" rx="6" fill="#ff705d" stroke="#2c2e2a" stroke-width="5"></rect>
+      <!-- Spiral spine -->
+      <path d="M-4 15 Q-12 10 4 10 M-4 35 Q-12 30 4 30 M-4 55 Q-12 50 4 50" stroke="#2c2e2a" stroke-width="3" fill="none"></path>
+      <!-- Nervous face -->
+      <circle cx="15" cy="25" r="3" fill="#2c2e2a"></circle>
+      <circle cx="35" cy="25" r="3" fill="#2c2e2a"></circle>
+      <!-- Shaky mouth -->
+      <path d="M15 45 Q20 40 25 45 T35 45" stroke="#2c2e2a" stroke-width="3" fill="none" stroke-linecap="round"></path>
+      <!-- Sweat drop -->
+      <path d="M42 15 C42 15 48 20 45 25 C42 30 38 20 42 15 Z" fill="#2ba0ff" stroke="#2c2e2a" stroke-width="2"></path>
+    </g>
+
+    <!-- Hands taking the notebook -->
+    <g stroke="#2c2e2a" stroke-width="5" stroke-linecap="round" fill="#e0dbce">
+      <!-- Top hand -->
+      <path d="M310 170 Q320 165 325 175 Q325 185 315 185 Q305 185 310 170 Z"></path>
+      <!-- Bottom hand -->
+      <path d="M300 200 Q315 195 320 205 Q325 215 310 215 Q295 215 300 200 Z"></path>
+    </g>
+    <!-- Arm shapes -->
+    <path d="M250 190 Q280 180 305 175" stroke="#f5e211" stroke-width="16" stroke-linecap="round"></path>
+    <path d="M250 190 Q280 180 305 175" stroke="#2c2e2a" stroke-width="5" fill="none" stroke-linecap="round"></path>
+
+    <text x="200" y="310" text-anchor="middle" font-size="26" font-weight="600" fill="#2c2e2a" style="text-shadow: 1px 1px 2px #e0dbce;">
+      "No es un libro de verdad"
+    </text>
+  </svg>
+
+  <!-- 5: nine houses -->
+  <svg
+    data-escena="5"
+    viewBox="0 0 400 400"
+    class="absolute inset-0 h-full w-full"
+    style="opacity:0"
+    focusable="false"
+  >
+    <!-- Curvy path connecting houses -->
+    <path
+      d="M20 150 C100 120 150 180 200 150 C250 120 300 180 380 150 M20 220 C100 190 150 250 200 220 C250 190 300 250 380 220"
+      stroke="#8ed462"
+      stroke-width="12"
+      stroke-dasharray="0 24"
+      stroke-linecap="round"
+      fill="none"
+    ></path>
+    <path
+      d="M20 150 C100 120 150 180 200 150 C250 120 300 180 380 150 M20 220 C100 190 150 250 200 220 C250 190 300 250 380 220"
+      stroke="#2c2e2a"
+      stroke-width="4"
+      stroke-dasharray="0 24"
+      stroke-linecap="round"
+      fill="none"
+    ></path>
+
+    {casas.map((c, i) => (
+      <g transform={`translate(${c.x} ${c.y - 120})`}>
+        <!-- House shadow -->
+        <path d="M2 42 L32 10 L62 42 V82 H2 Z" fill="#b0aba0" opacity="0.4"></path>
+        <!-- House body -->
+        <rect x="0" y="40" width="60" height="40" fill={i % 2 ? '#e0dbce' : '#ffffff'} stroke="#2c2e2a" stroke-width="4"></rect>
+        <!-- Roof -->
+        <path d="M-5 40 L30 5 L65 40 Z" fill="#ff705d" stroke="#2c2e2a" stroke-width="4" stroke-linejoin="round"></path>
+        <!-- Door -->
+        <rect x="22" y="52" width="16" height="28" rx="2" fill="#2ba0ff" stroke="#2c2e2a" stroke-width="3"></rect>
+        <circle cx="34" cy="66" r="2" fill="#2c2e2a"></circle>
+        <!-- Window -->
+        <rect x="6" y="52" width="10" height="10" rx="2" fill="#ffffff" stroke="#2c2e2a" stroke-width="2"></rect>
+        <rect x="44" y="52" width="10" height="10" rx="2" fill="#ffffff" stroke="#2c2e2a" stroke-width="2"></rect>
+      </g>
+    ))}
+
+    <!-- Big red notebook in center -->
+    <g transform="translate(150 270) rotate(-8 50 40)">
+      <rect x="3" y="3" width="80" height="100" rx="8" fill="#d25a48"></rect>
+      <rect width="80" height="100" rx="8" fill="#ff705d" stroke="#2c2e2a" stroke-width="5"></rect>
+      <!-- Spiral -->
+      <g fill="#2c2e2a">
+        <circle cx="8" cy="20" r="3"></circle>
+        <circle cx="8" cy="50" r="3"></circle>
+        <circle cx="8" cy="80" r="3"></circle>
+      </g>
+      <!-- Label -->
+      <rect x="20" y="30" width="45" height="25" rx="4" fill="#ffffff" stroke="#2c2e2a" stroke-width="3"></rect>
+    </g>
+
+    <text x="200" y="392" text-anchor="middle" font-size="24" font-weight="600" fill="#2c2e2a">
+      Nueve casas en un mes
+    </text>
+  </svg>
+
+  <!-- 6: applause -->
+  <svg
+    data-escena="6"
+    viewBox="0 0 400 400"
+    class="absolute inset-0 h-full w-full"
+    style="opacity:0"
+    focusable="false"
+  >
+    <!-- Confetti / celebration lines in background -->
+    <g stroke="#2ba0ff" stroke-width="4" stroke-linecap="round">
+      <path d="M50 50 L30 30 M350 50 L370 30 M200 20 L200 40 M100 250 L80 270 M300 250 L320 270"></path>
+    </g>
+
+    <!-- The Red Notebook Happy -->
+    <g transform="translate(140 110) rotate(-6 60 80)">
+      <rect x="4" y="4" width="120" height="160" rx="12" fill="#d25a48"></rect>
+      <rect width="120" height="160" rx="12" fill="#ff705d" stroke="#2c2e2a" stroke-width="6"></rect>
+      <!-- Spiral -->
+      <path d="M-6 30 Q-15 20 10 20 M-6 80 Q-15 70 10 70 M-6 130 Q-15 120 10 120" stroke="#2c2e2a" stroke-width="4" fill="none"></path>
+      <!-- Label face -->
+      <rect x="22" y="40" width="76" height="50" rx="10" fill="#ffffff" stroke="#2c2e2a" stroke-width="4"></rect>
+      <path d="M40 55 Q45 50 50 55" stroke="#2c2e2a" stroke-width="4" fill="none" stroke-linecap="round"></path>
+      <path d="M70 55 Q75 50 80 55" stroke="#2c2e2a" stroke-width="4" fill="none" stroke-linecap="round"></path>
+      <path d="M50 70 Q60 80 70 70 Z" fill="#2c2e2a"></path>
+    </g>
+
+    <!-- Multiple Hands Clapping -->
+    <g stroke="#2c2e2a" stroke-width="7" stroke-linecap="round" fill="#e0dbce">
+      <!-- Left hands -->
+      <path d="M80 130 C100 100 60 80 56 104 C40 120 60 140 80 130 Z"></path>
+      <path d="M70 176 C90 150 50 140 38 172 C20 190 50 200 70 176 Z"></path>
+      <!-- Right hands -->
+      <path d="M320 130 C300 100 340 80 344 104 C360 120 340 140 320 130 Z"></path>
+      <path d="M330 176 C310 150 350 140 362 172 C380 190 350 200 330 176 Z"></path>
+    </g>
+    <!-- Motion lines for clapping -->
+    <g stroke="#2c2e2a" stroke-width="4" stroke-linecap="round">
+      <path d="M100 110 Q110 90 90 80 M110 160 Q120 150 100 130"></path>
+      <path d="M300 110 Q290 90 310 80 M290 160 Q280 150 300 130"></path>
+    </g>
+
+    <!-- Stars/sparks -->
+    <g fill="#f5e211" stroke="#2c2e2a" stroke-width="4" stroke-linejoin="round">
+      <path d="M100 300 L108 320 L128 328 L108 336 L100 356 L92 336 L72 328 L92 320 Z"></path>
+      <path d="M300 290 L306 306 L322 312 L306 318 L300 334 L294 318 L278 312 L294 306 Z"></path>
+      <path d="M200 50 L204 60 L214 64 L204 68 L200 78 L196 68 L186 64 L196 60 Z" transform="scale(0.8) translate(50 -20)"></path>
+    </g>
+
+    <text x="200" y="384" text-anchor="middle" font-size="26" font-weight="600" fill="#2c2e2a" style="text-shadow: 1px 1px 2px #e0dbce;">
+      Todos aplaudieron
+    </text>
+  </svg>
+</div>

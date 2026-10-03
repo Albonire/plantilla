@@ -1,0 +1,298 @@
+{
+  "lupas": [
+    {
+      "id": "lupa-1",
+      "titulo": "Lupa 1: lo que dice",
+      "descripcion": "La respuesta está escrita en el texto.",
+      "preguntas": "Preguntas que empiezan con quién, qué, dónde, cuándo, cuántos."
+    },
+    {
+      "id": "lupa-2",
+      "titulo": "Lupa 2: lo que sugiere",
+      "descripcion": "La respuesta no está escrita, pero las pistas del texto te ayudan a descubrirla.",
+      "preguntas": "Preguntas como por qué crees, qué habría pasado, qué sentía."
+    },
+    {
+      "id": "lupa-3",
+      "titulo": "Lupa 3: lo que pienso",
+      "descripcion": "La respuesta es tu opinión, y la tienes que explicar.",
+      "preguntas": "Preguntas como estás de acuerdo, qué harías tú, te parece bien."
+    }
+  ],
+  "lectura": {
+    "titulo": "Los libros viajeros de la vereda",
+    "autoria": "Texto original del equipo.",
+    "parrafos": [
+      {
+        "texto": "En la vereda El Roble, la escuela tenía un solo estante con doce libros. Los niños los habían leído tantas veces que se sabían los finales de memoria."
+      },
+      {
+        "texto": "Un lunes, la profesora Marina llegó con una idea: \"Cada familia va a prestar un libro que tenga en casa. Los libros van a viajar de mano en mano y volverán al final del mes\"."
+      },
+      {
+        "texto": "Julián pensó que en su casa no había libros. Esa noche, su abuela abrió un baúl viejo y sacó un cuaderno de tapas rojas, lleno de coplas y recetas que ella misma había escrito cuando era joven."
+      },
+      {
+        "texto": "Al día siguiente, Julián puso el cuaderno en el estante con las manos temblorosas. \"No es un libro de verdad\", murmuró."
+      },
+      {
+        "texto": "Pero el cuaderno rojo fue el que más viajó. Pasó por nueve casas y regresó con coplas nuevas que otras familias escribieron en las últimas páginas."
+      },
+      {
+        "texto": "Al final del mes, la profesora leyó en voz alta una copla escrita por el abuelo de Valentina. Todos aplaudieron, y Julián sonrió con orgullo."
+      }
+    ]
+  },
+  "semaforo": {
+    "cajas": [
+      {
+        "id": "literal",
+        "titulo": "Lupa 1: literal",
+        "descripcion": "Lo que el texto dice"
+      },
+      {
+        "id": "inferencial",
+        "titulo": "Lupa 2: inferencial",
+        "descripcion": "Lo que el texto sugiere"
+      },
+      {
+        "id": "critico",
+        "titulo": "Lupa 3: crítico",
+        "descripcion": "Lo que yo pienso"
+      }
+    ],
+    "items": [
+      {
+        "id": "s1",
+        "texto": "¿Cuántos libros tenía el estante de la escuela?",
+        "caja": "literal"
+      },
+      {
+        "id": "s2",
+        "texto": "¿Qué sacó la abuela del baúl?",
+        "caja": "literal"
+      },
+      {
+        "id": "s3",
+        "texto": "¿Por cuántas casas pasó el cuaderno rojo?",
+        "caja": "literal"
+      },
+      {
+        "id": "s4",
+        "texto": "¿Por qué a Julián le temblaban las manos?",
+        "caja": "inferencial"
+      },
+      {
+        "id": "s5",
+        "texto": "¿Por qué el cuaderno rojo fue el que más viajó?",
+        "caja": "inferencial"
+      },
+      {
+        "id": "s6",
+        "texto": "¿Cómo se sintió Julián cuando todos aplaudieron?",
+        "caja": "inferencial"
+      },
+      {
+        "id": "s7",
+        "texto": "¿Estás de acuerdo con Julián en que el cuaderno \"no es un libro de verdad\"? ¿Por qué?",
+        "caja": "critico"
+      },
+      {
+        "id": "s8",
+        "texto": "¿Te parece buena la idea de la profesora Marina? Explica.",
+        "caja": "critico"
+      },
+      {
+        "id": "s9",
+        "texto": "¿Qué libro o cuaderno de tu casa prestarías y por qué?",
+        "caja": "critico"
+      }
+    ]
+  },
+  "quiz": [
+    {
+      "id": "u3_q1",
+      "nivel": "Literal",
+      "pregunta": "¿Qué había dentro del cuaderno de la abuela?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Coplas y recetas escritas por ella"
+        },
+        {
+          "id": "b",
+          "texto": "Fotos viejas de toda la familia"
+        },
+        {
+          "id": "c",
+          "texto": "Cuentos copiados de otros libros"
+        }
+      ],
+      "correcta": "a",
+      "retro": "Párrafo 3."
+    },
+    {
+      "id": "u3_q2",
+      "nivel": "Literal",
+      "pregunta": "¿Cuándo volverían los libros a su casa?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Al final del mes"
+        },
+        {
+          "id": "b",
+          "texto": "Al final del año"
+        },
+        {
+          "id": "c",
+          "texto": "Al día siguiente"
+        }
+      ],
+      "correcta": "a",
+      "retro": "Lo dice la profesora en el párrafo 2."
+    },
+    {
+      "id": "u3_q3",
+      "nivel": "Inferencial",
+      "pregunta": "¿Por qué Julián dijo \"no es un libro de verdad\"?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Porque pensaba que un cuaderno valía menos"
+        },
+        {
+          "id": "b",
+          "texto": "Porque el cuaderno estaba muy dañado"
+        },
+        {
+          "id": "c",
+          "texto": "Porque la abuela no quería prestarlo"
+        }
+      ],
+      "correcta": "a",
+      "retro": "Las manos temblorosas y el murmullo muestran que dudaba del valor del cuaderno."
+    },
+    {
+      "id": "u3_q4",
+      "nivel": "Inferencial",
+      "pregunta": "¿Por qué otras familias escribieron coplas en el cuaderno?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Porque les gustó y quisieron aportar"
+        },
+        {
+          "id": "b",
+          "texto": "Porque la profesora las obligó a hacerlo"
+        },
+        {
+          "id": "c",
+          "texto": "Porque el cuaderno venía en blanco"
+        }
+      ],
+      "correcta": "a",
+      "retro": "El cuaderno regresó con coplas nuevas: las familias participaron."
+    },
+    {
+      "id": "u3_q5",
+      "nivel": "Clasificar",
+      "pregunta": "\"¿Dónde quedaba la escuela?\" es una pregunta de nivel...",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Literal"
+        },
+        {
+          "id": "b",
+          "texto": "Inferencial"
+        },
+        {
+          "id": "c",
+          "texto": "Crítico"
+        }
+      ],
+      "correcta": "a",
+      "retro": "La respuesta está escrita: en la vereda El Roble."
+    },
+    {
+      "id": "u3_q6",
+      "nivel": "Clasificar",
+      "pregunta": "\"¿Qué harías tú si fueras Julián?\" es una pregunta de nivel...",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Crítico"
+        },
+        {
+          "id": "b",
+          "texto": "Literal"
+        },
+        {
+          "id": "c",
+          "texto": "Inferencial"
+        }
+      ],
+      "correcta": "a",
+      "retro": "Pide tu opinión y tus razones."
+    }
+  ],
+  "tarjetas": [
+    {
+      "frente": "¿Cuántos libros tenía inicialmente el estante de la escuela en la vereda?",
+      "reverso": "Lupa 1 literal. La respuesta está escrita directamente en el texto: había doce libros en el estante."
+    },
+    {
+      "frente": "¿Qué objeto sacó la abuela de Julián del baúl viejo?",
+      "reverso": "Lupa 1 literal. El texto menciona claramente que sacó un cuaderno de tapas rojas con coplas."
+    },
+    {
+      "frente": "¿Por cuántas casas pasó el cuaderno rojo durante el mes?",
+      "reverso": "Lupa 1 literal. Es un dato exacto que aparece escrito: el cuaderno pasó por nueve casas."
+    },
+    {
+      "frente": "¿Qué escribió la abuela en el cuaderno cuando era joven?",
+      "reverso": "Lupa 1 literal. El texto dice que el cuaderno estaba lleno de coplas y recetas."
+    },
+    {
+      "frente": "¿Cuál era el nombre de la profesora que tuvo la idea?",
+      "reverso": "Lupa 1 literal. El nombre Marina aparece explícitamente en el relato como la docente encargada."
+    },
+    {
+      "frente": "¿Por qué los niños se sabían los finales de los libros de memoria?",
+      "reverso": "Lupa 2 inferencial. Se deduce porque el texto dice que los habían leído muchísimas veces."
+    },
+    {
+      "frente": "¿Por qué a Julián le temblaban las manos al entregar el cuaderno?",
+      "reverso": "Lupa 2 inferencial. Las pistas sugieren que estaba nervioso y sentía inseguridad por no ser un libro impreso."
+    },
+    {
+      "frente": "¿Qué nos indica que el cuaderno fue un éxito en la vereda?",
+      "reverso": "Lupa 2 inferencial. El texto dice que fue el que más viajó y regresó con nuevas coplas escritas."
+    },
+    {
+      "frente": "¿Cómo se sintió Julián cuando todos aplaudieron la copla al final?",
+      "reverso": "Lupa 2 inferencial. Sus acciones, como sonreír con orgullo, demuestran que se sintió feliz y valorado."
+    },
+    {
+      "frente": "¿Por qué el abuelo de Valentina decidió escribir una copla en el cuaderno?",
+      "reverso": "Lupa 2 inferencial. Se infiere que quiso participar en la creación colectiva iniciada por la abuela de Julián."
+    },
+    {
+      "frente": "¿Te parece que el cuaderno de la abuela es un libro de verdad?",
+      "reverso": "Lupa 3 crítica. Es una opinión personal que debes explicar usando razones sobre lo que significa un libro."
+    },
+    {
+      "frente": "¿Crees que la idea de la profesora Marina ayudó a la comunidad?",
+      "reverso": "Lupa 3 crítica. Pide tu punto de vista sobre los beneficios de compartir historias entre las familias."
+    },
+    {
+      "frente": "¿Qué sentirías tú si tuvieras que prestar algo muy valioso a otros?",
+      "reverso": "Lupa 3 crítica. Requiere que conectes tus sentimientos personales con la situación de generosidad vivida por Julián."
+    },
+    {
+      "frente": "¿Harías algo diferente a lo que hizo Julián con su cuaderno?",
+      "reverso": "Lupa 3 crítica. Debes proponer una acción propia y justificarla según tus propios valores y pensamientos."
+    }
+  ]
+}

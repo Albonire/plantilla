@@ -1,0 +1,15 @@
+---
+import { FlashcardDeck } from '../islas/flashcard_deck';
+import type { Tarjeta } from '../../lib/tipos';
+
+interface Props {
+  tarjetas: Tarjeta[];
+  unidad: number;
+}
+const { tarjetas, unidad } = Astro.props;
+---
+
+<FlashcardDeck client:visible tarjetas={tarjetas} unidad={unidad} />
+<p class="mt-3 text-micro text-stone-text">
+  Tarjetas elaboradas con herramientas digitales y revisadas por el equipo.
+</p>

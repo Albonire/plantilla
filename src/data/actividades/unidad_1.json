@@ -1,0 +1,567 @@
+{
+  "sopa": {
+    "palabras": [
+      "LIEBRE",
+      "TORTUGA",
+      "CARRERA",
+      "META",
+      "APUESTA",
+      "SIESTA",
+      "CONSTANCIA",
+      "ORGULLO"
+    ],
+    "tamano": 12,
+    "semilla": "aventura-unidad-1",
+    "instruccion": "Encuentra las 8 palabras escondidas. Con esas palabras, ¿de qué crees que se va a tratar la historia?",
+    "cierre": "Ya tienes las 8 palabras. Ahora piensa: ¿de qué crees que se va a tratar la historia?"
+  },
+  "predicciones": [
+    {
+      "id": "p1",
+      "pregunta": "¿De qué crees que se tratará la historia?",
+      "historia": "Trata de una carrera entre una liebre orgullosa y una tortuga."
+    },
+    {
+      "id": "p2",
+      "pregunta": "¿Quiénes podrían ser los personajes?",
+      "historia": "La liebre, la tortuga, el búho y la ardilla."
+    },
+    {
+      "id": "p3",
+      "pregunta": "¿Dónde crees que tendrá lugar?",
+      "historia": "En un valle con pasto y flores, con un árbol grande en lo alto de una colina."
+    },
+    {
+      "id": "p4",
+      "pregunta": "¿Qué crees que sucederá?",
+      "historia": "La liebre se duerme a mitad del camino y la tortuga llega primero a la meta."
+    }
+  ],
+  "lectura": {
+    "titulo": "La liebre y la tortuga",
+    "autoria": "Adaptación del equipo a partir de la fábula de Esopo (dominio público).",
+    "parrafos": [
+      {
+        "texto": "En un valle lleno de pasto y flores vivía una liebre muy orgullosa. Cada mañana corría de un lado a otro para que todos vieran lo veloz que era. \"¡Nadie en este valle es más rápido que yo!\", repetía mientras movía las orejas."
+      },
+      {
+        "texto": "Una tarde, la liebre vio a la tortuga avanzando despacio por el camino, con su casa a cuestas. Se echó a reír y le dijo: \"Tortuga, si sigues a ese paso, llegarás a tu casa el próximo año\"."
+      },
+      {
+        "texto": "La tortuga se detuvo, la miró con calma y respondió: \"Tal vez soy lenta, pero te propongo una carrera. Veremos quién llega primero al árbol grande que está en lo alto de la colina\".",
+        "pausa": "¿Por qué crees que la tortuga propone una carrera si sabe que es lenta?"
+      },
+      {
+        "texto": "Los animales del valle no lo podían creer. El búho marcó la salida con una rama y la ardilla se subió al árbol grande para vigilar la meta. \"En sus marcas, listos... ¡ya!\", gritó el búho."
+      },
+      {
+        "texto": "La liebre salió disparada como una flecha y en pocos segundos dejó a la tortuga muy atrás. La tortuga, en cambio, empezó a caminar paso a paso, sin detenerse ni un momento."
+      },
+      {
+        "texto": "A mitad del camino, la liebre miró hacia atrás y no vio a nadie. \"Tengo tiempo de sobra\", pensó. Se acostó a la sombra de un árbol, bostezó y cerró los ojos.",
+        "pausa": "¿Qué crees que va a pasar ahora? Compara con tu predicción."
+      },
+      {
+        "texto": "Mientras la liebre dormía, la tortuga siguió avanzando. Tenía calor y le dolían las patas, pero no se detuvo. Paso a paso, pasó junto a la liebre dormida y continuó su camino."
+      },
+      {
+        "texto": "Cuando la liebre despertó, el sol ya se escondía detrás de la colina. Corrió tan rápido como pudo, pero al llegar vio a la tortuga junto al árbol grande, rodeada de animales que aplaudían."
+      },
+      {
+        "texto": "La liebre bajó las orejas y, por primera vez, no dijo nada. La tortuga se le acercó y le dijo: \"Correr rápido es un regalo, pero llegar depende de no rendirse\".",
+        "pausa": "¿Qué aprendió la liebre?"
+      }
+    ],
+    "moraleja": "Quien se confía demasiado puede perder, y quien persevera llega lejos.",
+    "carrera_descripcion": "La tortuga avanza sin parar de un lado a otro de la pista. La liebre sale muy rápido, se queda dormida a mitad del camino, despierta y corre otra vez, pero llega detrás de la tortuga."
+  },
+  "pistas": [
+    {
+      "id": "u1_pista1",
+      "frase": "La liebre bostezó, estiró las patas y se acomodó bajo la sombra del árbol.",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Se va a dormir un rato."
+        },
+        {
+          "id": "b",
+          "texto": "Se va a comer una zanahoria."
+        },
+        {
+          "id": "c",
+          "texto": "Se va a esconder del búho."
+        }
+      ],
+      "correcta": "a",
+      "explicacion": "Bostezar y acomodarse son señales de sueño."
+    },
+    {
+      "id": "u1_pista2",
+      "frase": "Cuando la liebre despertó, el sol ya se escondía detrás de la colina.",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Durmió casi toda la tarde."
+        },
+        {
+          "id": "b",
+          "texto": "Durmió solo un minuto."
+        },
+        {
+          "id": "c",
+          "texto": "Durmió toda una semana."
+        }
+      ],
+      "correcta": "a",
+      "explicacion": "Si el sol se estaba ocultando, había pasado mucho tiempo desde la tarde."
+    },
+    {
+      "id": "u1_pista3",
+      "frase": "Los animales aplaudían alrededor de la tortuga junto al árbol grande.",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "La tortuga llegó primero."
+        },
+        {
+          "id": "b",
+          "texto": "La tortuga se cayó al llegar."
+        },
+        {
+          "id": "c",
+          "texto": "La tortuga se perdió de camino."
+        }
+      ],
+      "correcta": "a",
+      "explicacion": "Aplauden a quien gana, y la tortuga estaba en la meta."
+    },
+    {
+      "id": "u1_pista4",
+      "frase": "La liebre bajó las orejas y, por primera vez, no dijo nada.",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Se sentía avergonzada."
+        },
+        {
+          "id": "b",
+          "texto": "Se sentía muy contenta."
+        },
+        {
+          "id": "c",
+          "texto": "Se sentía con mucho sueño."
+        }
+      ],
+      "correcta": "a",
+      "explicacion": "La liebre siempre presumía; callarse y bajar las orejas muestran vergüenza."
+    }
+  ],
+  "pistas_instruccion": "Los detectives no solo leen lo que está escrito. También descubren lo que el texto no dice con palabras. Lee cada pista y elige qué se puede deducir.",
+  "refran": {
+    "principal": "Más vale paso que dure y no trote que canse.",
+    "apoyo": "Poco a poco se llega lejos.",
+    "preguntas": [
+      "¿Qué crees que quiere decir el refrán con tus propias palabras?",
+      "¿Qué personaje de la fábula actuó como dice el refrán? ¿Por qué?",
+      "¿Te ha pasado algo parecido en la escuela, en un juego o en casa? Cuéntalo.",
+      "¿Estás de acuerdo con el refrán? Completa: \"Yo pienso que... porque...\"."
+    ]
+  },
+  "ruleta": [
+    "¿Qué te dijo el título antes de leer?",
+    "¿Qué personaje te cae mejor y por qué?",
+    "¿Qué palabra nueva encontraste en la fábula?",
+    "¿Qué habrías hecho tú si fueras la liebre?",
+    "¿En qué parte cambió la historia?",
+    "¿Qué otro final se te ocurre?",
+    "¿Qué le dirías a la tortuga al final de la carrera?",
+    "¿A quién le contarías esta fábula y por qué?"
+  ],
+  "quiz": [
+    {
+      "id": "u1_q1",
+      "nivel": "Literal",
+      "pregunta": "¿Dónde estaba la meta de la carrera?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "En el árbol grande de la colina"
+        },
+        {
+          "id": "b",
+          "texto": "En la cueva del búho sabio"
+        },
+        {
+          "id": "c",
+          "texto": "En la orilla del río del valle"
+        }
+      ],
+      "correcta": "a",
+      "retro": "La tortuga lo dice en el párrafo 3."
+    },
+    {
+      "id": "u1_q2",
+      "nivel": "Literal",
+      "pregunta": "¿Qué hizo la liebre a mitad del camino?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Se acostó a dormir bajo un árbol"
+        },
+        {
+          "id": "b",
+          "texto": "Se detuvo a comer pasto fresco"
+        },
+        {
+          "id": "c",
+          "texto": "Regresó a buscar a la tortuga"
+        }
+      ],
+      "correcta": "a",
+      "retro": "Párrafo 6: se acostó a la sombra y cerró los ojos."
+    },
+    {
+      "id": "u1_q3",
+      "nivel": "Inferencial",
+      "pregunta": "¿Por qué se durmió la liebre?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Porque creyó que le sobraba tiempo"
+        },
+        {
+          "id": "b",
+          "texto": "Porque la tortuga se lo pidió así"
+        },
+        {
+          "id": "c",
+          "texto": "Porque el búho detuvo la carrera"
+        }
+      ],
+      "correcta": "a",
+      "retro": "Pensó \"tengo tiempo de sobra\": estaba demasiado confiada."
+    },
+    {
+      "id": "u1_q4",
+      "nivel": "Inferencial",
+      "pregunta": "Cuando la liebre \"bajó las orejas\", ¿cómo se sentía?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Avergonzada por haber perdido"
+        },
+        {
+          "id": "b",
+          "texto": "Feliz de terminar la carrera"
+        },
+        {
+          "id": "c",
+          "texto": "Cansada pero muy orgullosa"
+        }
+      ],
+      "correcta": "a",
+      "retro": "Bajar las orejas y callarse muestran vergüenza."
+    },
+    {
+      "id": "u1_q5",
+      "nivel": "Inferencial",
+      "pregunta": "¿Qué significa \"salió disparada como una flecha\"?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Que arrancó con mucha velocidad"
+        },
+        {
+          "id": "b",
+          "texto": "Que alguien le lanzó una flecha"
+        },
+        {
+          "id": "c",
+          "texto": "Que salió volando por el aire"
+        }
+      ],
+      "correcta": "a",
+      "retro": "Es una comparación: la liebre fue tan rápida como una flecha."
+    },
+    {
+      "id": "u1_q6",
+      "nivel": "Crítico",
+      "pregunta": "¿Qué idea se puede defender mejor con esta fábula?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Confiarse demasiado puede hacernos perder"
+        },
+        {
+          "id": "b",
+          "texto": "Los animales lentos siempre ganan carreras"
+        },
+        {
+          "id": "c",
+          "texto": "Es mejor no participar en competencias"
+        }
+      ],
+      "correcta": "a",
+      "retro": "La fábula no dice que lo lento siempre gana; muestra lo que pasa cuando alguien se confía."
+    }
+  ],
+  "fabula_reto": {
+    "titulo": "La cigarra y la hormiga",
+    "autoria": "Adaptación a partir de la fábula de Esopo (dominio público), redactada para el reto.",
+    "parrafos": [
+      "En un campo soleado, una cigarra cantaba todo el día sobre una rama. \"¡Qué hermoso es el verano!\", decía mientras movía las alas.",
+      "Muy cerca, una hormiga cargaba granos de trigo hacia su hormiguero. Iba y venía sin descansar, bajo el calor del sol.",
+      "\"Ven a cantar conmigo\", le dijo la cigarra. \"Hay tiempo para todo\".",
+      "La hormiga se secó el sudor y respondió: \"Estoy guardando comida para el invierno. Te conviene hacer lo mismo\".",
+      "La cigarra soltó una carcajada. \"Falta mucho para el invierno. Hoy quiero cantar\".",
+      "Pasaron los meses. Llegaron el frío y la lluvia, y el campo quedó vacío. La cigarra tenía hambre y no encontraba ni una semilla.",
+      "Temblando, tocó la puerta del hormiguero. \"Amiga hormiga, ¿me regalas un poco de comida?\".",
+      "La hormiga la miró con calma. \"Yo trabajé mientras tú cantabas. Aun así, hoy no te dejaré con hambre. Pasa, y desde mañana prepararemos juntas las provisiones\".",
+      "La cigarra bajó la cabeza y prometió que, cuando volviera el verano, cantaría un rato y también guardaría comida."
+    ],
+    "revision": {
+      "revisado_por": "Selene María Caballero Valle",
+      "fecha": "25 de septiembre de 2026",
+      "nota": "Aprobada por el equipo docente con el desenlace solidario (la hormiga ayuda a la cigarra)."
+    }
+  },
+  "tarjetas": [
+    {
+      "frente": "¿Qué haces en la etapa \"Antes de leer\"?",
+      "reverso": "Miro el título y las imágenes, como cuando la liebre vio la meta."
+    },
+    {
+      "frente": "¿Para qué sirve mirar el título antes de leer?",
+      "reverso": "Para imaginar de qué tratará, como la carrera entre liebre y tortuga."
+    },
+    {
+      "frente": "¿Qué es una predicción al leer?",
+      "reverso": "Es una hipótesis; por ejemplo, pensar que la liebre ganaría por veloz."
+    },
+    {
+      "frente": "¿Cómo se comprueba una predicción?",
+      "reverso": "Leyendo la historia, como al ver que la tortuga ganó al final."
+    },
+    {
+      "frente": "¿Qué haces \"Durante la lectura\" para entender mejor?",
+      "reverso": "Hago pausas y preguntas, como preguntarme por qué la liebre se detuvo."
+    },
+    {
+      "frente": "¿Dónde es bueno detenerse mientras lees?",
+      "reverso": "Al final de los párrafos, como cuando la tortuga propone la carrera."
+    },
+    {
+      "frente": "¿Qué haces si no conoces una palabra?",
+      "reverso": "Busco pistas cerca, como entender \"colina\" al ver que la tortuga subía."
+    },
+    {
+      "frente": "¿Cómo imaginas la escena mientras lees?",
+      "reverso": "Como una película, imaginando a la liebre corriendo entre flores y pasto."
+    },
+    {
+      "frente": "¿Qué es hacer una inferencia?",
+      "reverso": "Unir pistas y saberes; deducir que la liebre dormirá porque bosteza mucho."
+    },
+    {
+      "frente": "¿Qué haces en la etapa \"Después de leer\"?",
+      "reverso": "Doy mi opinión, por ejemplo: la liebre perdió porque se confió demasiado."
+    },
+    {
+      "frente": "¿Qué debes recordar al terminar un cuento?",
+      "reverso": "Quiénes estaban y el problema, como la apuesta entre los animales."
+    },
+    {
+      "frente": "¿Cómo explicas tu opinión sobre un texto?",
+      "reverso": "Uso la palabra \"porque\", como: \"la tortuga ganó porque nunca se detuvo\"."
+    },
+    {
+      "frente": "¿Qué buscamos al final de una fábula?",
+      "reverso": "La enseñanza o moraleja, como la perseverancia de la tortuga frente al calor."
+    },
+    {
+      "frente": "¿Qué significa la palabra \"meta\"?",
+      "reverso": "Lugar donde termina la carrera, como el árbol grande en la colina."
+    },
+    {
+      "frente": "¿Qué es una \"apuesta\"?",
+      "reverso": "Un reto entre dos, como el desafío de carrera que aceptó la liebre."
+    },
+    {
+      "frente": "¿Qué significa \"siesta\"?",
+      "reverso": "Un sueño corto, como el que tomó la liebre bajo la sombra."
+    },
+    {
+      "frente": "¿Qué significa tener \"constancia\"?",
+      "reverso": "Seguir sin rendirse, como la tortuga caminando paso a paso hasta el final."
+    },
+    {
+      "frente": "¿Qué es el \"orgullo\" en la lectura?",
+      "reverso": "Creerse mejor que otros, como la liebre burlándose de la tortuga lenta."
+    },
+    {
+      "frente": "¿Qué significa \"salir disparada como una flecha\"?",
+      "reverso": "Correr con mucha velocidad, como cuando la liebre inició la gran carrera."
+    },
+    {
+      "frente": "Si la liebre bajó las orejas, ¿qué inferimos?",
+      "reverso": "Que sentía mucha vergüenza por perder ante la tortuga frente a todos."
+    },
+    {
+      "frente": "Si el sol se escondía, ¿cuánto durmió la liebre?",
+      "reverso": "Durmió casi toda la tarde, por eso la tortuga ya estaba festejando."
+    },
+    {
+      "frente": "Si los animales aplauden, ¿quién llegó primero?",
+      "reverso": "Llegó la tortuga, pues todos celebraban su victoria junto al árbol grande."
+    },
+    {
+      "frente": "Si la liebre se acomoda en la sombra, ¿qué hará?",
+      "reverso": "Se va a dormir, como cuando cerró los ojos a mitad del camino."
+    },
+    {
+      "frente": "¿Qué significa \"Poco a poco se llega lejos\"?",
+      "reverso": "Avanzar despacio pero sin parar da resultados, como demostró la tortuga."
+    },
+    {
+      "frente": "¿Qué significa \"Más vale paso que dure...\"?",
+      "reverso": "Es mejor un ritmo constante que correr y cansarse como la liebre."
+    },
+    {
+      "frente": "¿Cuál es la moraleja de la fábula?",
+      "reverso": "Quien persevera llega lejos y quien se confía pierde, como la liebre."
+    },
+    {
+      "frente": "Paso 1 de la lectura: _____",
+      "reverso": "Predigo. Ejemplo: Pensar de qué tratará la historia de la liebre orgullosa."
+    },
+    {
+      "frente": "Paso 2 de la lectura: _____",
+      "reverso": "Hago pausas y pregunto. Ejemplo: ¿Qué hace la tortuga ante el calor?"
+    },
+    {
+      "frente": "Paso 3 de la lectura: _____",
+      "reverso": "Opino. Ejemplo: Pienso que la tortuga fue muy valiente al competir."
+    },
+    {
+      "frente": "¿Qué elementos visuales ayudan a predecir?",
+      "reverso": "El título y las imágenes, como el dibujo de la tortuga caminando."
+    },
+    {
+      "frente": "¿Qué es una \"hipótesis\" en la lectura?",
+      "reverso": "Una predicción para comprobar, como si la liebre será realmente la ganadora."
+    },
+    {
+      "frente": "¿Para qué sirven las pistas del texto?",
+      "reverso": "Para descubrir significados, como entender que la liebre estaba muy cansada."
+    },
+    {
+      "frente": "\"La liebre estiró las patas\". ¿Qué inferimos?",
+      "reverso": "Que se está preparando para descansar bajo el árbol, como hizo ella."
+    },
+    {
+      "frente": "¿Cómo se sentía la liebre al inicio?",
+      "reverso": "Muy orgullosa, decía que nadie en el valle era más rápido que ella."
+    },
+    {
+      "frente": "¿Quién marcó la salida de la carrera?",
+      "reverso": "El búho con una rama, dando inicio al desafío entre los animales."
+    },
+    {
+      "frente": "¿Quién vigilaba la meta desde el árbol?",
+      "reverso": "La ardilla, esperando ver quién llegaba primero a lo alto de la colina."
+    },
+    {
+      "frente": "¿Por qué la liebre se detuvo a mitad?",
+      "reverso": "Porque se confió y pensó que la tortuga jamás la alcanzaría."
+    },
+    {
+      "frente": "¿Qué obstáculos superó la tortuga caminando?",
+      "reverso": "El calor y el dolor de patas, pero nunca se detuvo ni un momento."
+    },
+    {
+      "frente": "¿Qué hizo la tortuga al ver a la liebre?",
+      "reverso": "Pasó junto a ella mientras dormía y continuó su camino en silencio."
+    },
+    {
+      "frente": "¿A qué hora despertó la liebre?",
+      "reverso": "Al atardecer, cuando vio que el sol se ocultaba tras la colina."
+    },
+    {
+      "frente": "¿Cómo corrió la liebre al despertar?",
+      "reverso": "Tan rápido como pudo, aunque la tortuga ya estaba con los animales."
+    },
+    {
+      "frente": "¿Qué lección le dio la tortuga?",
+      "reverso": "Que llegar depende de no rendirse, como ella hizo paso a paso."
+    },
+    {
+      "frente": "Define \"constancia\" con la tortuga.",
+      "reverso": "Es no detenerse aunque sea difícil, como ella hizo hasta la meta."
+    },
+    {
+      "frente": "¿Qué animal era el más veloz?",
+      "reverso": "La liebre, aunque perdió la carrera por su falta de constancia."
+    },
+    {
+      "frente": "¿Qué significa que la liebre \"se confió\"?",
+      "reverso": "Creyó que ganaría sin esfuerzo y por eso se durmió profundamente."
+    },
+    {
+      "frente": "¿Qué es imaginar la escena como película?",
+      "reverso": "Visualizar a la tortuga y el árbol mientras vas leyendo el texto."
+    },
+    {
+      "frente": "¿Qué pregunta haces al final de párrafos?",
+      "reverso": "Me pregunto \"¿qué está pasando?\", como cuando la liebre se echó a reír."
+    },
+    {
+      "frente": "Ejemplo de opinión con \"porque\":",
+      "reverso": "La liebre se equivocó porque se creía mejor que la pobre tortuga."
+    },
+    {
+      "frente": "¿Qué es una moraleja?",
+      "reverso": "La enseñanza de la historia, como la perseverancia que mostró la tortuga."
+    },
+    {
+      "frente": "¿Por qué es importante predecir?",
+      "reverso": "Para activar el pensamiento, como imaginar si la tortuga aceptará el reto."
+    },
+    {
+      "frente": "¿Qué significa \"trotar\" en el refrán?",
+      "reverso": "Correr rápido pero cansarse pronto, como le pasó a la liebre."
+    },
+    {
+      "frente": "¿Qué significa \"paso que dure\"?",
+      "reverso": "Un ritmo que se mantiene siempre, como el caminar de la tortuga."
+    },
+    {
+      "frente": "¿Cómo supimos quién ganó sin leerlo?",
+      "reverso": "Al ver a los animales aplaudiendo junto a la tortuga ganadora."
+    },
+    {
+      "frente": "La tortuga es _____ porque no se rindió.",
+      "reverso": "Constante. Ella siguió caminando a pesar del calor y el cansancio."
+    },
+    {
+      "frente": "La liebre es _____ porque se creía superior.",
+      "reverso": "Orgullosa. Ella pensaba que nadie en el valle era más veloz."
+    },
+    {
+      "frente": "¿Qué es unir pistas con saberes?",
+      "reverso": "Es hacer inferencias, como saber que la liebre durmió muchas horas."
+    },
+    {
+      "frente": "¿Qué es leer según la detective Sofía?",
+      "reverso": "Es pensar, imaginar y entender, como al leer sobre la liebre."
+    },
+    {
+      "frente": "¿Cuál es la misión del detective lector?",
+      "reverso": "Predecir, preguntar y opinar, como hicimos con el cuento de Esopo."
+    },
+    {
+      "frente": "¿Qué busca comunicar el autor?",
+      "reverso": "Un mensaje o enseñanza, como el valor del esfuerzo de la tortuga."
+    }
+  ]
+}

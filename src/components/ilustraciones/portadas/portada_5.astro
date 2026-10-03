@@ -1,0 +1,156 @@
+---
+import PortadaCapitulo from '../../libro/portada_capitulo.astro';
+import Sofia from '../sofia.astro';
+import Tortuga from '../tortuga.astro';
+
+interface Props {
+  titulo: string;
+  alt: string;
+}
+const { titulo, alt } = Astro.props;
+
+const bloques = [
+  { texto: 'opinión', color: '#ff705d', y: 610, w: 360 },
+  { texto: 'razón', color: '#2ba0ff', y: 528, w: 330 },
+  { texto: 'ejemplo', color: '#f5e211', y: 446, w: 300 },
+  { texto: 'conclusión', color: '#e0dbce', y: 364, w: 270 },
+];
+---
+
+<PortadaCapitulo numero={5} titulo={titulo} color="mixto" alt={alt}>
+  <svg
+    slot="fondo"
+    viewBox="0 0 800 800"
+    class="h-full w-full"
+    preserveAspectRatio="xMidYMid meet"
+    focusable="false"
+  >
+    <!-- Nubes con detalle orgánico -->
+    <g fill="#ffffff">
+      <!-- Nube 1 -->
+      <path d="M 100 160 A 30 30 0 0 1 130 120 A 44 44 0 0 1 200 110 A 38 38 0 0 1 260 150 A 30 30 0 0 1 240 200 L 100 200 A 30 30 0 0 1 100 160 Z"></path>
+      <path d="M 100 200 L 240 200 A 30 30 0 0 0 258 180 C 230 188 190 192 160 188 C 130 184 110 174 95 165 A 30 30 0 0 0 100 200 Z" fill="#e0dbce" opacity="0.5"></path>
+      
+      <!-- Nube 2 -->
+      <g transform="translate(420, -30) scale(0.85)">
+        <path d="M 100 160 A 30 30 0 0 1 130 120 A 44 44 0 0 1 200 110 A 38 38 0 0 1 260 150 A 30 30 0 0 1 240 200 L 100 200 A 30 30 0 0 1 100 160 Z"></path>
+        <path d="M 100 200 L 240 200 A 30 30 0 0 0 258 180 C 230 188 190 192 160 188 C 130 184 110 174 95 165 A 30 30 0 0 0 100 200 Z" fill="#e0dbce" opacity="0.5"></path>
+      </g>
+    </g>
+
+    <!-- Colina de fondo -->
+    <path d="M0 690 C220 650 520 670 800 640 V800 H0 Z" fill="#6fbb47"></path>
+    <!-- Sombra/relieve de colina -->
+    <path d="M0 730 C220 690 520 710 800 680 V800 H0 Z" fill="#5aa03a" opacity="0.3"></path>
+  </svg>
+  <svg
+    slot="medio"
+    viewBox="0 0 800 800"
+    class="h-full w-full"
+    preserveAspectRatio="xMidYMid meet"
+    focusable="false"
+  >
+    <g transform="translate(540 0)">
+      <!-- Bandera/indicador en la cima de la torre -->
+      <path d="M0 364 V250" stroke="#2c2e2a" stroke-width="7" stroke-linecap="round"></path>
+      <!-- Sombra de la bandera -->
+      <path d="M6 256 L86 280 L6 308 Z" fill="#2c2e2a" opacity="0.15"></path>
+      <!-- Tela roja -->
+      <path
+        d="M4 250 L84 274 L4 302 Z"
+        fill="#ff705d"
+        stroke="#2c2e2a"
+        stroke-width="5"
+        stroke-linejoin="round"
+      ></path>
+      <path d="M 4 250 L 84 274 L 4 302" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.5"></path>
+
+      <!-- Bloques apilados con volumen -->
+      {bloques.map((b) => (
+        <g>
+          <!-- Sombra proyectada del bloque -->
+          <rect
+            x={-b.w / 2 + 5}
+            y={b.y + 5}
+            width={b.w}
+            height="72"
+            rx="20"
+            fill="#2c2e2a"
+            opacity="0.15"
+          ></rect>
+          
+          <!-- Bloque principal -->
+          <rect
+            x={-b.w / 2}
+            y={b.y}
+            width={b.w}
+            height="72"
+            rx="20"
+            fill={b.color}
+            stroke="#2c2e2a"
+            stroke-width="5"
+          ></rect>
+          
+          <!-- Brillo interior superior -->
+          <path d={`M ${-b.w/2 + 20} ${b.y + 8} H ${b.w/2 - 20}`} stroke="#ffffff" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.4"></path>
+          
+          <!-- Texto del bloque -->
+          <text
+            x="0"
+            y={b.y + 47}
+            text-anchor="middle"
+            font-size="32"
+            font-weight="500"
+            fill="#2c2e2a"
+          >
+            {b.texto}
+          </text>
+        </g>
+      ))}
+    </g>
+  </svg>
+  <svg
+    slot="frente"
+    viewBox="0 0 800 800"
+    class="h-full w-full"
+    preserveAspectRatio="xMidYMid meet"
+    focusable="false"
+  >
+    <g transform="translate(40 560)">
+      <!-- Sombra de la caja de apoyo -->
+      <rect
+        x="6"
+        y="126"
+        width="230"
+        height="100"
+        rx="18"
+        fill="#2c2e2a"
+        opacity="0.15"
+      ></rect>
+      
+      <!-- Caja de apoyo / Podio -->
+      <rect
+        x="0"
+        y="120"
+        width="230"
+        height="100"
+        rx="18"
+        fill="#ffffff"
+        stroke="#2c2e2a"
+        stroke-width="5"
+      ></rect>
+      
+      <!-- Detalle 3D interior de la caja -->
+      <path d="M 20 132 H 210" stroke="#f5f1e4" stroke-width="6" stroke-linecap="round"></path>
+      <circle cx="115" cy="170" r="14" fill="#e0dbce" opacity="0.6"></circle>
+
+      <!-- Personaje -->
+      <g transform="translate(60 -20)">
+        <Sofia size={330} pose="senala" />
+      </g>
+    </g>
+    <g transform="translate(620 690)">
+      <Tortuga size={96} />
+    </g>
+  </svg>
+</PortadaCapitulo>

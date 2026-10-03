@@ -1,0 +1,23 @@
+import Seccion from '../../../components/ui/seccion.astro';
+import ListaPistas from '../../../components/ui/lista_pistas.astro';
+import InfographicViewer from '../../../components/ui/infographic_viewer.astro';
+
+<Seccion id="introduccion" titulo="Introducción" etiqueta="Antes de empezar">
+
+<div class="lectura">
+
+Ya sabes leer antes, durante y después; reconoces los tipos de texto; preguntas en tres niveles y sabes en qué fuentes confiar. Ahora te toca hablar a ti. Una opinión vale más cuando tiene razones y ejemplos. En este caso vas a armar un texto de opinión bloque por bloque, vas a practicar con los conectores y vas a participar en un muro de debate con tus compañeros.
+
+</div>
+
+</Seccion>
+
+<Seccion id="contenidos" titulo="Las pistas del caso" etiqueta="Contenidos">
+
+<ListaPistas items={props.unidad.contenidos} unidad={props.unidad.numero} />
+
+<div class="mt-14">
+  <InfographicViewer id="c5_infografia" />
+</div>
+
+</Seccion>

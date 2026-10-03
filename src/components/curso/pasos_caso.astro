@@ -1,0 +1,51 @@
+---
+// the four steps of a case (open, clues, lens, close) as a strip under the title of every page.
+// The current step is filled and the ones already read say "Leída" (the global script writes that state).
+import { paginas_caso, ruta_pagina, id_pagina, type SlugPagina } from '../../config/paginas';
+
+interface Props {
+  caso: number;
+  actual: SlugPagina;
+}
+const { caso, actual } = Astro.props;
+---
+
+<nav aria-label="Pasos de este caso" class="contenedor mt-2 mb-2">
+  <ol class="grid grid-cols-2 gap-2 sm:grid-cols-4">
+    {paginas_caso.map((p, i) => (
+      <li>
+        <a
+          href={ruta_pagina(caso, p.slug)}
+          data-pagina={id_pagina(caso, p.slug)}
+          aria-current={p.slug === actual ? 'page' : undefined}
+          class="paso interfaz flex min-h-14 items-center gap-2.5 rounded-soft border-2 border-ink-black bg-pure-white px-3 py-2 text-body-sm font-medium leading-tight hover:bg-sandstone aria-[current=page]:bg-ink-black aria-[current=page]:text-cream-paper"
+        >
+          <span
+            class="paso-numero flex size-7 shrink-0 items-center justify-center rounded-full border-2 border-current text-micro font-bold"
+            aria-hidden="true"
+          >
+            {i + 1}
+          </span>
+          <span class="min-w-0 flex-1">
+            <span class="sr-only">Paso </span>
+            {p.titulo}
+            <span class="estado-pagina block text-micro font-normal" />
+          </span>
+        </a>
+      </li>
+    ))}
+  </ol>
+</nav>
+
+<style>
+  .paso[data-leida='true']:not([aria-current='page']) {
+    background: var(--color-fresh-grass);
+  }
+  .paso[data-leida='true']:not([aria-current='page']):hover {
+    background: var(--color-ink-black);
+    color: var(--color-cream-paper);
+  }
+  .estado-pagina:empty {
+    display: none;
+  }
+</style>

@@ -1,0 +1,141 @@
+/*
+  design_tokens.css
+  Tokens del design system (base: extracción de estilo "MindMarket") corregidos para
+  Tailwind CSS v4 y para un público de 10 a 11 años.
+
+  Cambios respecto al original:
+  1. Se agrega --color-stone-text (#5f615e, 5.53:1 sobre crema) para texto secundario.
+     --color-stone-gray (#80827f, 3.43:1) queda solo para bordes y decoración.
+  2. Se quitan --spacing-4/20/60/136/216: pueden pisar la escala por defecto (p-4 = 16px).
+     La escala base de 4px de Tailwind ya cubre esos valores (p-1, p-5, p-15, p-34, p-54).
+  3. Se renombran los radios para no romper rounded-full ni rounded-lg.
+  4. Tamaños display fluidos con clamp() y tracking en em.
+  5. Se reemplazan los valores inválidos "80-120px", "20-21px" y "17-21px".
+  6. Pareja tamaño + interlineado + tracking con la sintaxis de v4 (--text-x--line-height).
+
+  Uso: @import "tailwindcss"; y luego @import "./design_tokens.css"; en global.css
+*/
+
+@theme {
+  /* Color */
+  --color-fresh-grass: #8ed462; /* acento estructural: rellenos y trazos, nunca texto */
+  --color-cream-paper: #f5f1e4; /* lienzo de página */
+  --color-ink-black: #2c2e2a; /* texto principal, iconos, bordes (12.14:1 sobre crema) */
+  --color-pure-white: #ffffff; /* tarjetas y nav */
+  --color-sandstone: #e0dbce; /* superficie hundida, áreas de escritura */
+  --color-stone-gray: #80827f; /* solo bordes y decoración */
+  --color-stone-text: #5f615e; /* texto secundario (5.53:1 sobre crema, 4.52:1 sobre arena) */
+  --color-hairline-mist: #d5d5d4; /* divisores sutiles */
+  --color-pure-ink: #000000; /* casi no se usa */
+  --color-sky-pop: #2ba0ff; /* ilustración y puntos de acción, nunca texto */
+  --color-coral-pop: #ff705d; /* botón del reto sumativo (texto en tinta: 5.05:1) */
+  --color-sunshine-pop: #f5e211; /* banda del pie y acentos */
+
+  /* Tipografía */
+  --font-sans:
+    'Inter Variable', 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, sans-serif;
+  --font-inter: var(--font-sans);
+  /* Andika (SIL, OFL): letterforms made for children learning to read. Used for the text of the book pages */
+  --font-lectura: 'Andika', 'Inter Variable', ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  --text-micro: 0.75rem; /* 12px: mínimo permitido (el original tenía 9px) */
+  --text-micro--line-height: 1.4;
+
+  --text-body-sm: 0.9375rem; /* 15px: botones y nav */
+  --text-body-sm--line-height: 1.5;
+
+  --text-body: 1.125rem; /* 18px: texto general */
+  --text-body--line-height: 1.6;
+
+  --text-reading: 1.25rem; /* 20px: lecturas de los niños */
+  --text-reading--line-height: 1.65;
+
+  --text-subheading: 1.25rem; /* 20px */
+  --text-subheading--line-height: 1.25;
+
+  --text-heading-sm: 1.875rem; /* 30px */
+  --text-heading-sm--line-height: 1.2;
+
+  --text-heading: clamp(2.25rem, 1.4rem + 3.2vw, 3.3125rem); /* 36px a 53px */
+  --text-heading--line-height: 1.15;
+  --text-heading--letter-spacing: -0.04em;
+
+  --text-heading-lg: clamp(2.75rem, 1.2rem + 5.6vw, 5.0625rem); /* 44px a 81px */
+  --text-heading-lg--line-height: 1;
+  --text-heading-lg--letter-spacing: -0.06em;
+
+  --text-display: clamp(3.5rem, 0.9rem + 10.4vw, 8.75rem); /* 56px a 140px */
+  --text-display--line-height: 0.95;
+  --text-display--letter-spacing: -0.06em;
+
+  --text-display-lg: clamp(3.5rem, 0.6rem + 11.2vw, 9rem); /* 56px a 144px */
+  --text-display-lg--line-height: 0.95;
+  --text-display-lg--letter-spacing: -0.06em;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+
+  /* Espaciado semántico (la escala numérica queda la de Tailwind, base 4px) */
+  --spacing-section: clamp(5rem, 3rem + 6vw, 7.5rem); /* 80px a 120px: antes "80-120px" */
+  --spacing-card: 1.25rem; /* 20px: antes "20-21px" */
+  --spacing-element: 1.25rem; /* 20px: antes "17-21px" */
+
+  /* Anchos */
+  --container-page: 75rem; /* 1200px */
+  --container-reading: 38rem; /* lecturas: unos 65 caracteres por línea a 20px */
+  --container-card: 42rem;
+
+  /* Radios semánticos (no se redefinen rounded-full ni rounded-lg) */
+  --radius-chip: 10px;
+  --radius-soft: 20px;
+  --radius-card: 50px;
+  --radius-pill: 50px;
+  --radius-illustration: 63.75px;
+}
+
+/* Base */
+@layer base {
+  html {
+    background-color: var(--color-cream-paper);
+    color: var(--color-ink-black);
+    font-family: var(--font-sans);
+    font-size: 100%;
+  }
+
+  html[data-letra='grande'] {
+    font-size: 112.5%;
+  }
+
+  body {
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+    text-rendering: optimizeLegibility;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-ink-black);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background-color: var(--color-sunshine-pop);
+    color: var(--color-ink-black);
+  }
+}
+
+/* Movimiento: el interruptor del menú agrega data-movimiento="no" al html */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+html[data-movimiento='no'] *,
+html[data-movimiento='no'] *::before,
+html[data-movimiento='no'] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}

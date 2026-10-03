@@ -1,0 +1,60 @@
+---
+// the news that the case 4 challenge works on. The teacher can swap it by editing src/data/noticia_reto4.json;
+// if the file is empty, the visible pending marker comes back.
+import { ArrowSquareOut } from '@phosphor-icons/react/ssr';
+import noticia from '../../data/noticia_reto4.json';
+import Pendiente from './pendiente.astro';
+import Apa from './apa.astro';
+import BloqueCabecera from './bloque_cabecera.astro';
+
+const hay = Boolean(noticia.titulo && noticia.url);
+const fecha = noticia.fecha
+  ? new Date(`${noticia.fecha}T12:00:00-05:00`).toLocaleDateString('es-CO', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    })
+  : '';
+---
+
+{hay ? (
+  <section
+    aria-labelledby="noticia-reto-titulo"
+    class="rounded-card border-2 border-ink-black bg-pure-white p-5 text-ink-black md:p-8"
+  >
+    <BloqueCabecera
+      tipo="lee"
+      etiqueta="Noticia para este reto"
+      titulo={noticia.titulo}
+      id_titulo="noticia-reto-titulo"
+    />
+    <p class="interfaz text-body-sm font-medium text-stone-text">
+      {noticia.medio}
+      {noticia.seccion ? ` · ${noticia.seccion}` : ''}
+      {fecha ? ` · ${fecha}` : ''}
+    </p>
+    <p class="mt-3 max-w-reading text-body">
+      Léela con calma y responde las preguntas del reto. Tu docente puede elegir otra noticia: si lo
+      hace, anota su título y su fuente en el primer campo.
+    </p>
+    <p class="mt-4 max-w-reading text-body-sm text-stone-text">
+      <Apa texto={noticia.apa} />
+    </p>
+    <div class="mt-5">
+      <a
+        href={noticia.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="interfaz inline-flex min-h-11 items-center justify-center gap-2.5 rounded-pill border-2 border-ink-black bg-fresh-grass px-5 py-2 text-body-sm font-medium text-ink-black transition-colors hover:bg-ink-black hover:text-cream-paper"
+      >
+        <ArrowSquareOut size={20} weight="bold" aria-hidden="true" />
+        Leer la noticia
+        <span class="sr-only"> (se abre en una pestaña nueva)</span>
+      </a>
+    </div>
+  </section>
+) : (
+  <p>
+    <Pendiente texto="el docente elige la noticia infantil real y actual en un medio confiable (archivo src/data/noticia_reto4.json)" />
+  </p>
+)}

@@ -1,0 +1,222 @@
+---
+// fixed course bar: brand, where the student is, and the menu (index on small screens, links, reading settings)
+import { List, X } from '@phosphor-icons/react/ssr';
+import Lupa from '../ilustraciones/lupa.astro';
+import IndiceCurso from './indice_curso.astro';
+import type { Ubicacion } from '../../config/paginas';
+import { sitio } from '../../config/sitio';
+
+interface Unidad {
+  numero: number;
+  titulo: string;
+  color: string;
+}
+interface Props {
+  // where the student is, in two lines (for example "Caso 1: Leo y comprendo" / "Seguir las pistas")
+  linea1?: string;
+  linea2?: string;
+  unidades: Unidad[];
+  ubicacion?: Ubicacion;
+  ruta_actual: string;
+}
+const { linea1, linea2, unidades, ubicacion, ruta_actual } = Astro.props;
+
+const enlaces_docentes = [
+  { href: '/ficha', texto: 'Ficha de diseño' },
+  { href: '/docentes', texto: 'Para docentes' },
+];
+---
+
+<header
+  data-cabecera
+  class="fixed inset-x-0 top-0 z-50 border-b-2 border-ink-black bg-pure-white text-ink-black"
+>
+  <div class="mx-auto flex h-14 max-w-[96rem] items-center gap-3 pr-2 pl-3 md:pr-4 md:pl-5">
+    <a
+      href="/"
+      class="flex min-h-11 shrink-0 items-center gap-2 rounded-soft text-body-sm font-medium tracking-tight"
+      aria-label={`${sitio.nombre_curso}, ir a la portada`}
+      aria-current={ruta_actual === '/' ? 'page' : undefined}
+    >
+      <Lupa size={26} />
+      <span class:list={[linea1 ? 'hidden md:inline' : '']}>{sitio.nombre_curso}</span>
+    </a>
+
+    {linea1 && (
+      <div class="min-w-0 flex-1 border-l-2 border-hairline-mist pl-3 leading-tight md:pl-4">
+        <p class="truncate text-body-sm font-medium">{linea1}</p>
+        {linea2 && <p class="truncate text-micro text-stone-text">{linea2}</p>}
+      </div>
+    )}
+
+    <div class="ml-auto flex shrink-0 items-center gap-2">
+      <a
+        href="/"
+        data-seguir
+        hidden
+        class="seguir min-h-11 items-center gap-3 rounded-pill bg-cream-paper px-4 text-body-sm font-medium hover:bg-sandstone"
+      >
+        Seguir donde iba
+        <span
+          class="size-2.5 rounded-full border-2 border-ink-black bg-coral-pop"
+          aria-hidden="true"
+        ></span>
+      </a>
+
+      <details data-menu class="group">
+        <summary class="flex min-h-11 list-none items-center gap-2 rounded-pill border-2 border-ink-black bg-fresh-grass px-4 text-body-sm font-medium [&::-webkit-details-marker]:hidden">
+          <span class="group-open:hidden" aria-hidden="true">
+            <List size={20} weight="bold" />
+          </span>
+          <span class="hidden group-open:inline" aria-hidden="true">
+            <X size={20} weight="bold" />
+          </span>
+          Menú
+        </summary>
+
+        <div class="absolute top-full right-2 mt-2 max-h-[calc(100dvh-5rem)] w-[min(94vw,26rem)] overflow-y-auto rounded-soft border-2 border-ink-black bg-pure-white p-5 md:right-4">
+          <div class="lg:hidden">
+            <p class="mb-2 text-body-sm font-medium text-stone-text">Índice del curso</p>
+            <IndiceCurso variante="menu" unidades={unidades} ubicacion={ubicacion} />
+          </div>
+
+          <p class="mt-6 text-body-sm font-medium text-stone-text lg:mt-0">Para docentes</p>
+          <ul class="mt-2">
+            {enlaces_docentes.map((e) => (
+              <li>
+                <a
+                  href={e.href}
+                  class="flex min-h-11 items-center rounded-soft px-2 text-body-sm hover:bg-cream-paper"
+                  aria-current={ruta_actual === e.href ? 'page' : undefined}
+                >
+                  {e.texto}
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          <div data-ajustes class="mt-6 hidden border-t border-hairline-mist pt-5 [.js_&]:block">
+            <p class="text-body-sm font-medium text-stone-text">Cómo quieres leer</p>
+            <ul class="mt-3 flex flex-col gap-2">
+              <li>
+                <button
+                  type="button"
+                  role="switch"
+                  aria-checked="true"
+                  data-ajuste="movimiento"
+                  class="interruptor"
+                >
+                  <span>Movimiento</span>
+                  <span class="interruptor-pista" aria-hidden="true">
+                    <span class="interruptor-bola"></span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  role="switch"
+                  aria-checked="false"
+                  data-ajuste="letra_grande"
+                  class="interruptor"
+                >
+                  <span>Letra grande</span>
+                  <span class="interruptor-pista" aria-hidden="true">
+                    <span class="interruptor-bola"></span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  role="switch"
+                  aria-checked="false"
+                  data-ajuste="voz"
+                  class="interruptor"
+                >
+                  <span>Leer en voz alta</span>
+                  <span class="interruptor-pista" aria-hidden="true">
+                    <span class="interruptor-bola"></span>
+                  </span>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="absolute inset-x-0 bottom-0 h-1 bg-hairline-mist" aria-hidden="true">
+    <div
+      data-avance
+      class="h-full origin-left bg-fresh-grass"
+      style="transform:scaleX(var(--p,0))"
+    ></div>
+  </div>
+</header>
+
+<style>
+  .seguir {
+    display: none;
+  }
+  @media (min-width: 640px) {
+    .seguir:not([hidden]) {
+      display: inline-flex;
+    }
+  }
+  .interruptor {
+    display: flex;
+    width: 100%;
+    min-height: 2.75rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border-radius: var(--radius-soft);
+    padding: 0.25rem 0.5rem;
+    font-size: var(--text-body-sm);
+    color: var(--color-ink-black);
+    text-align: left;
+  }
+  .interruptor:hover {
+    background: var(--color-cream-paper);
+  }
+  .interruptor-pista {
+    position: relative;
+    display: inline-block;
+    width: 3rem;
+    height: 1.75rem;
+    flex-shrink: 0;
+    border: 2px solid var(--color-ink-black);
+    border-radius: 9999px;
+    background: var(--color-pure-white);
+  }
+  .interruptor-bola {
+    position: absolute;
+    top: 50%;
+    left: 0.2rem;
+    width: 1.05rem;
+    height: 1.05rem;
+    border-radius: 9999px;
+    background: var(--color-ink-black);
+    translate: 0 -50%;
+    transition: left 160ms ease-out;
+  }
+  .interruptor[aria-checked='true'] .interruptor-pista {
+    background: var(--color-fresh-grass);
+  }
+  .interruptor[aria-checked='true'] .interruptor-bola {
+    left: calc(100% - 1.05rem - 0.2rem);
+  }
+  .interruptor[aria-checked='true'] span:first-child::after {
+    content: ': sí';
+  }
+  .interruptor[aria-checked='false'] span:first-child::after {
+    content: ': no';
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .interruptor-bola {
+      transition: none;
+    }
+  }
+</style>

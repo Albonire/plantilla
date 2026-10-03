@@ -1,0 +1,396 @@
+---
+// the book as an object: a closed cover that opens with the scroll into a spread of two pages
+// (inside of the cover with the institution on the left, title page with the team on the right).
+// Without scripts, with reduced motion or on very short screens the same pieces are plain stacked pages.
+import PortadaLibro from '../ilustraciones/portada_libro.astro';
+import Lupa from '../ilustraciones/lupa.astro';
+import { CaretDown } from '@phosphor-icons/react/ssr';
+import { integrantes, sitio } from '../../config/sitio';
+---
+
+<div data-apertura class="apertura">
+  <div data-libro class="libro">
+    <!-- page blocks: flat stacked sheets that give the book its thickness -->
+    <div class="capas capas-izq" data-capas-izq aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="capas capas-der" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <section id="tapa" data-cubierta aria-label="Portada del curso" class="cubierta">
+      <div class="cara frente" data-frente>
+        <div class="lomo" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="frente-contenido">
+          <div class="text-center">
+            <p class="interfaz text-body-sm font-medium">{sitio.pie_portada}</p>
+            <h1 class="mt-2 text-[clamp(2.5rem,1.5rem+3.2vw,4rem)] leading-[0.95]">
+              {sitio.nombre_curso}
+            </h1>
+            <p class="mx-auto mt-3 max-w-sm text-subheading font-medium">{sitio.subtitulo}</p>
+          </div>
+
+          <div class="my-3 flex min-h-0 flex-1 items-center justify-center">
+            <PortadaLibro />
+          </div>
+
+          <div class="text-center" data-cta-frente>
+            <a
+              href="/unidad/1"
+              class="interfaz inline-flex min-h-12 items-center justify-center rounded-pill border-2 border-ink-black bg-sunshine-pop px-6 text-body font-bold text-ink-black hover:bg-ink-black hover:text-sunshine-pop"
+            >
+              Empezar el caso 1
+            </a>
+            <button
+              type="button"
+              data-abrir
+              class="abrir interfaz mx-auto mt-2 min-h-11 items-center justify-center gap-2 rounded-pill px-4 text-body-sm font-medium underline decoration-2 underline-offset-4"
+            >
+              <CaretDown size={18} weight="bold" aria-hidden="true" />O baja para abrir el libro
+            </button>
+            <div
+              data-seguir-caja
+              hidden
+              class="mx-auto mt-2 flex max-w-xs items-center gap-3 rounded-soft border-2 border-ink-black bg-cream-paper px-3 py-1.5 text-left"
+            >
+              <p class="min-w-0 flex-1 text-micro leading-snug">
+                <span class="interfaz block font-medium">Sigues en</span>
+                <span data-seguir-texto class="block truncate font-bold"></span>
+              </p>
+              <a
+                data-seguir-enlace
+                href="/"
+                class="interfaz inline-flex min-h-11 items-center rounded-pill border-2 border-ink-black bg-pure-white px-3 text-body-sm font-medium hover:bg-ink-black hover:text-cream-paper"
+              >
+                Continuar
+              </a>
+            </div>
+            <p class="interfaz mt-2 text-micro">
+              {sitio.universidad} · {sitio.programa}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cara dorso pagina">
+        <div class="dorso-contenido text-center">
+          <Lupa size={40} class="mx-auto" />
+          <p class="mt-3 text-body font-bold">{sitio.universidad}</p>
+          <p class="text-body-sm text-stone-text">{sitio.sede}</p>
+          <p class="mt-3 text-body-sm">{sitio.division}</p>
+          <p class="text-body-sm">{sitio.facultad}</p>
+          <p class="text-body-sm font-bold">{sitio.programa}</p>
+
+          <div class="mx-auto my-4 h-0.5 w-20 bg-ink-black" aria-hidden="true"></div>
+
+          <p class="text-body-sm text-stone-text">{sitio.seminario}</p>
+          <p class="text-body-sm text-stone-text">Actividad: {sitio.actividad}</p>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="portadilla"
+      data-portadilla
+      aria-labelledby="portadilla-titulo"
+      class="pagina portadilla"
+    >
+      <div class="text-center">
+        <h2 id="portadilla-titulo" class="text-[clamp(1.85rem,1.1rem+2vw,2.5rem)] leading-none">
+          {sitio.nombre_curso}
+        </h2>
+        <p class="mx-auto mt-2 max-w-xs text-body">
+          {sitio.nombre_largo
+            .replace('Aventura lectora: ', '')
+            .replace(/^./, (c) => c.toUpperCase())}
+        </p>
+        <p class="mt-1 text-body-sm text-stone-text">{sitio.pie_portada}</p>
+
+        <div class="mx-auto my-3 h-0.5 w-20 bg-ink-black" aria-hidden="true"></div>
+
+        <p class="interfaz text-body-sm font-medium text-stone-text">Equipo de trabajo</p>
+        <ul class="mt-1 text-body-sm">
+          {integrantes.map((i) => (
+            <li class="py-px">{i.nombre}</li>
+          ))}
+        </ul>
+        <p class="interfaz mt-3 text-body-sm font-medium text-stone-text">Docente</p>
+        <p class="text-body-sm">{sitio.docente}</p>
+        <p class="mt-2 text-body-sm text-stone-text">{sitio.anio}</p>
+
+        <a
+          href="/unidad/1"
+          class="cta-pagina interfaz mt-3 inline-flex min-h-11 items-center justify-center rounded-pill border-2 border-ink-black bg-sunshine-pop px-5 text-body-sm font-bold text-ink-black hover:bg-ink-black hover:text-sunshine-pop"
+        >
+          Empezar el caso 1
+        </a>
+      </div>
+    </section>
+
+    <!-- bookmark ribbon that peeks out of the top of the book -->
+    <svg
+      class="cinta"
+      width="30"
+      height="72"
+      viewBox="0 0 30 72"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path
+        d="M2 0 V68 L15 56 L28 68 V0 Z"
+        fill="#ff705d"
+        stroke="#2c2e2a"
+        stroke-width="3"
+        stroke-linejoin="round"
+      ></path>
+    </svg>
+  </div>
+</div>
+
+<style>
+  .apertura {
+    --w: min(92vw, 30rem);
+    --h: min(calc(100svh - 8.5rem), 40rem, calc(var(--w) * 1.55));
+    --borde: 2px solid var(--color-ink-black);
+    background: var(--color-sandstone);
+    padding: 5rem 1rem 3rem;
+  }
+
+  /* plain mode: cover, then the two pages, stacked (side by side on wide screens) */
+  .libro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    margin-inline: auto;
+    max-width: 62rem;
+  }
+  .capas,
+  .cinta {
+    display: none;
+  }
+  .cubierta {
+    display: contents;
+  }
+  .cara {
+    width: 100%;
+    max-width: 30rem;
+  }
+  .frente {
+    position: relative;
+    display: flex;
+    min-height: 36rem;
+    overflow: hidden;
+    border: 3px solid var(--color-ink-black);
+    border-radius: 1.25rem;
+    background: var(--color-fresh-grass);
+    color: var(--color-ink-black);
+  }
+  .lomo {
+    position: absolute;
+    inset-block: 0;
+    left: 0;
+    width: 1.75rem;
+    background: #6fbb47;
+    border-right: 3px solid var(--color-ink-black);
+  }
+  /* five flat ribs on the spine, like a bound book */
+  .lomo span {
+    position: absolute;
+    left: 0;
+    right: 0;
+    border-top: 3px solid rgb(44 46 42 / 0.55);
+  }
+  .lomo span:nth-child(1) {
+    top: 16%;
+  }
+  .lomo span:nth-child(2) {
+    top: 33%;
+  }
+  .lomo span:nth-child(3) {
+    top: 50%;
+  }
+  .lomo span:nth-child(4) {
+    top: 67%;
+  }
+  .lomo span:nth-child(5) {
+    top: 84%;
+  }
+  .frente-contenido {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.75rem 1.25rem 1.25rem 3rem;
+  }
+  /* the "open the book" button only makes sense when the book really opens with the scroll */
+  .abrir {
+    display: none;
+  }
+  .pagina {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 30rem;
+    overflow: hidden;
+    border: var(--borde);
+    border-radius: 1.25rem;
+    background: var(--color-cream-paper);
+    padding: 1.5rem 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .libro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      justify-items: stretch;
+    }
+    .frente {
+      grid-column: 1 / -1;
+      justify-self: center;
+      width: 30rem;
+    }
+    .dorso {
+      grid-column: 1;
+      justify-self: end;
+    }
+    .portadilla {
+      grid-column: 2;
+      justify-self: start;
+    }
+  }
+
+  /* 3D mode, switched on by the scroll script: the closed book opens while the page is pinned */
+  :global(.apertura-activa) {
+    display: flex;
+    height: 100svh;
+    align-items: center;
+    justify-content: center;
+    padding: 4.25rem 1rem 1.25rem;
+    overflow: hidden;
+  }
+  :global(.apertura-activa) .libro {
+    flex: none;
+    display: block;
+    position: relative;
+    width: calc(var(--w) * 2);
+    max-width: none;
+    height: var(--h);
+  }
+  :global(.apertura-activa) .cubierta {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 5;
+    width: var(--w);
+    height: var(--h);
+    pointer-events: none;
+  }
+  :global(.apertura-activa) .portadilla {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 3;
+    width: var(--w);
+    max-width: none;
+    height: var(--h);
+    border-radius: 0 1.25rem 1.25rem 0;
+  }
+  :global(.apertura-activa) .cara {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    min-height: 0;
+    pointer-events: auto;
+  }
+  :global(.apertura-activa) .dorso {
+    border-radius: 0 1.25rem 1.25rem 0;
+  }
+  /* the inside of the cover turns over with it, so its content is mirrored to read well once it lands */
+  :global(.apertura-activa) .dorso-contenido {
+    transform: scaleX(-1);
+  }
+  :global(.apertura-activa) .frente {
+    border-radius: 0 1.25rem 1.25rem 0;
+  }
+  /* on short and narrow screens the same button already sits on the cover: keep the pages light */
+  @media (max-width: 767px) {
+    :global(.apertura-activa) .cta-pagina {
+      display: none;
+    }
+    :global(.apertura-activa) .pagina {
+      padding: 1.1rem 0.9rem;
+    }
+  }
+  :global(.apertura-activa) .abrir {
+    display: inline-flex;
+  }
+  /* page blocks: three flat sheets shifted a few pixels give the thickness of the book */
+  :global(.apertura-activa) .capas {
+    display: block;
+  }
+  :global(.apertura-activa) .capas span {
+    position: absolute;
+    top: 0;
+    width: var(--w);
+    height: var(--h);
+    border: var(--borde);
+    background: var(--color-cream-paper);
+  }
+  :global(.apertura-activa) .capas-der span {
+    right: 0;
+    border-radius: 0 1.25rem 1.25rem 0;
+  }
+  :global(.apertura-activa) .capas-der span:nth-child(1) {
+    z-index: 2;
+    transform: translate(4px, 4px);
+  }
+  :global(.apertura-activa) .capas-der span:nth-child(2) {
+    z-index: 1;
+    transform: translate(8px, 8px);
+  }
+  :global(.apertura-activa) .capas-der span:nth-child(3) {
+    z-index: 0;
+    transform: translate(12px, 12px);
+  }
+  :global(.apertura-activa) .capas-izq span {
+    left: 0;
+    border-radius: 1.25rem 0 0 1.25rem;
+  }
+  :global(.apertura-activa) .capas-izq span:nth-child(1) {
+    z-index: 2;
+    transform: translate(-4px, 4px);
+  }
+  :global(.apertura-activa) .capas-izq span:nth-child(2) {
+    z-index: 1;
+    transform: translate(-8px, 8px);
+  }
+  :global(.apertura-activa) .capas-izq span:nth-child(3) {
+    z-index: 0;
+    transform: translate(-12px, 12px);
+  }
+  :global(.apertura-activa) .cinta {
+    display: block;
+    position: absolute;
+    top: -1.1rem;
+    right: 2.25rem;
+    z-index: 4;
+  }
+</style>
+
+<script>
+  import '../../lib/scroll/tapa';
+</script>

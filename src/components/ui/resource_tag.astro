@@ -1,0 +1,64 @@
+---
+import { Laptop, Wrench, Globe } from '@phosphor-icons/react/ssr';
+import recursos from '../../data/recursos.json';
+import Apa from './apa.astro';
+
+interface Props {
+  id: string;
+  class?: string;
+}
+const { id, class: clase = '' } = Astro.props;
+const recurso = recursos.find((r) => r.id === id);
+if (!recurso) throw new Error(`recurso no encontrado en recursos.json: ${id}`);
+
+const es_web = recurso.tipo === 'web';
+const es_digital =
+  recurso.herramienta.toLowerCase().includes('digital') || recurso.herramienta.includes('IA');
+const etiqueta = es_web ? 'Recurso de la web' : 'Hecho por el equipo';
+const publicable = es_web ? recurso.verificado : true;
+---
+
+<div class:list={['text-body-sm text-ink-black', clase]}>
+  <details class="group inline-block max-w-full rounded-soft bg-pure-white">
+    <summary class="flex min-h-11 cursor-pointer list-none items-center gap-2 rounded-soft px-4 py-2 font-medium [&::-webkit-details-marker]:hidden">
+      <span class="text-stone-text" aria-hidden="true">
+        {es_digital ? (
+          <Laptop size={18} weight="bold" />
+        ) : es_web ? (
+          <Globe size={18} weight="bold" />
+        ) : (
+          <Wrench size={18} weight="bold" />
+        )}
+      </span>
+      <span>{etiqueta}</span>
+      <span class="text-stone-text">· {recurso.herramienta}</span>
+      {es_web && !publicable && (
+        <span class="rounded-pill bg-sunshine-pop px-2 py-0.5 text-micro font-medium">
+          Por confirmar
+        </span>
+      )}
+    </summary>
+    <div class="max-w-reading space-y-2 px-4 pb-4 text-stone-text">
+      <p class="font-medium text-ink-black">{recurso.titulo}</p>
+      {recurso.apa ? (
+        <Apa texto={recurso.apa} class="block" />
+      ) : (
+        <p>Referencia APA 7 pendiente de confirmar.</p>
+      )}
+      {recurso.licencia && <p>Licencia: {recurso.licencia}</p>}
+      {es_web && publicable && (
+        <p>
+          <a
+            class="font-medium text-ink-black underline decoration-2 underline-offset-4"
+            href={recurso.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Abrir el recurso<span class="sr-only"> (se abre en una pestaña nueva)</span>
+          </a>
+        </p>
+      )}
+      {es_web && !publicable && <p>Este enlace todavía no está confirmado por el equipo.</p>}
+    </div>
+  </details>
+</div>

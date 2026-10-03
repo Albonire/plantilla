@@ -1,0 +1,27 @@
+import Seccion from '../../../components/ui/seccion.astro';
+import Podcast from '../../../components/ui/podcast.astro';
+import Tarjetas from '../../../components/ui/tarjetas.astro';
+import ResourceTag from '../../../components/ui/resource_tag.astro';
+import { QuizCard } from '../../../components/islas/quiz_card';
+import { DragSort } from '../../../components/islas/drag_sort';
+import act from '../../../data/actividades/unidad_2.json';
+
+<Seccion id="practica" titulo="Entrena tu lupa" etiqueta="Actividades formativas" fondo="arena" titulo_visible={false}>
+
+<p class="lectura mb-10">Estas actividades no llevan nota: sirven para practicar. Puedes equivocarte y volver a intentar.</p>
+
+<div class="flex flex-col gap-8">
+
+<Podcast id="c2_podcast" />
+
+<QuizCard client:visible preguntas={act.quiz} unidad={2} titulo="Cuestionario sobre el cuento" etiqueta="Resuélvelo para ganar la insignia" marca_caso />
+
+<DragSort client:visible items={act.clasificador.items} cajas={act.clasificador.cajas} unidad={2} id="textos" titulo="Clasificador de textos" etiqueta="Recurso propio" instruccion="Cada fragmento es narrativo, informativo o instructivo. Ponlo en su caja." />
+
+<Tarjetas tarjetas={act.tarjetas} unidad={2} />
+
+<ResourceTag id="p2_practica" />
+
+</div>
+
+</Seccion>

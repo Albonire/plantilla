@@ -1,0 +1,87 @@
+---
+import { getCollection } from 'astro:content';
+import CursoLayout from '../layouts/curso_layout.astro';
+import EncabezadoPagina from '../components/curso/encabezado_pagina.astro';
+import Seccion from '../components/ui/seccion.astro';
+import { BadgeTracker } from '../components/islas/badge_tracker';
+import { ExpedienteBuilder } from '../components/islas/expediente_builder';
+import { AutoevaluacionFinal } from '../components/islas/autoevaluacion_final';
+import { Certificate } from '../components/islas/certificate';
+import datos_retos from '../data/retos.json';
+
+const unidades = (await getCollection('unidades')).sort((a, b) => a.data.numero - b.data.numero);
+const casos = unidades.map((u) => ({ numero: u.data.numero, titulo: u.data.titulo }));
+const insignias = unidades.map((u) => ({
+  caso: u.data.numero,
+  nombre: u.data.insignia.nombre,
+  descripcion: u.data.insignia.descripcion,
+}));
+const final = datos_retos.producto_final;
+const niveles = ['superior', 'alto', 'basico', 'bajo'] as const;
+const nombres_nivel = { superior: 'Superior', alto: 'Alto', basico: 'Básico', bajo: 'Bajo' };
+---
+
+<CursoLayout
+  titulo="Cierre del curso"
+  descripcion="Expediente del detective lector, autoevaluación y certificado de Aventura lectora."
+  ubicacion={{ tipo: 'cierre' }}
+>
+  <EncabezadoPagina
+    etiqueta="Cierre del curso"
+    titulo="Tu expediente de detective"
+    color="sunshine-pop"
+  >
+    <p>
+      Resolviste los casos. Ahora junta tu trabajo, cuenta cómo te fue y descarga tu certificado.
+    </p>
+  </EncabezadoPagina>
+
+  <Seccion id="pasaporte" titulo="Tu pasaporte de detective" etiqueta="Insignias">
+    <BadgeTracker client:visible modo="pasaporte" insignias={insignias} />
+  </Seccion>
+
+  <Seccion
+    id="expediente"
+    titulo="Producto final"
+    etiqueta="Expediente del detective lector"
+    fondo="arena"
+  >
+    <p class="lectura mb-10">{final.descripcion}</p>
+    <ExpedienteBuilder client:visible casos={casos} />
+
+    <details class="group mt-8 max-w-4xl rounded-soft bg-pure-white">
+      <summary class="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 rounded-soft px-5 text-body font-medium [&::-webkit-details-marker]:hidden">
+        Cómo se evalúa el expediente
+        <span class="text-body-sm text-stone-text group-open:hidden" aria-hidden="true">
+          Abrir
+        </span>
+        <span class="hidden text-body-sm text-stone-text group-open:inline" aria-hidden="true">
+          Cerrar
+        </span>
+      </summary>
+      <div class="grid gap-4 px-5 pb-6 md:grid-cols-3">
+        {final.rubrica.map((c) => (
+          <section class="rounded-soft bg-cream-paper p-4">
+            <h3 class="text-body font-medium">{c.criterio}</h3>
+            <dl class="mt-3 space-y-2 text-body-sm">
+              {niveles.map((n) => (
+                <div>
+                  <dt class="font-medium">{nombres_nivel[n]}</dt>
+                  <dd class="text-stone-text">{c[n]}</dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+        ))}
+      </div>
+    </details>
+  </Seccion>
+
+  <Seccion id="autoevaluacion" titulo="Cuéntanos cómo te fue" etiqueta="Autoevaluación final">
+    <AutoevaluacionFinal client:visible casos={casos} />
+  </Seccion>
+
+  <Seccion id="certificado" titulo="Detective de la lectura" etiqueta="Certificado" fondo="arena">
+    <Certificate client:visible />
+  </Seccion>
+</CursoLayout>

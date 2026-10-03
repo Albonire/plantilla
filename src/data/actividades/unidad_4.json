@@ -1,0 +1,499 @@
+{
+  "hechos_opiniones": {
+    "definicion_hecho": "Un hecho se puede comprobar: con un libro, una medida, una fuente seria.",
+    "definicion_opinion": "Una opinión muestra lo que alguien piensa o siente, y otra persona puede pensar distinto.",
+    "palabras_pista": [
+      "creo que",
+      "pienso que",
+      "me parece",
+      "para mí",
+      "el mejor",
+      "el peor",
+      "debería",
+      "bonito",
+      "aburrido"
+    ],
+    "cajas": [
+      {
+        "id": "hecho",
+        "titulo": "Hecho",
+        "descripcion": "Se puede comprobar"
+      },
+      {
+        "id": "opinion",
+        "titulo": "Opinión",
+        "descripcion": "Alguien lo piensa o lo siente"
+      }
+    ],
+    "items": [
+      {
+        "id": "h1",
+        "texto": "Bogotá es la capital de Colombia.",
+        "caja": "hecho"
+      },
+      {
+        "id": "h2",
+        "texto": "Una semana tiene siete días.",
+        "caja": "hecho"
+      },
+      {
+        "id": "h3",
+        "texto": "Rafael Pombo escribió \"El renacuajo paseador\".",
+        "caja": "hecho"
+      },
+      {
+        "id": "h4",
+        "texto": "Las tortugas tienen caparazón.",
+        "caja": "hecho"
+      },
+      {
+        "id": "h5",
+        "texto": "El agua hierve a 100 grados Celsius al nivel del mar.",
+        "caja": "hecho"
+      },
+      {
+        "id": "h6",
+        "texto": "Los cuentos de Pombo son los más divertidos del mundo.",
+        "caja": "opinion"
+      },
+      {
+        "id": "h7",
+        "texto": "El fútbol es el mejor deporte.",
+        "caja": "opinion"
+      },
+      {
+        "id": "h8",
+        "texto": "Las tortugas son más bonitas que las liebres.",
+        "caja": "opinion"
+      },
+      {
+        "id": "h9",
+        "texto": "Todos los niños deberían tener una mascota.",
+        "caja": "opinion"
+      },
+      {
+        "id": "h10",
+        "texto": "Leer antes de dormir es muy aburrido.",
+        "caja": "opinion"
+      }
+    ]
+  },
+  "noticia": {
+    "marca": "Noticia inventada para practicar",
+    "titular": "Estudiantes de quinto abren una biblioteca en el patio de su escuela",
+    "entrada": "Los 28 estudiantes de quinto de la Escuela Rural La Esperanza inauguraron el viernes una biblioteca al aire libre con 150 libros donados por las familias.",
+    "cuerpo": "La idea surgió en marzo, cuando los niños notaron que en el descanso no tenían nada para leer. Con ayuda de su profesor, construyeron tres estantes con cajas de madera recicladas y los pintaron de colores. Los libros se pueden prestar durante el descanso y se devuelven al día siguiente. \"Queremos que todos lean, no solo en clase\", dijo una de las estudiantes.",
+    "recuadro": "Lugar inventado. Fecha inventada.",
+    "preguntas": [
+      {
+        "pregunta": "¿Qué pasó?",
+        "respuesta": "Abrieron una biblioteca al aire libre."
+      },
+      {
+        "pregunta": "¿Quiénes?",
+        "respuesta": "Los 28 estudiantes de quinto."
+      },
+      {
+        "pregunta": "¿Cuándo?",
+        "respuesta": "El viernes."
+      },
+      {
+        "pregunta": "¿Dónde?",
+        "respuesta": "En el patio de la Escuela Rural La Esperanza."
+      },
+      {
+        "pregunta": "¿Cómo?",
+        "respuesta": "Con estantes de cajas recicladas y libros donados."
+      },
+      {
+        "pregunta": "¿Por qué?",
+        "respuesta": "En el descanso no tenían nada para leer."
+      }
+    ],
+    "pregunta_extra": {
+      "pregunta": "En la noticia hay una opinión. ¿Cuál es?",
+      "respuesta": "\"Queremos que todos lean, no solo en clase\" expresa un deseo y una opinión de la estudiante."
+    }
+  },
+  "lupa": {
+    "letras": [
+      {
+        "letra": "L",
+        "pregunta": "¿Leo quién lo escribió?",
+        "detalle": "Busca el autor o el medio."
+      },
+      {
+        "letra": "U",
+        "pregunta": "¿Ubico la fecha?",
+        "detalle": "Una noticia vieja puede parecer nueva."
+      },
+      {
+        "letra": "P",
+        "pregunta": "¿Pregunto a otras fuentes?",
+        "detalle": "Si es verdad, otros medios serios también lo dicen."
+      },
+      {
+        "letra": "A",
+        "pregunta": "¿Analizo si quiere asustarme o emocionarme?",
+        "detalle": "Muchos signos de exclamación, palabras como \"urgente\" o \"compártelo ya\" son señales de alerta."
+      }
+    ],
+    "regla_de_oro": "Si tienes duda, no lo compartas y pregúntale a un adulto de confianza."
+  },
+  "fuentes": [
+    {
+      "id": "u4_f1",
+      "nivel": "Detector de fuentes",
+      "pregunta": "¿Qué decides?",
+      "frase": "¡URGENTE! Comer helado todos los días te hace crecer 10 centímetros",
+      "ficha": "Sin autor, sin fecha, llegó por cadena",
+      "marca": "Noticia inventada para practicar",
+      "opciones": [
+        {
+          "id": "confio",
+          "texto": "Confío"
+        },
+        {
+          "id": "verificar",
+          "texto": "Tengo que verificar"
+        },
+        {
+          "id": "no_confio",
+          "texto": "No confío"
+        }
+      ],
+      "correcta": "no_confio",
+      "retro": "No dice quién lo escribió, no tiene fecha y quiere emocionarte con mayúsculas."
+    },
+    {
+      "id": "u4_f2",
+      "nivel": "Detector de fuentes",
+      "pregunta": "¿Qué decides?",
+      "frase": "La biblioteca municipal abrirá también los sábados",
+      "ficha": "Publicado por la alcaldía en su página oficial, con fecha",
+      "marca": "Noticia inventada para practicar",
+      "opciones": [
+        {
+          "id": "confio",
+          "texto": "Confío"
+        },
+        {
+          "id": "verificar",
+          "texto": "Tengo que verificar"
+        },
+        {
+          "id": "no_confio",
+          "texto": "No confío"
+        }
+      ],
+      "correcta": "confio",
+      "retro": "Tiene autor oficial y fecha, y se puede comprobar en la página de la alcaldía."
+    },
+    {
+      "id": "u4_f3",
+      "nivel": "Detector de fuentes",
+      "pregunta": "¿Qué decides?",
+      "frase": "Compártelo ya: mañana no hay clases en todo el país",
+      "ficha": "Mensaje reenviado muchas veces, sin fuente",
+      "marca": "Noticia inventada para practicar",
+      "opciones": [
+        {
+          "id": "confio",
+          "texto": "Confío"
+        },
+        {
+          "id": "verificar",
+          "texto": "Tengo que verificar"
+        },
+        {
+          "id": "no_confio",
+          "texto": "No confío"
+        }
+      ],
+      "correcta": "verificar",
+      "retro": "Puede ser falso; hay que confirmarlo con el colegio o una fuente oficial antes de creerlo."
+    },
+    {
+      "id": "u4_f4",
+      "nivel": "Detector de fuentes",
+      "pregunta": "¿Qué decides?",
+      "frase": "Descubren una tortuga que corre más rápido que una liebre",
+      "ficha": "Página desconocida llena de anuncios",
+      "marca": "Noticia inventada para practicar",
+      "opciones": [
+        {
+          "id": "confio",
+          "texto": "Confío"
+        },
+        {
+          "id": "verificar",
+          "texto": "Tengo que verificar"
+        },
+        {
+          "id": "no_confio",
+          "texto": "No confío"
+        }
+      ],
+      "correcta": "no_confio",
+      "retro": "Es algo muy difícil de creer y ningún medio serio lo publica."
+    },
+    {
+      "id": "u4_f5",
+      "nivel": "Detector de fuentes",
+      "pregunta": "¿Qué decides?",
+      "frase": "Mi primo dice que en el río vive un monstruo gigante",
+      "ficha": "Lo contó alguien en el descanso",
+      "marca": "Noticia inventada para practicar",
+      "opciones": [
+        {
+          "id": "confio",
+          "texto": "Confío"
+        },
+        {
+          "id": "verificar",
+          "texto": "Tengo que verificar"
+        },
+        {
+          "id": "no_confio",
+          "texto": "No confío"
+        }
+      ],
+      "correcta": "no_confio",
+      "retro": "Es un rumor: no hay pruebas ni fuentes."
+    },
+    {
+      "id": "u4_f6",
+      "nivel": "Detector de fuentes",
+      "pregunta": "¿Qué decides?",
+      "frase": "El colegio anuncia la fecha de la feria de ciencias",
+      "ficha": "Circular firmada por la rectora, con fecha",
+      "marca": "Noticia inventada para practicar",
+      "opciones": [
+        {
+          "id": "confio",
+          "texto": "Confío"
+        },
+        {
+          "id": "verificar",
+          "texto": "Tengo que verificar"
+        },
+        {
+          "id": "no_confio",
+          "texto": "No confío"
+        }
+      ],
+      "correcta": "confio",
+      "retro": "Viene de la institución, tiene firma y fecha."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "u4_q1",
+      "nivel": "Hecho u opinión",
+      "pregunta": "\"El río de mi pueblo es el más bonito de Colombia.\" Esta frase es...",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Una opinión"
+        },
+        {
+          "id": "b",
+          "texto": "Un hecho"
+        },
+        {
+          "id": "c",
+          "texto": "Una noticia"
+        }
+      ],
+      "correcta": "a",
+      "retro": "\"Más bonito\" depende de quien lo mire."
+    },
+    {
+      "id": "u4_q2",
+      "nivel": "Hecho u opinión",
+      "pregunta": "\"El colegio tiene 12 salones.\" Esta frase es...",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Un hecho"
+        },
+        {
+          "id": "b",
+          "texto": "Una opinión"
+        },
+        {
+          "id": "c",
+          "texto": "Un rumor"
+        }
+      ],
+      "correcta": "a",
+      "retro": "Se puede comprobar contando los salones."
+    },
+    {
+      "id": "u4_q3",
+      "nivel": "Noticia",
+      "pregunta": "En la noticia de la biblioteca, ¿dónde ocurrió?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "En el patio de la escuela"
+        },
+        {
+          "id": "b",
+          "texto": "En la biblioteca del pueblo"
+        },
+        {
+          "id": "c",
+          "texto": "En la casa del profesor"
+        }
+      ],
+      "correcta": "a",
+      "retro": "Lo dice el titular y la entrada."
+    },
+    {
+      "id": "u4_q4",
+      "nivel": "LUPA",
+      "pregunta": "Te llega un mensaje sin autor que dice \"¡Compártelo ya!\". ¿Qué haces?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Lo verifico antes de compartir"
+        },
+        {
+          "id": "b",
+          "texto": "Lo comparto con todos mis amigos"
+        },
+        {
+          "id": "c",
+          "texto": "Lo creo porque dice \"urgente\""
+        }
+      ],
+      "correcta": "a",
+      "retro": "Sin autor y con prisa: primero verificas."
+    },
+    {
+      "id": "u4_q5",
+      "nivel": "LUPA",
+      "pregunta": "¿Qué letra de LUPA te recuerda buscar la fecha?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "U"
+        },
+        {
+          "id": "b",
+          "texto": "L"
+        },
+        {
+          "id": "c",
+          "texto": "A"
+        }
+      ],
+      "correcta": "a",
+      "retro": "U: ¿ubico la fecha?"
+    },
+    {
+      "id": "u4_q6",
+      "nivel": "Crítico",
+      "pregunta": "¿Por qué es peligroso compartir noticias falsas?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Pueden engañar y asustar a otras personas"
+        },
+        {
+          "id": "b",
+          "texto": "Porque gastan mucha batería del celular"
+        },
+        {
+          "id": "c",
+          "texto": "Porque las noticias siempre son aburridas"
+        }
+      ],
+      "correcta": "a",
+      "retro": "Una noticia falsa puede causar miedo o malas decisiones en otros."
+    }
+  ],
+  "tarjetas": [
+    {
+      "frente": "Bogotá es la capital de Colombia. ¿Hecho u opinión?",
+      "reverso": "Hecho. Se puede comprobar fácilmente revisando un mapa oficial o un libro."
+    },
+    {
+      "frente": "El fútbol es el mejor deporte. ¿Hecho u opinión?",
+      "reverso": "Opinión. Usa la palabra pista \"el mejor\" para mostrar un gusto personal."
+    },
+    {
+      "frente": "Una semana tiene siete días. ¿Hecho u opinión?",
+      "reverso": "Hecho. Es una realidad que se puede comprobar con un calendario."
+    },
+    {
+      "frente": "Las tortugas son más bonitas que las liebres. ¿Hecho u opinión?",
+      "reverso": "Opinión. Usa la palabra \"bonitas\" y otra persona puede pensar distinto."
+    },
+    {
+      "frente": "Todos los niños deberían tener una mascota. ¿Hecho u opinión?",
+      "reverso": "Opinión. La palabra pista \"debería\" expresa un deseo y no un hecho."
+    },
+    {
+      "frente": "Las tortugas tienen un caparazón. ¿Hecho u opinión?",
+      "reverso": "Hecho. Es una característica física real que se puede observar y comprobar."
+    },
+    {
+      "frente": "Estudiantes abrieron una biblioteca en su escuela. ¿Hecho u opinión?",
+      "reverso": "Hecho. Es un suceso que se puede verificar visitando el lugar indicado."
+    },
+    {
+      "frente": "Leer en el descanso es muy aburrido. ¿Hecho u opinión?",
+      "reverso": "Opinión. Usa la palabra pista \"aburrido\", que depende de lo que cada uno sienta."
+    },
+    {
+      "frente": "La biblioteca tiene 150 libros donados. ¿Hecho u opinión?",
+      "reverso": "Hecho. Se puede comprobar contando los libros y revisando los registros de donación."
+    },
+    {
+      "frente": "Queremos que todos lean siempre. ¿Hecho u opinión?",
+      "reverso": "Opinión. Expresa un deseo de los estudiantes y no algo que se pueda medir."
+    },
+    {
+      "frente": "En la lista LUPA, ¿qué significa la letra L?",
+      "reverso": "Leer quién lo escribió. Se debe buscar el autor o el medio responsable."
+    },
+    {
+      "frente": "En la lista LUPA, ¿qué significa la letra U?",
+      "reverso": "Ubicar la fecha. Sirve para saber si la noticia es actual o vieja."
+    },
+    {
+      "frente": "En la lista LUPA, ¿qué significa la letra P?",
+      "reverso": "Preguntar a otras fuentes. Verificar si otros medios serios dicen lo mismo."
+    },
+    {
+      "frente": "En la lista LUPA, ¿qué significa la letra A?",
+      "reverso": "Analizar si emociona o asusta. Los signos de exclamación exagerados son una alerta."
+    },
+    {
+      "frente": "¿Qué es el titular de una noticia?",
+      "reverso": "Es la frase grande que resume la noticia de forma llamativa."
+    },
+    {
+      "frente": "¿Qué es la entrada de una noticia?",
+      "reverso": "Es el primer párrafo que contiene la información más importante de lo ocurrido."
+    },
+    {
+      "frente": "¿Qué es el cuerpo de una noticia?",
+      "reverso": "Es la parte que explica todos los detalles adicionales sobre lo que pasó."
+    },
+    {
+      "frente": "¿Qué seis preguntas responde una buena noticia?",
+      "reverso": "Responde: ¿qué pasó?, ¿quiénes?, ¿cuándo?, ¿dónde?, ¿cómo? y ¿por qué?"
+    },
+    {
+      "frente": "¿Cuál es la regla de oro si dudas de una noticia?",
+      "reverso": "No compartirla y preguntarle siempre a un adulto en quien confíes."
+    },
+    {
+      "frente": "¿Por qué es peligroso compartir noticias falsas?",
+      "reverso": "Porque pueden asustar a las personas o hacer que tomen malas decisiones."
+    }
+  ]
+}

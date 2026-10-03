@@ -1,0 +1,28 @@
+---
+// title block of a page of the book: colored tab, small label, title and an optional lead paragraph
+interface Props {
+  etiqueta: string;
+  titulo: string;
+  color?: 'fresh-grass' | 'sky-pop' | 'sunshine-pop' | 'coral-pop';
+}
+const { etiqueta, titulo, color = 'fresh-grass' } = Astro.props;
+
+const pestanas: Record<string, string> = {
+  'fresh-grass': 'bg-fresh-grass',
+  'sky-pop': 'bg-sky-pop',
+  'sunshine-pop': 'bg-sunshine-pop',
+  'coral-pop': 'bg-coral-pop',
+};
+---
+
+<header class="contenedor pt-10 pb-4 md:pt-14">
+  <span
+    class:list={['block h-3 w-24 rounded-pill border-2 border-ink-black', pestanas[color]]}
+    aria-hidden="true"
+  ></span>
+  <p class="interfaz mt-5 text-body-sm font-medium text-stone-text">{etiqueta}</p>
+  <h1 class="mt-1 max-w-4xl text-heading leading-tight">{titulo}</h1>
+  <div class="mt-4 max-w-2xl text-subheading empty:hidden">
+    <slot />
+  </div>
+</header>

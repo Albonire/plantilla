@@ -1,0 +1,83 @@
+---
+// end of a page: previous and next page in the reading order, plus the folio ("Página 2 de 4").
+// On small screens the next page goes first and full width (thumb zone); the folded corner says "turn the page".
+import type { Destino } from '../../config/paginas';
+
+interface Props {
+  anterior: Destino | null;
+  siguiente: Destino | null;
+  folio?: string;
+  // key and title of the page, remembered as read when this block scrolls into view
+  pagina_id?: string;
+  titulo_pagina?: string;
+  // last page of a case: the next link is the "turn the page" action
+  pasar?: boolean;
+}
+const { anterior, siguiente, folio, pagina_id, titulo_pagina, pasar = false } = Astro.props;
+---
+
+<nav
+  aria-label="Páginas del libro"
+  data-fin-pagina={pagina_id}
+  data-titulo-pagina={titulo_pagina}
+  class="contenedor mt-6 mb-10 border-t-2 border-ink-black pt-8 md:mb-14"
+>
+  <div class="flex flex-col gap-4 sm:grid sm:grid-cols-2">
+    {siguiente && (
+      <a
+        href={siguiente.href}
+        rel="next"
+        data-pasar-pagina={pasar ? '' : undefined}
+        class="pagina-enlace relative order-1 flex min-h-24 flex-col justify-center overflow-hidden rounded-soft border-2 border-ink-black bg-fresh-grass p-5 pr-14 text-ink-black hover:bg-ink-black hover:text-cream-paper sm:order-2 sm:text-right"
+      >
+        <span class="interfaz text-body-sm font-medium">
+          {pasar ? 'Pasar la página' : 'Página siguiente'}
+        </span>
+        <span class="mt-1 text-subheading font-bold">{siguiente.titulo}</span>
+        <span class="mt-1 text-body-sm">{siguiente.contexto}</span>
+        <svg
+          class="esquina absolute right-0 bottom-0"
+          width="40"
+          height="40"
+          viewBox="0 0 40 40"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path
+            d="M40 0 V40 H0 C22 36 36 22 40 0 Z"
+            fill="#f5f1e4"
+            stroke="#2c2e2a"
+            stroke-width="2"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </a>
+    )}
+    {anterior ? (
+      <a
+        href={anterior.href}
+        rel="prev"
+        class="pagina-enlace order-2 flex min-h-20 flex-col justify-center rounded-soft border-2 border-ink-black bg-pure-white p-5 hover:bg-sandstone sm:order-1"
+      >
+        <span class="interfaz text-body-sm font-medium text-stone-text">Página anterior</span>
+        <span class="mt-1 text-subheading font-bold">{anterior.titulo}</span>
+        <span class="mt-1 text-body-sm text-stone-text">{anterior.contexto}</span>
+      </a>
+    ) : (
+      <span class="hidden sm:order-1 sm:block" />
+    )}
+  </div>
+  {folio && <p class="interfaz mt-6 text-center text-body-sm text-stone-text">{folio}</p>}
+</nav>
+
+<style>
+  @media (prefers-reduced-motion: no-preference) {
+    .esquina {
+      transition: transform 200ms ease-out;
+      transform-origin: right bottom;
+    }
+    .pagina-enlace:hover .esquina {
+      transform: scale(1.25);
+    }
+  }
+</style>

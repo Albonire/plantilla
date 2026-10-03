@@ -1,0 +1,84 @@
+---
+// open book
+interface Props {
+  size?: number;
+  class?: string;
+}
+const { size = 80, class: clase = '' } = Astro.props;
+---
+
+<svg
+  viewBox="0 0 110 84"
+  height={size}
+  width={(size * 110) / 84}
+  class={clase}
+  aria-hidden="true"
+  focusable="false"
+>
+  <!-- Sombra del libro -->
+  <path
+    d="M8 72 V26 Q34 18 57 30 Q80 18 106 26 V72 Q80 64 57 76 Q34 64 8 72 Z"
+    fill="rgba(0,0,0,0.15)"
+  ></path>
+
+  <!-- Tapa trasera / cubierta inferior (le da grosor a la portada) -->
+  <path
+    d="M6 68 V22 Q32 14 55 26 Q78 14 104 22 V68 Q78 60 55 72 Q32 60 6 68 Z"
+    fill="#d95444"
+    stroke="#2c2e2a"
+    stroke-width="3"
+    stroke-linejoin="round"
+  ></path>
+
+  <!-- Tapa principal (portada) -->
+  <path
+    d="M6 64 V18 Q32 10 55 22 Q78 10 104 18 V64 Q78 56 55 68 Q32 56 6 64 Z"
+    fill="#ff705d"
+    stroke="#2c2e2a"
+    stroke-width="3"
+    stroke-linejoin="round"
+  ></path>
+  
+  <!-- Páginas apiladas (grosor) -->
+  <path
+    d="M12 62 V20 Q34 14 55 24 Q76 14 98 20 V62 Q76 54 55 66 Q34 54 12 62 Z"
+    fill="#e6e6e6"
+    stroke="#2c2e2a"
+    stroke-width="3"
+    stroke-linejoin="round"
+  ></path>
+  <!-- Líneas de las hojas del borde -->
+  <path
+    d="M12 60 Q34 52 55 64 M98 60 Q76 52 55 64"
+    stroke="#b3b3b3"
+    stroke-width="1.5"
+    fill="none"
+  ></path>
+
+  <!-- Páginas abiertas -->
+  <path
+    d="M12 58 V16 Q34 10 55 20 Q76 10 98 16 V58 Q76 50 55 62 Q34 50 12 58 Z"
+    fill="#ffffff"
+    stroke="#2c2e2a"
+    stroke-width="3"
+    stroke-linejoin="round"
+  ></path>
+
+  <!-- Lomo / Pliegue central -->
+  <path d="M55 20 V62" stroke="#2c2e2a" stroke-width="3" stroke-linecap="round"></path>
+  <!-- Sombra en el pliegue central -->
+  <path d="M52 20 Q55 20 55 24 V62 Q55 60 52 58 Z" fill="rgba(0,0,0,0.05)"></path>
+  <path d="M58 20 Q55 20 55 24 V62 Q55 60 58 58 Z" fill="rgba(0,0,0,0.05)"></path>
+
+  <!-- Líneas de texto -->
+  <path
+    d="M20 26 Q32 22 46 28 M20 35 Q32 31 46 37 M20 44 Q32 40 46 46 M64 28 Q78 22 90 26 M64 37 Q78 31 90 35 M64 46 Q78 40 90 44"
+    stroke="#d5d5d4"
+    stroke-width="3"
+    stroke-linecap="round"
+    fill="none"
+  ></path>
+
+  <!-- Marcador de página -->
+  <path d="M74 13 L74 35 L80 30 L86 35 L86 15 Z" fill="#2ba0ff" stroke="#2c2e2a" stroke-width="2" stroke-linejoin="round"></path>
+</svg>

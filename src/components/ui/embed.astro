@@ -1,0 +1,35 @@
+---
+// third-party resource shown inside the page. Loads only after a click (see EmbedFrame).
+// Resources whose site refuses to be framed are shown as an integrated activity card instead.
+import { EmbedFrame } from '../islas/embed_frame';
+import RecursoExterno from './recurso_externo.astro';
+import recursos from '../../data/recursos.json';
+
+interface Props {
+  id: string;
+  descripcion?: string;
+  etiqueta?: string;
+}
+const { id, descripcion, etiqueta } = Astro.props;
+const recurso = recursos.find((r) => r.id === id);
+if (!recurso) throw new Error(`recurso no encontrado en recursos.json: ${id}`);
+const embebible = recurso.verificado && (recurso.youtube_id || recurso.embed_url);
+---
+
+{embebible ? (
+  <EmbedFrame
+    client:visible
+    titulo={recurso.titulo}
+    etiqueta={etiqueta}
+    descripcion={descripcion ?? recurso.uso}
+    acceso={recurso.acceso}
+    apa={recurso.apa}
+    proveedor={recurso.proveedor ?? recurso.herramienta}
+    youtube_id={recurso.youtube_id}
+    url_embed={recurso.embed_url}
+    url_abrir={recurso.url}
+    alto={recurso.alto}
+  />
+) : (
+  <RecursoExterno id={id} descripcion={descripcion} etiqueta={etiqueta} />
+)}

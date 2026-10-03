@@ -1,0 +1,23 @@
+import Seccion from '../../../components/ui/seccion.astro';
+import ListaPistas from '../../../components/ui/lista_pistas.astro';
+import InfographicViewer from '../../../components/ui/infographic_viewer.astro';
+
+<Seccion id="introduccion" titulo="Introducción" etiqueta="Antes de empezar">
+
+<div class="lectura">
+
+¡Bienvenidos! En esta unidad descubriremos las distintas formas de leer un texto, ya que no es lo mismo contar un cuento que dar una receta. Identificaremos las distintas características que puede tener cada texto, aprenderemos a reconocerlos a simple vista y a usar cada uno de ellos según nuestra intención comunicativa.
+
+</div>
+
+</Seccion>
+
+<Seccion id="contenidos" titulo="Las pistas del caso" etiqueta="Contenidos">
+
+<ListaPistas items={props.unidad.contenidos} unidad={props.unidad.numero} />
+
+<div class="mt-14">
+  <InfographicViewer id="c2_infografia" />
+</div>
+
+</Seccion>

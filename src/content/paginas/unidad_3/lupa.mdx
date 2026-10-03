@@ -1,0 +1,31 @@
+import Seccion from '../../../components/ui/seccion.astro';
+import Podcast from '../../../components/ui/podcast.astro';
+import Tarjetas from '../../../components/ui/tarjetas.astro';
+import Embed from '../../../components/ui/embed.astro';
+import ResourceTag from '../../../components/ui/resource_tag.astro';
+import { QuizCard } from '../../../components/islas/quiz_card';
+import act from '../../../data/actividades/unidad_3.json';
+
+<Seccion id="practica" titulo="Entrena tu lupa" etiqueta="Actividades formativas" fondo="arena" titulo_visible={false}>
+
+<p class="lectura mb-10">Estas actividades no llevan nota: sirven para practicar. Puedes equivocarte y volver a intentar.</p>
+
+<div class="flex flex-col gap-8">
+
+<Podcast id="c3_podcast" descripcion="Un juego para decidir con qué lupa se responde cada pregunta." />
+
+<QuizCard client:visible preguntas={act.quiz} unidad={3} titulo="Cuestionario sobre el cuento" etiqueta="Resuélvelo para ganar la insignia" marca_caso />
+
+<Tarjetas tarjetas={act.tarjetas} unidad={3} />
+
+<ResourceTag id="p3_practica" />
+
+<Embed id="w3_colombia_aprende" etiqueta="Para practicar más" />
+
+<Embed id="w3_extra" etiqueta="Para practicar más" />
+
+<Embed id="w3_literarios" etiqueta="Para practicar más" />
+
+</div>
+
+</Seccion>

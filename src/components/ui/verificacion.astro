@@ -1,0 +1,48 @@
+---
+// how a text of the site was checked (for teachers). If nobody has checked it yet, the visible pending marker shows instead.
+import Pendiente from './pendiente.astro';
+
+interface Datos {
+  por?: string;
+  fecha?: string;
+  texto?: string;
+}
+interface Props {
+  datos?: Datos;
+  pendiente: string;
+}
+const { datos, pendiente } = Astro.props;
+const hay = Boolean(datos?.por && datos?.texto);
+const fecha = datos?.fecha
+  ? new Date(`${datos.fecha}T12:00:00-05:00`).toLocaleDateString('es-CO', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    })
+  : '';
+---
+
+{hay ? (
+  <details class="group max-w-reading rounded-soft bg-cream-paper">
+    <summary class="interfaz flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 rounded-soft px-4 py-2 text-body-sm font-medium [&::-webkit-details-marker]:hidden">
+      Cómo se verificó este texto (para docentes)
+      <span class="text-stone-text group-open:hidden" aria-hidden="true">
+        Abrir
+      </span>
+      <span class="hidden text-stone-text group-open:inline" aria-hidden="true">
+        Cerrar
+      </span>
+    </summary>
+    <div class="space-y-2 px-4 pb-5 text-body-sm">
+      <p>{datos?.texto}</p>
+      <p class="text-stone-text">
+        Verificado por {datos?.por}
+        {fecha ? ` el ${fecha}` : ''}.
+      </p>
+    </div>
+  </details>
+) : (
+  <p>
+    <Pendiente texto={pendiente} />
+  </p>
+)}

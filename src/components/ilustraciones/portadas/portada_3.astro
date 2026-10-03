@@ -1,0 +1,156 @@
+---
+import PortadaCapitulo from '../../libro/portada_capitulo.astro';
+import Sofia from '../sofia.astro';
+import Mateo from '../mateo.astro';
+
+interface Props {
+  titulo: string;
+  alt: string;
+}
+const { titulo, alt } = Astro.props;
+---
+
+<PortadaCapitulo numero={3} titulo={titulo} color="sunshine-pop" alt={alt}>
+  <svg
+    slot="fondo"
+    viewBox="0 0 800 800"
+    class="h-full w-full"
+    preserveAspectRatio="xMidYMid meet"
+    focusable="false"
+  >
+    <!-- Sombra del papel -->
+    <rect
+      x="130"
+      y="160"
+      width="560"
+      height="560"
+      rx="40"
+      fill="#2c2e2a"
+      opacity="0.1"
+      transform="rotate(-6 400 430)"
+    ></rect>
+    <!-- Papel principal -->
+    <rect
+      x="120"
+      y="150"
+      width="560"
+      height="560"
+      rx="40"
+      fill="#f5f1e4"
+      stroke="#e0dbce"
+      stroke-width="4"
+      transform="rotate(-6 400 430)"
+    ></rect>
+    <!-- Líneas del papel -->
+    <g stroke="#e0dbce" stroke-width="16" stroke-linecap="round" transform="rotate(-6 400 430)">
+      <path d="M180 220 H560 M180 270 H620 M180 320 H520 M180 590 H600 M180 640 H540"></path>
+      <!-- Detalles adicionales en las líneas (efecto escrito/borrador) -->
+      <path d="M180 370 H480 M180 420 H580 M180 470 H500" stroke-width="8" stroke-dasharray="20 15"></path>
+    </g>
+  </svg>
+  <svg
+    slot="medio"
+    viewBox="0 0 800 800"
+    class="h-full w-full"
+    preserveAspectRatio="xMidYMid meet"
+    focusable="false"
+  >
+    <!-- Mango de la lupa -->
+    <!-- Sombra del mango -->
+    <path d="M475 565 L645 725" stroke="#2c2e2a" stroke-width="58" stroke-linecap="round" opacity="0.15"></path>
+    <!-- Base del mango negra -->
+    <path d="M470 560 L640 720" stroke="#2c2e2a" stroke-width="58" stroke-linecap="round"></path>
+    <!-- Interior del mango (verde) -->
+    <path d="M490 578 L620 700" stroke="#8ed462" stroke-width="30" stroke-linecap="round"></path>
+    <!-- Brillo del mango -->
+    <path d="M500 588 L610 690" stroke="#a9e388" stroke-width="8" stroke-linecap="round"></path>
+
+    <!-- Aro de la lupa -->
+    <!-- Sombra del aro -->
+    <circle cx="385" cy="405" r="230" fill="none" stroke="#2c2e2a" stroke-width="30" opacity="0.15"></circle>
+    <!-- Aro negro exterior -->
+    <circle cx="380" cy="400" r="230" fill="#ffffff" stroke="#2c2e2a" stroke-width="30"></circle>
+    <!-- Brillo en el aro negro -->
+    <path d="M 180 280 A 230 230 0 0 1 300 185" stroke="#4a4c48" stroke-width="12" stroke-linecap="round" fill="none"></path>
+
+    <!-- Cristal de la lupa -->
+    <circle cx="380" cy="400" r="196" fill="#fdf3c8"></circle>
+    <!-- Efecto lente / centro brillante -->
+    <circle cx="380" cy="400" r="128" fill="#f5e211"></circle>
+    <circle cx="380" cy="400" r="70" fill="#ffffff"></circle>
+    
+    <!-- Reflejos del cristal -->
+    <path d="M 230 300 A 170 170 0 0 1 320 230" stroke="#ffffff" stroke-width="16" stroke-linecap="round" fill="none"></path>
+    <path d="M 340 220 A 170 170 0 0 1 370 215" stroke="#ffffff" stroke-width="16" stroke-linecap="round" fill="none"></path>
+  </svg>
+  <svg
+    slot="frente"
+    viewBox="0 0 800 800"
+    class="h-full w-full"
+    preserveAspectRatio="xMidYMid meet"
+    focusable="false"
+  >
+    <!-- Texto en el papel -->
+    <g fill="#2c2e2a" font-size="30" font-weight="500" transform="rotate(-6 400 430)">
+      <text x="240" y="260">
+        quién, qué, dónde
+      </text>
+    </g>
+
+    <!-- Huellas (evolucionadas de elipses a pisadas de animal/zapatos) -->
+    <g fill="#2c2e2a" opacity="0.85">
+      <g transform="translate(290, 440) rotate(-20)">
+        <ellipse cx="0" cy="0" rx="16" ry="22"></ellipse>
+        <circle cx="-12" cy="-28" r="6"></circle>
+        <circle cx="0" cy="-32" r="7"></circle>
+        <circle cx="12" cy="-28" r="6"></circle>
+      </g>
+      <g transform="translate(330, 382) rotate(-12)">
+        <ellipse cx="0" cy="0" rx="16" ry="22"></ellipse>
+        <circle cx="-12" cy="-28" r="6"></circle>
+        <circle cx="0" cy="-32" r="7"></circle>
+        <circle cx="12" cy="-28" r="6"></circle>
+      </g>
+      <g transform="translate(410, 372) rotate(14)">
+        <ellipse cx="0" cy="0" rx="16" ry="22"></ellipse>
+        <circle cx="-12" cy="-28" r="6"></circle>
+        <circle cx="0" cy="-32" r="7"></circle>
+        <circle cx="12" cy="-28" r="6"></circle>
+      </g>
+      <g transform="translate(450, 318) rotate(22)">
+        <ellipse cx="0" cy="0" rx="16" ry="22"></ellipse>
+        <circle cx="-12" cy="-28" r="6"></circle>
+        <circle cx="0" cy="-32" r="7"></circle>
+        <circle cx="12" cy="-28" r="6"></circle>
+      </g>
+    </g>
+
+    <!-- Signo de interrogación en la lupa -->
+    <text x="380" y="432" text-anchor="middle" font-size="110" font-weight="500" fill="#2c2e2a">
+      ?
+    </text>
+
+    <!-- Insignia (Badge) elaborada -->
+    <g transform="translate(560 250)">
+      <!-- Sombra -->
+      <circle cx="3" cy="3" r="46" fill="#2c2e2a" opacity="0.15"></circle>
+      <circle cx="0" cy="0" r="46" fill="#ffffff" stroke="#2c2e2a" stroke-width="6"></circle>
+      <circle cx="0" cy="0" r="38" fill="none" stroke="#2c2e2a" stroke-width="2" stroke-dasharray="4 4"></circle>
+      <path
+        d="M-14 10 Q-26 -8 -10 -22 Q2 -32 14 -22 Q28 -8 14 10 Z"
+        fill="#f5e211"
+        stroke="#2c2e2a"
+        stroke-width="5"
+        stroke-linejoin="round"
+      ></path>
+      <path d="M-8 20 H8" stroke="#2c2e2a" stroke-width="6" stroke-linecap="round"></path>
+    </g>
+
+    <g transform="translate(20 470)">
+      <Sofia size={310} pose="lupa" />
+    </g>
+    <g transform="translate(590 500)">
+      <Mateo size={290} pose="levanta" />
+    </g>
+  </svg>
+</PortadaCapitulo>

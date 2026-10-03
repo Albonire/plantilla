@@ -1,0 +1,30 @@
+---
+// white surface with the book-like large radius, no shadow
+interface Props {
+  tono?: 'blanco' | 'arena' | 'sol' | 'verde' | 'cielo' | 'coral';
+  compacta?: boolean;
+  class?: string;
+  [atributo: string]: unknown;
+}
+const { tono = 'blanco', compacta = false, class: clase = '', ...resto } = Astro.props;
+const fondo = {
+  blanco: 'bg-pure-white',
+  arena: 'bg-sandstone',
+  sol: 'bg-sunshine-pop',
+  verde: 'bg-fresh-grass',
+  cielo: 'bg-sky-pop',
+  coral: 'bg-coral-pop',
+}[tono];
+---
+
+<div
+  {...resto}
+  class:list={[
+    fondo,
+    'text-ink-black',
+    compacta ? 'rounded-soft p-5 md:p-6' : 'rounded-card p-7 md:p-12',
+    clase,
+  ]}
+>
+  <slot />
+</div>

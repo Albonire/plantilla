@@ -1,0 +1,683 @@
+---
+import { getCollection } from 'astro:content';
+import CursoLayout from '../layouts/curso_layout.astro';
+import EncabezadoPagina from '../components/curso/encabezado_pagina.astro';
+import Seccion from '../components/ui/seccion.astro';
+import recursos from '../data/recursos.json';
+import datos_retos from '../data/retos.json';
+import multimedia from '../data/multimedia.json';
+import act1 from '../data/actividades/unidad_1.json';
+import act2 from '../data/actividades/unidad_2.json';
+import noticia_reto4 from '../data/noticia_reto4.json';
+import { integrantes, nombre_de, sitio } from '../config/sitio';
+import { ruta_seccion } from '../config/paginas';
+
+const unidades = (await getCollection('unidades')).sort((a, b) => a.data.numero - b.data.numero);
+
+const addie = [
+  [
+    'Análisis',
+    'Público: estudiantes de 5.º. Necesidad: fortalecer la comprensión lectora en los tres niveles y el pensamiento crítico frente a la información digital. Referentes: Estándares Básicos de Competencias y DBA de Lenguaje.',
+  ],
+  [
+    'Diseño',
+    'Ficha de diseño con 5 unidades, aprendizajes esperados, secuencias didácticas, actividades formativas y sumativas, y la ruta de aprendizaje en cuatro momentos.',
+  ],
+  [
+    'Desarrollo',
+    'Sitio web tipo libro con scroll, recursos propios (lecturas, cómic, juegos interactivos, muro de debate y un kit multimedia por caso elaborado con herramientas digitales: podcast, video, infografía y tarjetas) y recursos de la web seleccionados y citados en APA 7, en proporción 50/50.',
+  ],
+  [
+    'Implementación',
+    '5 semanas en modalidad virtual; una videollamada por caso y trabajo asíncrono en el sitio; Feria de detectives virtual al final.',
+  ],
+  [
+    'Evaluación',
+    'Formativa con retroalimentación inmediata, retos sumativos con rúbrica por caso, producto final y autoevaluación.',
+  ],
+];
+
+const momentos = [
+  [
+    'Exploración (abrir el caso)',
+    'Activamos lo que ya sabemos, miramos imágenes y títulos, predecimos.',
+  ],
+  [
+    'Estructuración (seguir las pistas)',
+    'Leemos con pausas, vemos el material de estudio y aprendemos los conceptos del caso.',
+  ],
+  [
+    'Práctica (entrenar la lupa)',
+    'Resolvemos actividades interactivas con retroalimentación inmediata. Nos podemos equivocar y volver a intentar.',
+  ],
+  [
+    'Valoración (cerrar el caso)',
+    'Hacemos el reto del caso, nos autoevaluamos y ganamos la insignia.',
+  ],
+];
+
+const conteo = unidades.map((u) => {
+  const n = u.data.numero;
+  const propios = recursos.filter((r) => r.unidad === n && r.tipo === 'propio');
+  const web = recursos.filter((r) => r.unidad === n && r.tipo === 'web');
+  const confirmados = web.filter((r) => r.verificado);
+  return {
+    n,
+    titulo: u.data.titulo,
+    propios: propios.length,
+    web: web.length,
+    confirmados: confirmados.length,
+  };
+});
+const total_propios = conteo.reduce((a, c) => a + c.propios, 0);
+const total_web = conteo.reduce((a, c) => a + c.web, 0);
+const total = total_propios + total_web;
+const porcentaje = (v: number) => (total ? Math.round((v / total) * 100) : 0);
+
+const recursos_web = recursos.filter((r) => r.tipo === 'web').sort((a, b) => a.unidad - b.unidad);
+
+// what is verified and what still waits for the team; each row reads its state from the data files
+const revisadas = multimedia.filter((m) => (m as { revisado_por?: string }).revisado_por).length;
+const verificaciones = [
+  {
+    item: 'Adaptación de "La cigarra y la hormiga" (caso 1)',
+    listo: Boolean(act1.fabula_reto.revision.revisado_por),
+    estado: act1.fabula_reto.revision.revisado_por
+      ? `Revisada y aprobada por ${act1.fabula_reto.revision.revisado_por}.`
+      : 'La redactó el equipo a partir de Esopo (172 palabras, frases de 8 palabras en promedio). Cambia el final: aquí la hormiga ayuda a la cigarra y en Esopo la rechaza.',
+    cierre: 'Listo. Aprobada con desenlace solidario.',
+  },
+  {
+    item: 'Poema "El renacuajo paseador" y su clave (caso 2)',
+    listo: Boolean(act2.renacuajo.verificacion?.por),
+    estado:
+      'Los 54 versos se compararon con la edición del Banco de la República y con otras tres ediciones; solo hay variantes menores de ortografía. La clave coincide con la del equipo y con cada estrofa. Las 6 preguntas del cuestionario también son coherentes con el texto.',
+    cierre: 'Listo. Verificado el 25 de septiembre de 2026.',
+  },
+  {
+    item: 'Biografía de Rafael Pombo (caso 2)',
+    listo: Boolean(act2.pombo.verificacion?.por),
+    estado:
+      'Confirmada con una segunda fuente (Enciclopedia del Banco de la República). La fecha de la edición completa se dejó como "a partir de 1916" porque las fuentes dicen 1916 o 1916 y 1917.',
+    cierre: 'Listo. Verificado el 25 de septiembre de 2026.',
+  },
+  {
+    item: 'Noticia del reto del caso 4',
+    listo: Boolean(noticia_reto4.url),
+    estado: noticia_reto4.url
+      ? `${noticia_reto4.medio}, ${noticia_reto4.fecha}. Se abrió y se leyó la página.`
+      : 'Sin noticia elegida.',
+    cierre:
+      'Es una noticia de ejemplo. El docente puede cambiarla por otra actual editando src/data/noticia_reto4.json.',
+  },
+  {
+    item: 'Entrega de retos y evidencias digitales',
+    listo: true,
+    estado:
+      'Autocontenido. Los retos se responden en el sitio y se descargan en formato PDF para visualización y archivo, sin requerir plataforma externa.',
+    cierre: 'Listo. Modelo digital de muestra autocontenido.',
+  },
+  {
+    item: 'Recursos multimedia y herramientas digitales',
+    listo: revisadas === multimedia.length,
+    estado: `${revisadas} de ${multimedia.length} piezas digitales revisadas por el equipo (podcasts, videos, infografías y tarjetas).`,
+    cierre: 'Listo. Todas las piezas revisadas por el equipo.',
+  },
+];
+
+const niveles = ['superior', 'alto', 'basico', 'bajo'] as const;
+const nombres_nivel = { superior: 'Superior', alto: 'Alto', basico: 'Básico', bajo: 'Bajo' };
+
+const piezas_digitales = unidades.map((u) => ({
+  n: u.data.numero,
+  titulo: u.data.titulo,
+  piezas: multimedia.filter((m) => m.unidad === u.data.numero),
+}));
+const tipo_pieza = { audio: 'Podcast', video: 'Video', infografia: 'Infografía' } as Record<
+  string,
+  string
+>;
+---
+
+<CursoLayout
+  titulo="Para docentes"
+  descripcion="Ruta de aprendizaje, mapeo ADDIE, rúbricas, conteo de recursos propios y de la web, referentes y orientaciones para familias."
+  titulo_cabecera="Para docentes"
+  sin_paginador
+>
+  <EncabezadoPagina
+    etiqueta="Socialización del diseño didáctico"
+    titulo="Para docentes"
+    color="fresh-grass"
+  >
+    <p>
+      La ruta de aprendizaje, el mapeo ADDIE, las rúbricas y el conteo de recursos del curso
+      Aventura lectora.
+    </p>
+  </EncabezadoPagina>
+
+  <Seccion id="ruta" titulo="Ruta de aprendizaje" etiqueta="Metodología">
+    <p class="lectura">
+      Enfoque: aprendizaje activo con gamificación narrativa. Cada estudiante es un detective de la
+      lectura y cada unidad es un caso que se resuelve en cuatro momentos, siguiendo la secuencia
+      didáctica.
+    </p>
+    <ol class="mt-10 grid gap-4 md:grid-cols-2">
+      {momentos.map(([t, d], i) => (
+        <li class="flex gap-5 rounded-soft bg-pure-white p-6">
+          <span
+            class="flex size-11 shrink-0 items-center justify-center rounded-full border-2 border-ink-black bg-sunshine-pop font-medium"
+            aria-hidden="true"
+          >
+            {i + 1}
+          </span>
+          <div>
+            <h3 class="text-subheading font-medium leading-snug">
+              <span class="sr-only">Momento {i + 1}: </span>
+              {t}
+            </h3>
+            <p class="mt-1 text-body">{d}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+    <div class="mt-8 grid gap-4 md:grid-cols-2">
+      <p class="rounded-soft bg-pure-white p-6 text-body">
+        <span class="font-medium">Rol del docente:</span> acompaña, modela la lectura en voz alta,
+        hace preguntas y retroalimenta.
+      </p>
+      <p class="rounded-soft bg-pure-white p-6 text-body">
+        <span class="font-medium">Rol del estudiante:</span> lee, pregunta, prueba hipótesis,
+        explica sus respuestas y escucha las de otros.
+      </p>
+    </div>
+    <p class="mt-6 text-body text-stone-text">
+      Duración sugerida: 5 semanas, un caso por semana, más una sesión final de socialización.
+    </p>
+  </Seccion>
+
+  <Seccion id="addie" titulo="Mapeo ADDIE" etiqueta="Diseño instruccional" fondo="arena">
+    <div
+      class="overflow-x-auto rounded-card bg-pure-white p-3 md:p-6"
+      tabindex="0"
+      role="region"
+      aria-label="Tabla con desplazamiento horizontal"
+    >
+      <table class="w-full min-w-[36rem] text-left text-body-sm">
+        <caption class="sr-only">Qué hizo el equipo en cada fase del modelo ADDIE</caption>
+        <thead>
+          <tr class="border-b border-hairline-mist">
+            <th scope="col" class="px-3 py-3 font-medium">
+              Fase
+            </th>
+            <th scope="col" class="px-3 py-3 font-medium">
+              Qué hizo el equipo
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {addie.map(([f, t]) => (
+            <tr class="border-b border-hairline-mist align-top last:border-0">
+              <th scope="row" class="px-3 py-4 font-medium">
+                {f}
+              </th>
+              <td class="px-3 py-4">{t}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </Seccion>
+
+  <Seccion id="recursos" titulo="Recursos propios y de la web" etiqueta="Proporción 50/50">
+    <p class="lectura">
+      La guía pide que la mitad de los recursos sea de la web y la otra mitad, elaborada por el
+      equipo. Este conteo se calcula desde el inventario de recursos del sitio.
+    </p>
+    <div
+      class="mt-10 overflow-x-auto rounded-card bg-pure-white p-3 md:p-6"
+      tabindex="0"
+      role="region"
+      aria-label="Tabla con desplazamiento horizontal"
+    >
+      <table class="w-full min-w-[34rem] text-left text-body-sm">
+        <caption class="sr-only">Cantidad de recursos propios y de la web por unidad</caption>
+        <thead>
+          <tr class="border-b border-hairline-mist">
+            <th scope="col" class="px-3 py-3 font-medium">
+              Caso
+            </th>
+            <th scope="col" class="px-3 py-3 text-right font-medium">
+              Propios
+            </th>
+            <th scope="col" class="px-3 py-3 text-right font-medium">
+              De la web
+            </th>
+            <th scope="col" class="px-3 py-3 text-right font-medium">
+              Web con enlace confirmado
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {conteo.map((c) => (
+            <tr class="border-b border-hairline-mist">
+              <th scope="row" class="px-3 py-3 font-medium">
+                {c.n}. {c.titulo}
+              </th>
+              <td class="px-3 py-3 text-right">{c.propios}</td>
+              <td class="px-3 py-3 text-right">{c.web}</td>
+              <td class="px-3 py-3 text-right">
+                {c.confirmados} de {c.web}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+        <tfoot>
+          <tr>
+            <th scope="row" class="px-3 py-4 font-medium">
+              Total
+            </th>
+            <td class="px-3 py-4 text-right font-medium">
+              {total_propios} ({porcentaje(total_propios)} %)
+            </td>
+            <td class="px-3 py-4 text-right font-medium">
+              {total_web} ({porcentaje(total_web)} %)
+            </td>
+            <td class="px-3 py-4 text-right font-medium">
+              {conteo.reduce((a, c) => a + c.confirmados, 0)} de {total_web}
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <p class="mt-6 max-w-3xl text-body text-stone-text">
+      Cada caso cuenta tres recursos propios (material central, kit multimedia elaborado con herramientas digitales y kit de
+      práctica) y tres de la web. Quedan fuera del conteo, por ser evaluación, decoración o material
+      para docentes: los retos sumativos, las rúbricas, el certificado, las portadas ilustradas de
+      los casos y esta página. Los recursos con enlace por confirmar aparecen marcados así en cada
+      unidad.
+    </p>
+
+    <h3 class="mt-14 text-heading-sm font-medium tracking-tight">
+      Cómo se integra cada recurso de la web
+    </h3>
+    <p class="mt-3 max-w-3xl text-body text-stone-text">
+      Los recursos de terceros se muestran dentro de las páginas del curso y cargan solo cuando el
+      estudiante lo pide. Los que no permiten mostrarse en otra página se integran como actividad y
+      se enlazan.
+    </p>
+    <div
+      class="mt-6 overflow-x-auto rounded-card bg-pure-white p-3 md:p-6"
+      tabindex="0"
+      role="region"
+      aria-label="Tabla con desplazamiento horizontal"
+    >
+      <table class="w-full min-w-[40rem] text-left text-body-sm">
+        <caption class="sr-only">
+          Recursos de la web, su proveedor y cómo se integran en el curso
+        </caption>
+        <thead>
+          <tr class="border-b border-hairline-mist">
+            <th scope="col" class="px-3 py-3 font-medium">
+              Caso
+            </th>
+            <th scope="col" class="px-3 py-3 font-medium">
+              Recurso
+            </th>
+            <th scope="col" class="px-3 py-3 font-medium">
+              Proveedor
+            </th>
+            <th scope="col" class="px-3 py-3 font-medium">
+              En el curso
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {recursos_web.map((r) => (
+            <tr class="border-b border-hairline-mist align-top last:border-0">
+              <th scope="row" class="px-3 py-3 font-medium">
+                {r.unidad}
+              </th>
+              <td class="px-3 py-3">{r.titulo}</td>
+              <td class="px-3 py-3">{r.proveedor ?? r.herramienta}</td>
+              <td class="px-3 py-3">
+                {r.integracion === 'embebido'
+                  ? 'Se muestra dentro de la página (carga al pulsar)'
+                  : 'Integrado como actividad, con enlace al original'}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="mt-14 text-heading-sm font-medium tracking-tight">
+      Herramientas usadas por el equipo
+    </h3>
+    <ul class="mt-4 grid max-w-4xl gap-3 md:grid-cols-2">
+      <li class="rounded-soft bg-pure-white p-5 text-body">
+        Web 2.0: interactivos propios del sitio (cuestionarios, sopa de letras, ruleta,
+        clasificadores, cómic con cámara de viñetas, muro de preguntas, lienzo de dibujo y grabadora
+        de voz).
+      </li>
+      <li class="rounded-soft bg-pure-white p-5 text-body">
+        Herramientas digitales y software educativo: infografías, videos, podcasts y
+        tarjetas elaborados por el equipo.
+      </li>
+    </ul>
+  </Seccion>
+
+  <Seccion
+    id="rubricas"
+    titulo="Rúbricas de las actividades sumativas"
+    etiqueta="Evaluación"
+    fondo="arena"
+  >
+    <p class="lectura mb-10">
+      Escala de desempeños de la escala nacional del Decreto 1290 de 2009: Superior, Alto, Básico y
+      Bajo.
+    </p>
+    <div class="flex flex-col gap-4">
+      {datos_retos.retos.map((r) => (
+        <details class="group rounded-card bg-pure-white">
+          <summary class="flex min-h-14 cursor-pointer list-none items-center justify-between gap-3 rounded-card px-6 py-3 text-subheading font-medium [&::-webkit-details-marker]:hidden md:px-8">
+            <span>
+              Reto del caso {r.caso}: {r.titulo}
+            </span>
+            <span class="text-body-sm text-stone-text group-open:hidden" aria-hidden="true">
+              Abrir
+            </span>
+            <span class="hidden text-body-sm text-stone-text group-open:inline" aria-hidden="true">
+              Cerrar
+            </span>
+          </summary>
+          <div class="px-6 pb-8 md:px-8">
+            <p class="text-body text-stone-text">
+              {r.duracion}. {r.producto}
+            </p>
+            <div
+              class="mt-5 overflow-x-auto"
+              tabindex="0"
+              role="region"
+              aria-label="Tabla con desplazamiento horizontal"
+            >
+              <table class="w-full min-w-[44rem] text-left text-body-sm">
+                <caption class="sr-only">Rúbrica del reto {r.titulo}</caption>
+                <thead>
+                  <tr class="border-b border-hairline-mist">
+                    <th scope="col" class="px-3 py-3 font-medium">
+                      Criterio
+                    </th>
+                    {niveles.map((n) => (
+                      <th scope="col" class="px-3 py-3 font-medium">
+                        {nombres_nivel[n]}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {r.rubrica.map((c) => (
+                    <tr class="border-b border-hairline-mist align-top last:border-0">
+                      <th scope="row" class="px-3 py-3 font-medium">
+                        {c.criterio}
+                      </th>
+                      {niveles.map((n) => (
+                        <td class="px-3 py-3">{c[n]}</td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+      ))}
+      <details class="group rounded-card bg-pure-white">
+        <summary class="flex min-h-14 cursor-pointer list-none items-center justify-between gap-3 rounded-card px-6 py-3 text-subheading font-medium [&::-webkit-details-marker]:hidden md:px-8">
+          <span>Producto final: {datos_retos.producto_final.titulo}</span>
+          <span class="text-body-sm text-stone-text group-open:hidden" aria-hidden="true">
+            Abrir
+          </span>
+          <span class="hidden text-body-sm text-stone-text group-open:inline" aria-hidden="true">
+            Cerrar
+          </span>
+        </summary>
+        <div class="px-6 pb-8 md:px-8">
+          <p class="text-body text-stone-text">{datos_retos.producto_final.descripcion}</p>
+          <div
+            class="mt-5 overflow-x-auto"
+            tabindex="0"
+            role="region"
+            aria-label="Tabla con desplazamiento horizontal"
+          >
+            <table class="w-full min-w-[44rem] text-left text-body-sm">
+              <caption class="sr-only">Rúbrica del producto final</caption>
+              <thead>
+                <tr class="border-b border-hairline-mist">
+                  <th scope="col" class="px-3 py-3 font-medium">
+                    Criterio
+                  </th>
+                  {niveles.map((n) => (
+                    <th scope="col" class="px-3 py-3 font-medium">
+                      {nombres_nivel[n]}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {datos_retos.producto_final.rubrica.map((c) => (
+                  <tr class="border-b border-hairline-mist align-top last:border-0">
+                    <th scope="row" class="px-3 py-3 font-medium">
+                      {c.criterio}
+                    </th>
+                    {niveles.map((n) => (
+                      <td class="px-3 py-3">{c[n]}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+    </div>
+  </Seccion>
+
+  <Seccion id="referentes" titulo="Referentes curriculares" etiqueta="Estándares y DBA de Lenguaje">
+    <div class="grid gap-4 md:grid-cols-2">
+      {unidades.map((u) => (
+        <div class="rounded-soft bg-pure-white p-6">
+          <h3 class="text-subheading font-medium">
+            Caso {u.data.numero}: {u.data.titulo}
+          </h3>
+          <ul class="mt-3 list-disc space-y-2 pl-5 text-body-sm">
+            {u.data.referentes.dba.map((d) => (
+              <li>{d}</li>
+            ))}
+            {u.data.referentes.estandares.map((d) => (
+              <li>{d}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </Seccion>
+
+  <Seccion
+    id="familias"
+    titulo="Orientaciones para familias"
+    etiqueta="Para conversar en casa"
+    fondo="arena"
+  >
+    <ul class="grid gap-4 md:grid-cols-2">
+      {unidades.map((u) => (
+        <li class="rounded-soft bg-pure-white p-6">
+          <p class="text-body-sm font-medium text-stone-text">
+            Caso {u.data.numero}: {u.data.titulo}
+          </p>
+          <p class="mt-2 text-body">{u.data.para_familias}</p>
+        </li>
+      ))}
+    </ul>
+  </Seccion>
+
+  <Seccion id="ia" titulo="Recursos digitales elaborados por el equipo" etiqueta="Herramientas digitales">
+    <p class="lectura">
+      Cada caso incluye un podcast de repaso, un video explicativo, una infografía y un mazo de
+      tarjetas elaborados por el equipo con herramientas digitales a partir de los textos del curso.
+      Todos fueron revisados por el equipo y cuentan con transcripción o versión en texto.
+    </p>
+    <div
+      class="mt-10 overflow-x-auto rounded-card bg-pure-white p-3 md:p-6"
+      tabindex="0"
+      role="region"
+      aria-label="Tabla con desplazamiento horizontal"
+    >
+      <table class="w-full min-w-[36rem] text-left text-body-sm">
+        <caption class="sr-only">Piezas digitales por caso</caption>
+        <thead>
+          <tr class="border-b border-hairline-mist">
+            <th scope="col" class="px-3 py-3 font-medium">
+              Caso
+            </th>
+            <th scope="col" class="px-3 py-3 font-medium">
+              Piezas
+            </th>
+            <th scope="col" class="px-3 py-3 font-medium">
+              Dónde
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {piezas_digitales.map((c) => (
+            <tr class="border-b border-hairline-mist align-top last:border-0">
+              <th scope="row" class="px-3 py-3 font-medium">
+                {c.n}. {c.titulo}
+              </th>
+              <td class="px-3 py-3">
+                {c.piezas
+                  .map(
+                    (p) =>
+                      `${tipo_pieza[p.tipo]}: ${p.titulo}${p.duracion ? ` (${p.duracion})` : ''}`,
+                  )
+                  .join('. ')}
+                . Tarjetas del detective.
+              </td>
+              <td class="px-3 py-3">
+                <a
+                  href={ruta_seccion(c.n, 'contenidos')}
+                  class="font-medium underline decoration-2 underline-offset-4"
+                >
+                  Ver el caso {c.n}
+                </a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </Seccion>
+
+  <Seccion
+    id="datos"
+    titulo="Datos, privacidad y entrega"
+    etiqueta="Cómo funciona por dentro"
+    fondo="arena"
+  >
+    <ul class="grid max-w-4xl gap-3">
+      <li class="rounded-soft bg-pure-white p-5 text-body">
+        Sin analítica, sin cookies de terceros y sin formularios que envíen datos: el curso es para
+        menores de edad.
+      </li>
+      <li class="rounded-soft bg-pure-white p-5 text-body">
+        Lo que escribe el estudiante (retos, predicciones, autoevaluación, su nombre) se guarda solo
+        en su navegador.
+      </li>
+      <li class="rounded-soft bg-pure-white p-5 text-body">
+        Los retos se descargan como PDF y se entregan en la plataforma del curso (Classroom o
+        Moodle). El enlace de entrega se configura en un solo archivo del sitio.
+      </li>
+      <li class="rounded-soft bg-pure-white p-5 text-body">
+        Los muros de los casos 3 y 5 viven en el navegador. Para compartirlos, el estudiante copia
+        un enlace que lleva las notas dentro: nunca pasan por un servidor.
+      </li>
+      <li class="rounded-soft bg-pure-white p-5 text-body">
+        Las grabaciones de voz del caso 5 se quedan en el dispositivo del estudiante hasta que las
+        entrega.
+      </li>
+      <li class="rounded-soft bg-pure-white p-5 text-body">
+        Los videos y recursos de otras páginas cargan solo cuando el estudiante lo pide.
+      </li>
+    </ul>
+  </Seccion>
+
+  <Seccion
+    id="verificaciones"
+    titulo="Verificaciones del curso"
+    etiqueta="Qué está confirmado y revisado por el equipo"
+  >
+    <div
+      class="overflow-x-auto rounded-card border-2 border-ink-black bg-pure-white p-2 md:p-4"
+      tabindex="0"
+      role="region"
+      aria-label="Tabla con desplazamiento horizontal"
+    >
+      <table class="w-full min-w-[44rem] text-left text-body-sm">
+        <caption class="sr-only">Verificaciones del curso</caption>
+        <thead>
+          <tr class="border-b border-hairline-mist">
+            <th scope="col" class="px-3 py-3 font-medium">
+              Elemento
+            </th>
+            <th scope="col" class="px-3 py-3 font-medium">
+              Estado
+            </th>
+            <th scope="col" class="px-3 py-3 font-medium">
+              Qué falta o cómo se cierra
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {verificaciones.map((v) => (
+            <tr class="border-b border-hairline-mist align-top last:border-0">
+              <th scope="row" class="px-3 py-3 font-medium">
+                {v.item}
+              </th>
+              <td class="px-3 py-3">
+                <span class="interfaz font-medium">{v.listo ? 'Listo' : 'Pendiente'}</span>
+                <span class="mt-1 block">{v.estado}</span>
+              </td>
+              <td class="px-3 py-3">{v.cierre}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </Seccion>
+
+  <Seccion id="equipo" titulo="Equipo y responsables" etiqueta="Créditos">
+    <div class="grid gap-4 md:grid-cols-2">
+      <div class="rounded-soft bg-pure-white p-6">
+        <h3 class="text-subheading font-medium">Responsable de cada unidad</h3>
+        <ul class="mt-3 space-y-2 text-body">
+          {unidades.map((u) => (
+            <li>
+              Caso {u.data.numero}: {nombre_de(u.data.responsable)}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="rounded-soft bg-pure-white p-6">
+        <h3 class="text-subheading font-medium">Equipo de trabajo</h3>
+        <ul class="mt-3 space-y-2 text-body">
+          {integrantes.map((i) => (
+            <li>{i.nombre}</li>
+          ))}
+        </ul>
+        <p class="mt-4 text-body-sm text-stone-text">
+          Docente: {sitio.docente}. {sitio.universidad}, {sitio.programa}.
+        </p>
+      </div>
+    </div>
+  </Seccion>
+</CursoLayout>

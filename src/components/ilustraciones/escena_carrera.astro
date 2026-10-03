@@ -1,0 +1,109 @@
+---
+// the hare and the tortoise at the starting line, with the big tree on the hill as the goal
+import Liebre from './liebre.astro';
+import Tortuga from './tortuga.astro';
+---
+
+<svg
+  viewBox="0 0 800 360"
+  class="block h-auto w-full rounded-soft"
+  role="img"
+  aria-label="Ilustración de una liebre y una tortuga en la línea de salida, con un árbol grande al fondo en lo alto de una colina."
+>
+  <!-- Cielo -->
+  <rect width="800" height="360" fill="#cfe6f7"></rect>
+  
+  <!-- Sol con aura de luz -->
+  <circle cx="90" cy="70" r="48" fill="#e2f0fc"></circle>
+  <circle cx="90" cy="70" r="40" fill="#f5e211"></circle>
+  <circle cx="82" cy="62" r="14" fill="#ffffff" opacity="0.4"></circle>
+
+  <!-- Nubes más orgánicas y con volumen -->
+  <g fill="#b9d6f0">
+    <path d="M260 76 Q276 50 306 60 Q326 40 356 56 Q380 66 386 86 L260 86 Z"></path>
+    <path d="M480 110 Q496 84 526 94 Q546 74 576 90 Q600 100 606 120 L480 120 Z"></path>
+  </g>
+  <g fill="#ffffff">
+    <path d="M256 70 Q272 44 302 54 Q322 34 352 50 Q376 60 382 80 L256 80 Z"></path>
+    <path d="M476 104 Q492 78 522 88 Q542 68 572 84 Q596 94 602 114 L476 114 Z"></path>
+  </g>
+
+  <!-- Colinas del fondo con gradación de profundidad -->
+  <path
+    d="M0 240 C160 210 300 226 420 190 C560 148 680 150 800 168 V360 H0 Z"
+    fill="#81c456"
+  ></path>
+  <path
+    d="M0 250 C160 220 300 236 420 200 C560 158 680 160 800 178 V360 H0 Z"
+    fill="#8ed462"
+  ></path>
+
+  <!-- Colinas del frente con gradación de profundidad -->
+  <path d="M0 300 C200 270 380 290 800 250 V360 H0 Z" fill="#61a83b"></path>
+  <path d="M0 310 C200 280 380 300 800 260 V360 H0 Z" fill="#6fbb47"></path>
+
+  <!-- Detalles en el prado (arbustos/relieve) -->
+  <path d="M320 240 Q330 220 340 240 Z" fill="#61a83b" opacity="0.8"></path>
+  <path d="M480 280 Q490 260 500 280 Z" fill="#5aa03a" opacity="0.8"></path>
+  <path d="M510 290 Q515 275 520 290 Z" fill="#5aa03a" opacity="0.8"></path>
+
+  <!-- Camino de tierra con sombra para darle volumen -->
+  <path
+    d="M120 350 C260 300 420 270 640 176"
+    stroke="#e0cca7"
+    stroke-width="32"
+    stroke-linecap="round"
+    fill="none"
+  ></path>
+  <path
+    d="M120 350 C260 300 420 270 640 176"
+    stroke="#f5f1e4"
+    stroke-width="26"
+    stroke-linecap="round"
+    fill="none"
+  ></path>
+
+  <!-- Meta: Árbol con luces y sombras -->
+  <g transform="translate(660 60)">
+    <!-- Sombra del tronco -->
+    <rect x="-5" y="60" width="14" height="90" rx="6" fill="#735639"></rect>
+    <!-- Tronco principal -->
+    <rect x="-9" y="60" width="14" height="90" rx="6" fill="#8b6b4a"></rect>
+    
+    <!-- Sombra del follaje -->
+    <circle cx="4" cy="38" r="50" fill="#42822a"></circle>
+    <circle cx="-30" cy="64" r="34" fill="#42822a"></circle>
+    <circle cx="40" cy="66" r="32" fill="#4a852e"></circle>
+    <circle cx="-4" cy="16" r="28" fill="#4a852e"></circle>
+
+    <!-- Follaje principal -->
+    <circle cx="0" cy="34" r="50" fill="#4f9a34"></circle>
+    <circle cx="-34" cy="60" r="34" fill="#4f9a34"></circle>
+    <circle cx="36" cy="62" r="32" fill="#5aa03a"></circle>
+    <circle cx="-8" cy="12" r="28" fill="#5aa03a"></circle>
+
+    <!-- Luces del follaje -->
+    <circle cx="-12" cy="22" r="16" fill="#6bc246" opacity="0.6"></circle>
+    <circle cx="28" cy="54" r="12" fill="#71cc4b" opacity="0.6"></circle>
+  </g>
+
+  <!-- Línea de salida (Banderín) -->
+  <g transform="translate(120 250)">
+    <!-- Sombra del poste -->
+    <rect x="2" y="-10" width="8" height="100" rx="3" fill="#1b1c19"></rect>
+    <!-- Poste -->
+    <rect x="0" y="-10" width="8" height="100" rx="3" fill="#2c2e2a"></rect>
+    <!-- Banderín sombra -->
+    <path d="M8 -6 L52 10 L8 28 Z" fill="#d65747"></path>
+    <!-- Banderín principal -->
+    <path d="M8 -10 L52 6 L8 24 Z" fill="#ff705d"></path>
+  </g>
+
+  <!-- Personajes en la línea de salida -->
+  <g transform="translate(150 224)">
+    <Liebre size={104} pose="parada" />
+  </g>
+  <g transform="translate(262 262)">
+    <Tortuga size={72} />
+  </g>
+</svg>

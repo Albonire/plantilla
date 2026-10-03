@@ -1,0 +1,134 @@
+---
+// Mateo: 10 years old, curly black hair, green shirt, blue cap, small notebook and pencil
+interface Props {
+  size?: number;
+  pose?: 'libreta' | 'levanta';
+  class?: string;
+}
+const { size = 220, pose = 'libreta', class: clase = '' } = Astro.props;
+const PIEL = '#c48b5c';
+const CAMISA = '#8ed462';
+const TINTA = '#2c2e2a';
+---
+
+<svg
+  viewBox="0 0 170 232"
+  height={size}
+  width={(size * 170) / 232}
+  class={clase}
+  aria-hidden="true"
+  focusable="false"
+>
+  <!-- legs and shoes -->
+  <path d="M60 170 Q64 195 60 220 L80 220 Q76 195 80 170 Z" fill="#4a5568"/>
+<path d="M74 170 Q72 195 74 220 L80 220 Q76 195 80 170 Z" fill="#2d3748"/>
+  <path d="M84 170 Q88 195 84 220 L104 220 Q100 195 104 170 Z" fill="#4a5568"/>
+<path d="M98 170 Q96 195 98 220 L104 220 Q100 195 104 170 Z" fill="#2d3748"/>
+  <ellipse cx="68" cy="224" rx="16" ry="7" fill={TINTA}></ellipse>
+  <ellipse cx="98" cy="224" rx="16" ry="7" fill={TINTA}></ellipse>
+  <!-- torso -->
+  <path d="M46 108 Q82 96 118 108 L126 180 Q82 196 38 180 Z" fill={CAMISA}/>
+<path d="M42 172 Q82 188 122 172 L126 180 Q82 196 38 180 Z" fill="#76b351"/>
+  <rect x="74" y="94" width="16" height="16" fill={PIEL}></rect>
+  <path d="M68 106 Q82 122 96 106 Z" fill={PIEL}></path>
+
+  {pose === 'levanta' ? (
+    <>
+      <path
+        d="M50 118 Q30 140 52 156"
+        stroke={CAMISA}
+        stroke-width="16"
+        stroke-linecap="round"
+        fill="none"
+      ></path>
+      <circle cx="54" cy="157" r="8.5" fill={PIEL}></circle>
+      <path
+        d="M114 118 Q146 108 140 70"
+        stroke={CAMISA}
+        stroke-width="16"
+        stroke-linecap="round"
+        fill="none"
+      ></path>
+      <circle cx="140" cy="64" r="8.5" fill={PIEL}></circle>
+    </>
+  ) : (
+    <>
+      <path
+        d="M50 118 Q30 140 56 156"
+        stroke={CAMISA}
+        stroke-width="16"
+        stroke-linecap="round"
+        fill="none"
+      ></path>
+      <g transform="rotate(-8 60 150)">
+        <rect
+          x="42"
+          y="132"
+          width="30"
+          height="36"
+          rx="4"
+          fill="#ffffff"
+          stroke={TINTA}
+          stroke-width="2.5"
+        ></rect>
+        <path d="M42 140 H72 M42 148 H72 M42 156 H64" stroke="#d5d5d4" stroke-width="2"></path>
+        <circle cx="42" cy="138" r="2.6" fill="#ff705d"></circle>
+        <circle cx="42" cy="150" r="2.6" fill="#ff705d"></circle>
+        <circle cx="42" cy="162" r="2.6" fill="#ff705d"></circle>
+      </g>
+      <circle cx="58" cy="158" r="8.5" fill={PIEL}></circle>
+      <path
+        d="M114 118 Q134 142 124 164"
+        stroke={CAMISA}
+        stroke-width="16"
+        stroke-linecap="round"
+        fill="none"
+      ></path>
+      <circle cx="123" cy="166" r="8.5" fill={PIEL}></circle>
+      <rect
+        x="126"
+        y="140"
+        width="5"
+        height="34"
+        rx="2"
+        fill="#f5e211"
+        stroke={TINTA}
+        stroke-width="1.8"
+        transform="rotate(14 128 156)"
+      ></rect>
+    </>
+  )}
+
+  <!-- head, curly hair and cap -->
+  <circle cx="50" cy="70" r="7" fill={PIEL}></circle>
+  <circle cx="114" cy="70" r="7" fill={PIEL}></circle>
+  <path d="M51 64 C51 38 113 38 113 64 C113 88 98 97 82 97 C66 97 51 88 51 64 Z" fill={PIEL}/>
+<path d="M60 64 C60 45 104 45 104 64 C104 80 94 88 82 88 C70 88 60 80 60 64 Z" fill="#e0a672" opacity="0.4"/>
+  <g fill={TINTA}>
+    <circle cx="52" cy="52" r="12"></circle>
+    <circle cx="46" cy="70" r="10"></circle>
+    <circle cx="112" cy="52" r="12"></circle>
+    <circle cx="118" cy="70" r="10"></circle>
+  </g>
+  <path d="M50 48 C52 20 112 20 114 48 Z" fill="#2ba0ff"></path>
+  <path d="M106 46 Q138 44 146 56 Q124 62 102 54 Z" fill="#1b7fd1"></path>
+  <circle cx="82" cy="23" r="4.5" fill="#1b7fd1"></circle>
+  <circle cx="71" cy="70" r="3.6" fill={TINTA}></circle>
+  <circle cx="95" cy="70" r="3.6" fill={TINTA}></circle>
+  <path
+    d="M65 61 Q71 57 77 61 M89 61 Q95 57 101 61"
+    stroke={TINTA}
+    stroke-width="2.4"
+    stroke-linecap="round"
+    fill="none"
+  ></path>
+  <circle cx="62" cy="81" r="6" fill="#ff705d" opacity="0.4"></circle>
+  <circle cx="102" cy="81" r="6" fill="#ff705d" opacity="0.4"></circle>
+  <path
+    d="M75 84 Q83 92 91 84"
+    stroke={TINTA}
+    stroke-width="2.6"
+    stroke-linecap="round"
+    fill="none"
+  ></path>
+</svg>

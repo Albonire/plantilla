@@ -1,0 +1,214 @@
+---
+// table of contents of the whole course. Beside the page on wide screens, inside the menu on small ones.
+// The current case is open with its four pages; states ("Leída", "En curso") are written by the global script.
+import { paginas_caso, id_pagina, ruta_pagina, type Ubicacion } from '../../config/paginas';
+
+interface Unidad {
+  numero: number;
+  titulo: string;
+  color: string;
+}
+interface Pista {
+  id: string;
+  titulo: string;
+}
+interface Props {
+  variante: 'lateral' | 'menu';
+  unidades: Unidad[];
+  ubicacion?: Ubicacion;
+  // clues of the current case, shown under its "Seguir las pistas" page
+  contenidos?: Pista[];
+}
+const { variante, unidades, ubicacion, contenidos = [] } = Astro.props;
+
+const caso_actual = ubicacion?.tipo === 'caso' ? ubicacion.caso : undefined;
+const pagina_actual = ubicacion?.tipo === 'caso' ? ubicacion.pagina : undefined;
+const actual = (tipo: Ubicacion['tipo']) => (ubicacion?.tipo === tipo ? 'page' : undefined);
+
+const discos: Record<string, string> = {
+  'fresh-grass': 'bg-fresh-grass',
+  'sky-pop': 'bg-sky-pop',
+  'sunshine-pop': 'bg-sunshine-pop',
+  'coral-pop': 'bg-coral-pop',
+  mixto: 'bg-fresh-grass',
+};
+const etiqueta = variante === 'lateral' ? 'Índice del curso' : 'Índice del curso en el menú';
+---
+
+<nav aria-label={etiqueta} data-indice={variante}>
+  <ol class="flex flex-col gap-1">
+    <li>
+      <a href="/programa" class="enlace" aria-current={actual('programa')}>
+        <span class="flex-1">Programa del curso</span>
+      </a>
+    </li>
+
+    {unidades.map((u) => (
+      <li>
+        <details class="grupo" open={u.numero === caso_actual} data-caso={u.numero}>
+          <summary class="enlace resumen">
+            <span class:list={['disco', discos[u.color] ?? 'bg-fresh-grass']} aria-hidden="true">
+              0{u.numero}
+            </span>
+            <span class="flex-1">
+              <span class="sr-only">Caso {u.numero}: </span>
+              {u.titulo}
+            </span>
+            <span class="estado-etiqueta text-micro text-stone-text"></span>
+          </summary>
+          <ol class="paginas">
+            {paginas_caso.map((p, i) => {
+              const es_actual = u.numero === caso_actual && p.slug === pagina_actual;
+              return (
+                <li>
+                  <a
+                    href={ruta_pagina(u.numero, p.slug)}
+                    class="enlace pagina"
+                    data-pagina={id_pagina(u.numero, p.slug)}
+                    aria-current={es_actual ? 'page' : undefined}
+                  >
+                    <span class="flex-1">
+                      <span class="sr-only">Página </span>
+                      {i + 1}. {p.titulo}
+                    </span>
+                    <span class="estado-pagina text-micro"></span>
+                  </a>
+                  {variante === 'lateral' &&
+                    es_actual &&
+                    p.slug === 'pistas' &&
+                    contenidos.length > 0 && (
+                      <ol class="subindice" data-subindice aria-label="Partes de esta página">
+                        {contenidos.map((c) => (
+                          <li>
+                            <a href={`#${c.id}`} data-sub={c.id}>
+                              {c.titulo}
+                            </a>
+                          </li>
+                        ))}
+                      </ol>
+                    )}
+                </li>
+              );
+            })}
+          </ol>
+        </details>
+      </li>
+    ))}
+
+    <li>
+      <a href="/cierre" class="enlace" aria-current={actual('cierre')}>
+        <span class="flex-1">Expediente y certificado</span>
+      </a>
+    </li>
+    <li>
+      <a href="/referencias" class="enlace" aria-current={actual('referencias')}>
+        <span class="flex-1">Referencias</span>
+      </a>
+    </li>
+  </ol>
+</nav>
+
+<style>
+  .enlace {
+    display: flex;
+    min-height: 2.75rem;
+    align-items: center;
+    gap: 0.75rem;
+    border-radius: var(--radius-soft);
+    padding: 0.25rem 0.75rem;
+    font-size: var(--text-body-sm);
+    line-height: 1.3;
+    color: var(--color-ink-black);
+  }
+  .enlace:hover {
+    background: var(--color-cream-paper);
+  }
+  .enlace[aria-current='page'] {
+    background: var(--color-ink-black);
+    color: var(--color-cream-paper);
+  }
+  .resumen {
+    cursor: pointer;
+    list-style: none;
+    font-weight: var(--font-weight-medium);
+  }
+  .resumen::-webkit-details-marker {
+    display: none;
+  }
+  .resumen::after {
+    content: '';
+    width: 0.5rem;
+    height: 0.5rem;
+    flex-shrink: 0;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    rotate: 45deg;
+    transition: rotate 160ms ease-out;
+  }
+  .grupo[open] > .resumen::after {
+    rotate: -135deg;
+  }
+  .disco {
+    display: inline-flex;
+    width: 2rem;
+    height: 2rem;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--color-ink-black);
+    border-radius: 9999px;
+    font-size: var(--text-micro);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-ink-black);
+  }
+  .paginas {
+    margin: 0.25rem 0 0.5rem 1.1rem;
+    border-left: 2px solid var(--color-hairline-mist);
+    padding-left: 0.5rem;
+  }
+  .pagina {
+    font-weight: var(--font-weight-regular);
+  }
+  .estado-pagina:empty,
+  .estado-etiqueta:empty {
+    display: none;
+  }
+  .pagina[data-leida='true'] .estado-pagina::before {
+    content: '';
+    display: inline-block;
+    width: 0.55rem;
+    height: 0.3rem;
+    margin-right: 0.35rem;
+    border-left: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    rotate: -45deg;
+    translate: 0 -0.15rem;
+  }
+  .subindice {
+    margin: 0.25rem 0 0.5rem 0.75rem;
+    border-left: 2px solid var(--color-hairline-mist);
+    padding-left: 0.5rem;
+  }
+  .subindice a {
+    display: block;
+    border-radius: var(--radius-chip);
+    padding: 0.4rem 0.6rem;
+    font-size: var(--text-micro);
+    line-height: 1.3;
+    color: var(--color-stone-text);
+  }
+  .subindice a:hover {
+    background: var(--color-cream-paper);
+    color: var(--color-ink-black);
+  }
+  .subindice a[aria-current='location'] {
+    background: var(--color-sunshine-pop);
+    color: var(--color-ink-black);
+    font-weight: var(--font-weight-medium);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .resumen::after {
+      transition: none;
+    }
+  }
+</style>

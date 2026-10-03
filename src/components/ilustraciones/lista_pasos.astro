@@ -1,0 +1,59 @@
+---
+// clipboard with numbered steps
+interface Props {
+  size?: number;
+  class?: string;
+}
+const { size = 80, class: clase = '' } = Astro.props;
+---
+
+<svg
+  viewBox="0 0 84 96"
+  height={size}
+  width={(size * 84) / 96}
+  class={clase}
+  aria-hidden="true"
+  focusable="false"
+>
+  <!-- Shadow offset for depth -->
+  <rect x="12" y="14" width="68" height="82" rx="8" fill="#2c2e2a" opacity="0.15"></rect>
+  <!-- Board -->
+  <rect x="8" y="10" width="68" height="82" rx="8" fill="#e0dbce" stroke="#2c2e2a" stroke-width="3"></rect>
+  <!-- Board highlight -->
+  <path d="M12 16 A 4 4 0 0 1 16 12 L72 12" stroke="#ffffff" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.6"></path>
+  
+  <!-- Paper shadow -->
+  <rect x="18" y="22" width="52" height="66" rx="4" fill="#2c2e2a" opacity="0.1"></rect>
+  <!-- Paper -->
+  <rect x="16" y="20" width="52" height="66" rx="4" fill="#ffffff" stroke="#2c2e2a" stroke-width="2"></rect>
+  
+  <!-- Clip base -->
+  <rect x="34" y="2" width="16" height="12" rx="3" fill="#d5d5d4" stroke="#2c2e2a" stroke-width="2.5"></rect>
+  <!-- Clip main -->
+  <rect x="26" y="6" width="32" height="14" rx="5" fill="#8ed462" stroke="#2c2e2a" stroke-width="3"></rect>
+  <!-- Clip highlight -->
+  <path d="M29 10 H55" stroke="#ffffff" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.7"></path>
+
+  <g font-size="12" font-weight="bold" fill="#2c2e2a" font-family="sans-serif">
+    <text x="22" y="40">1</text>
+    <text x="22" y="57">2</text>
+    <text x="22" y="74">3</text>
+  </g>
+  
+  <!-- Lines -->
+  <path
+    d="M36 36 H60 M36 53 H60 M36 70 H52"
+    stroke="#d5d5d4"
+    stroke-width="3.5"
+    stroke-linecap="round"
+  ></path>
+  <!-- Checkmark -->
+  <path
+    d="M52 64 L57 69 L66 57"
+    stroke="#2c2e2a"
+    stroke-width="3"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+  ></path>
+</svg>

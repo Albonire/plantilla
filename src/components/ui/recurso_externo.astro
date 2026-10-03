@@ -1,0 +1,62 @@
+---
+// third-party resource that cannot be shown inside the page (its site blocks frames):
+// it is integrated as a card with a guided activity and a link to the original.
+import { ArrowSquareOut } from '@phosphor-icons/react/ssr';
+import recursos from '../../data/recursos.json';
+import Apa from './apa.astro';
+import BloqueCabecera from './bloque_cabecera.astro';
+
+interface Props {
+  id: string;
+  descripcion?: string;
+  etiqueta?: string;
+}
+const { id, descripcion, etiqueta = 'Recurso de la web' } = Astro.props;
+const recurso = recursos.find((r) => r.id === id);
+if (!recurso) throw new Error(`recurso no encontrado en recursos.json: ${id}`);
+const actividad = (recurso as { actividad?: string[] }).actividad ?? [];
+---
+
+<section
+  aria-labelledby={`${id}-titulo`}
+  class="rounded-card border-2 border-ink-black bg-pure-white p-5 text-ink-black md:p-8"
+>
+  <BloqueCabecera
+    tipo="web"
+    etiqueta={etiqueta}
+    titulo={recurso.titulo}
+    id_titulo={`${id}-titulo`}
+  />
+  <p class="mt-3 max-w-reading text-body">{descripcion ?? recurso.uso}</p>
+  {recurso.acceso && (
+    <p class="mt-2 max-w-reading text-body-sm text-stone-text">{recurso.acceso}</p>
+  )}
+
+  {actividad.length > 0 && (
+    <div class="mt-6 max-w-reading rounded-soft bg-cream-paper p-6">
+      <p class="text-body font-medium">Lee y compara</p>
+      <ol class="mt-3 list-decimal space-y-2 pl-6 text-body marker:font-medium">
+        {actividad.map((p) => (
+          <li>{p}</li>
+        ))}
+      </ol>
+    </div>
+  )}
+
+  <p class="mt-5 max-w-reading text-body-sm text-stone-text">
+    <Apa texto={recurso.apa} />
+  </p>
+
+  <div class="mt-6">
+    <a
+      href={recurso.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex min-h-11 items-center justify-center gap-2.5 rounded-pill border-2 border-ink-black bg-fresh-grass px-5 py-2 text-body-sm font-medium text-ink-black transition-colors hover:bg-ink-black hover:text-cream-paper"
+    >
+      <ArrowSquareOut size={20} weight="bold" aria-hidden="true" />
+      Abrir en otra pestaña
+      <span class="sr-only"> (se abre en una pestaña nueva)</span>
+    </a>
+  </div>
+</section>

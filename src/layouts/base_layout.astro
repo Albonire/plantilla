@@ -1,0 +1,64 @@
+---
+import '../styles/global.css';
+import interLatin from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
+import andika400 from '@fontsource/andika/files/andika-latin-400-normal.woff2?url';
+import andika700 from '@fontsource/andika/files/andika-latin-700-normal.woff2?url';
+import { sitio } from '../config/sitio';
+
+interface Props {
+  titulo: string;
+  descripcion?: string;
+}
+
+const { titulo, descripcion = `${sitio.nombre_largo}. Curso virtual para ${sitio.grado}.` } =
+  Astro.props;
+
+const titulo_pagina = titulo === sitio.nombre_curso ? titulo : `${titulo} | ${sitio.nombre_curso}`;
+---
+
+<!doctype html>
+<html lang="es-CO">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f1e4" />
+    <meta name="description" content={descripcion} />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preload" href={interLatin} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={andika400} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={andika700} as="font" type="font/woff2" crossorigin />
+    <title>{titulo_pagina}</title>
+    <script is:inline>
+      // apply saved accessibility settings before first paint to avoid a flash
+      (() => {
+        const d = document.documentElement;
+        d.classList.add('js');
+        let reduce = false;
+        let a = {};
+        try {
+          reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          a = JSON.parse(localStorage.getItem('aventura_lectora:ajustes') || '{}') || {};
+        } catch {
+          // storage blocked: keep defaults
+        }
+        const mov = typeof a.movimiento === 'boolean' ? a.movimiento : !reduce;
+        if (!mov) d.setAttribute('data-movimiento', 'no');
+        if (a.letra_grande) d.setAttribute('data-letra', 'grande');
+        if (a.voz) d.setAttribute('data-voz', 'si');
+      })();
+    </script>
+  </head>
+  <body class="bg-cream-paper text-ink-black antialiased">
+    <a
+      href="#contenido"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-pill focus:bg-pure-white focus:px-5 focus:py-3 focus:text-body-sm focus:font-medium"
+    >
+      Saltar al contenido
+    </a>
+    <slot />
+    <script>
+      import '../lib/ui_global';
+    </script>
+  </body>
+</html>

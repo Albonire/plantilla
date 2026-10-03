@@ -1,0 +1,246 @@
+---
+// front page of a made-up newspaper. Positions are percentages of the page so the camera can focus on each piece.
+interface Noticia {
+  marca: string;
+  titular: string;
+  entrada: string;
+  cuerpo: string;
+  recuadro: string;
+}
+interface Props {
+  noticia: Noticia;
+}
+const { noticia } = Astro.props;
+
+// the quotation is shown as its own block, the rest of the body stays as one paragraph
+const partes = noticia.cuerpo.split(/(?=")/);
+const cuerpo_texto = partes[0].trim();
+const cita = partes.slice(1).join('').trim();
+---
+
+<div class="pagina bg-cream-paper text-ink-black">
+  <div class="region r-marca flex items-center justify-between gap-2 border-b-[0.35cqw] border-ink-black">
+    <p class="t-marca font-medium">Periódico de práctica</p>
+    <p class="t-etiqueta rounded-pill bg-sunshine-pop px-[1.4cqw] py-[0.4cqw] font-medium">
+      {noticia.marca}
+    </p>
+  </div>
+
+  <div class="region r-titular" data-plegable data-desde="0">
+    <h4 class="t-titular font-medium">{noticia.titular}</h4>
+  </div>
+
+  <div class="region r-entrada" data-plegable data-desde="1">
+    <p class="t-entrada font-medium">{noticia.entrada}</p>
+  </div>
+
+  <div class="region r-foto" data-plegable data-desde="2">
+    <svg
+      viewBox="0 0 200 130"
+      class="h-full w-full"
+      aria-hidden="true"
+      focusable="false"
+      preserveAspectRatio="xMidYMid slice"
+    >
+      <rect width="200" height="130" fill="#cfe6f7"></rect>
+      <rect y="96" width="200" height="34" fill="#8ed462"></rect>
+      <g>
+        <rect x="18" y="26" width="164" height="12" rx="3" fill="#c9a26b"></rect>
+        <rect x="18" y="58" width="164" height="12" rx="3" fill="#c9a26b"></rect>
+        <rect x="18" y="90" width="164" height="12" rx="3" fill="#c9a26b"></rect>
+        <g>
+          <rect x="24" y="6" width="9" height="20" rx="2" fill="#ff705d"></rect>
+          <rect x="35" y="10" width="9" height="16" rx="2" fill="#2ba0ff"></rect>
+          <rect x="46" y="4" width="9" height="22" rx="2" fill="#f5e211"></rect>
+          <rect x="57" y="8" width="9" height="18" rx="2" fill="#ffffff"></rect>
+          <rect x="120" y="6" width="9" height="20" rx="2" fill="#8ed462"></rect>
+          <rect x="131" y="10" width="9" height="16" rx="2" fill="#ff705d"></rect>
+          <rect x="142" y="4" width="9" height="22" rx="2" fill="#2ba0ff"></rect>
+          <rect x="30" y="40" width="9" height="18" rx="2" fill="#f5e211"></rect>
+          <rect x="41" y="44" width="9" height="14" rx="2" fill="#ff705d"></rect>
+          <rect x="52" y="38" width="9" height="20" rx="2" fill="#8ed462"></rect>
+          <rect x="110" y="42" width="9" height="16" rx="2" fill="#2ba0ff"></rect>
+          <rect x="121" y="38" width="9" height="20" rx="2" fill="#ffffff"></rect>
+          <rect x="132" y="44" width="9" height="14" rx="2" fill="#f5e211"></rect>
+          <rect x="60" y="72" width="9" height="18" rx="2" fill="#ff705d"></rect>
+          <rect x="71" y="68" width="9" height="22" rx="2" fill="#8ed462"></rect>
+          <rect x="128" y="74" width="9" height="16" rx="2" fill="#2ba0ff"></rect>
+        </g>
+      </g>
+    </svg>
+  </div>
+
+  <div class="region r-cuerpo" data-plegable data-desde="2">
+    <p class="t-cuerpo">{cuerpo_texto}</p>
+  </div>
+
+  <div class="region r-cita" data-plegable data-desde="3">
+    <p class="t-cita rounded-[1.4cqw] border-l-[0.9cqw] border-sunshine-pop bg-pure-white font-medium">
+      {cita}
+    </p>
+  </div>
+
+  <div class="region r-recuadro" data-plegable data-desde="4">
+    <div class="t-recuadro h-full rounded-[1.6cqw] border-[0.35cqw] border-ink-black bg-pure-white">
+      <p class="font-medium">Datos de la noticia</p>
+      <p>{noticia.recuadro}</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .pagina {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    container-type: inline-size;
+  }
+  .region {
+    position: absolute;
+    transform-origin: 50% 0%;
+    transform-style: preserve-3d;
+  }
+  /* desktop layout: page ratio 1.4 */
+  .r-marca {
+    left: 3%;
+    top: 3%;
+    width: 94%;
+    height: 9%;
+  }
+  .r-titular {
+    left: 3%;
+    top: 14%;
+    width: 94%;
+    height: 20%;
+  }
+  .r-entrada {
+    left: 3%;
+    top: 36%;
+    width: 94%;
+    height: 14%;
+  }
+  .r-cuerpo {
+    left: 3%;
+    top: 53%;
+    width: 58%;
+    height: 24%;
+  }
+  .r-cita {
+    left: 3%;
+    top: 79%;
+    width: 58%;
+    height: 15%;
+  }
+  .r-foto {
+    left: 64%;
+    top: 53%;
+    width: 33%;
+    height: 24%;
+    overflow: hidden;
+    border-radius: 1.6cqw;
+  }
+  .r-recuadro {
+    left: 64%;
+    top: 79%;
+    width: 33%;
+    height: 15%;
+  }
+  .t-marca {
+    font-size: 2.2cqw;
+  }
+  .t-etiqueta {
+    font-size: 1.5cqw;
+  }
+  .t-titular {
+    font-size: 5cqw;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+  .t-entrada {
+    font-size: 2.2cqw;
+    line-height: 1.35;
+  }
+  .t-cuerpo {
+    font-size: 1.9cqw;
+    line-height: 1.45;
+  }
+  .t-cita {
+    font-size: 1.9cqw;
+    line-height: 1.4;
+    padding: 1.2cqw 1.6cqw;
+  }
+  .t-recuadro {
+    font-size: 1.6cqw;
+    line-height: 1.4;
+    padding: 1cqw 1.4cqw;
+  }
+
+  /* narrow screens: tall page ratio 0.8, pieces stacked */
+  @media (max-width: 767px) {
+    .r-marca {
+      left: 4%;
+      top: 2%;
+      width: 92%;
+      height: 6%;
+    }
+    .r-titular {
+      left: 4%;
+      top: 9%;
+      width: 92%;
+      height: 17%;
+    }
+    .r-entrada {
+      left: 4%;
+      top: 27%;
+      width: 92%;
+      height: 14%;
+    }
+    .r-foto {
+      left: 4%;
+      top: 42%;
+      width: 92%;
+      height: 17%;
+    }
+    .r-cuerpo {
+      left: 4%;
+      top: 60%;
+      width: 92%;
+      height: 18%;
+    }
+    .r-cita {
+      left: 4%;
+      top: 79%;
+      width: 92%;
+      height: 10%;
+    }
+    .r-recuadro {
+      left: 4%;
+      top: 90%;
+      width: 92%;
+      height: 8%;
+    }
+    .t-marca {
+      font-size: 3.6cqw;
+    }
+    .t-etiqueta {
+      font-size: 2.6cqw;
+    }
+    .t-titular {
+      font-size: 8.2cqw;
+    }
+    .t-entrada {
+      font-size: 4.4cqw;
+    }
+    .t-cuerpo {
+      font-size: 4.2cqw;
+    }
+    .t-cita {
+      font-size: 4.2cqw;
+      padding: 2cqw 3cqw;
+    }
+    .t-recuadro {
+      font-size: 3.6cqw;
+      padding: 1.4cqw 2.4cqw;
+    }
+  }
+</style>

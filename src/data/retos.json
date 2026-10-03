@@ -1,0 +1,518 @@
+{
+  "retos": [
+    {
+      "id": "reto_1",
+      "caso": 1,
+      "titulo": "Mi bitácora de detective lector",
+      "duracion": "45 minutos",
+      "pasos": [
+        "Lee el título \"La cigarra y la hormiga\" y mira la imagen. Antes de leer, escribe dos predicciones.",
+        "Lee la fábula.",
+        "Durante la lectura, escribe dos preguntas que te hiciste y una palabra nueva con su significado según el contexto.",
+        "Después de leer, escribe un resumen de tres oraciones y tu opinión usando \"Yo pienso que... porque...\"."
+      ],
+      "producto": "Una bitácora de una página con las tres partes (antes, durante, después). Se completa en el sitio y se descarga como PDF para archivar o compartir.",
+      "campos": [
+        {
+          "id": "prediccion_1",
+          "etiqueta": "Predicción 1",
+          "tipo": "texto",
+          "grupo": "Antes de leer"
+        },
+        {
+          "id": "prediccion_2",
+          "etiqueta": "Predicción 2",
+          "tipo": "texto",
+          "grupo": "Antes de leer"
+        },
+        {
+          "id": "pregunta_1",
+          "etiqueta": "Pregunta que me hice 1",
+          "tipo": "texto",
+          "grupo": "Durante la lectura"
+        },
+        {
+          "id": "pregunta_2",
+          "etiqueta": "Pregunta que me hice 2",
+          "tipo": "texto",
+          "grupo": "Durante la lectura"
+        },
+        {
+          "id": "palabra_nueva",
+          "etiqueta": "Una palabra nueva",
+          "tipo": "texto",
+          "grupo": "Durante la lectura"
+        },
+        {
+          "id": "significado",
+          "etiqueta": "Su significado según el contexto",
+          "tipo": "texto",
+          "grupo": "Durante la lectura"
+        },
+        {
+          "id": "resumen",
+          "etiqueta": "Resumen en tres oraciones",
+          "tipo": "texto_largo",
+          "grupo": "Después de leer"
+        },
+        {
+          "id": "opinion",
+          "etiqueta": "Mi opinión",
+          "tipo": "texto_largo",
+          "grupo": "Después de leer",
+          "ayuda": "Usa \"Yo pienso que... porque...\"."
+        }
+      ],
+      "rubrica": [
+        {
+          "criterio": "Antes: predicciones",
+          "superior": "Dos predicciones basadas en título e imagen, y explica en qué se basó",
+          "alto": "Dos predicciones relacionadas con el título o la imagen",
+          "basico": "Una predicción relacionada",
+          "bajo": "Predicciones sin relación o ausentes"
+        },
+        {
+          "criterio": "Durante: preguntas y vocabulario",
+          "superior": "Dos preguntas pertinentes y una palabra nueva con significado correcto por contexto",
+          "alto": "Dos preguntas y una palabra con significado aproximado",
+          "basico": "Una pregunta o una palabra",
+          "bajo": "No registra"
+        },
+        {
+          "criterio": "Después: resumen y opinión",
+          "superior": "Resumen con inicio, problema y final, y opinión con una razón clara",
+          "alto": "Resumen con las ideas principales y opinión con razón",
+          "basico": "Resumen incompleto u opinión sin razón",
+          "bajo": "No hay resumen ni opinión"
+        }
+      ]
+    },
+    {
+      "id": "reto_2",
+      "caso": 2,
+      "titulo": "El sendero completo",
+      "duracion": "50 minutos",
+      "pasos": [
+        "Clasifica los 6 fragmentos del clasificador y explica en una oración por qué ubicaste uno de ellos.",
+        "Escribe un texto instructivo de 5 pasos: \"Cómo cuidar un libro\".",
+        "Incluye título, materiales (si se necesitan), pasos numerados en orden y una imagen digital (hecha con la herramienta de dibujo de esta página o con la que prefieras)."
+      ],
+      "producto": "Un PDF con la clasificación, la explicación y el instructivo, descargado desde el sitio.",
+      "campos": [
+        {
+          "id": "clasificacion",
+          "etiqueta": "Mi clasificación de los 6 fragmentos",
+          "tipo": "clasificacion",
+          "grupo": "Clasificación",
+          "origen": "clasificar:2:textos"
+        },
+        {
+          "id": "explicacion",
+          "etiqueta": "Por qué ubiqué uno de los fragmentos donde lo puse",
+          "tipo": "texto_largo",
+          "grupo": "Clasificación"
+        },
+        {
+          "id": "titulo_instructivo",
+          "etiqueta": "Título del instructivo",
+          "tipo": "texto",
+          "grupo": "Mi instructivo: cómo cuidar un libro"
+        },
+        {
+          "id": "materiales",
+          "etiqueta": "Materiales (si se necesitan)",
+          "tipo": "texto_largo",
+          "grupo": "Mi instructivo: cómo cuidar un libro"
+        },
+        {
+          "id": "pasos",
+          "etiqueta": "Pasos numerados, en orden",
+          "tipo": "texto_largo",
+          "grupo": "Mi instructivo: cómo cuidar un libro",
+          "ayuda": "Escribe cada paso en una línea, con un número."
+        }
+      ],
+      "rubrica": [
+        {
+          "criterio": "Clasificación",
+          "superior": "6 aciertos y explicación con una pista del texto",
+          "alto": "5 aciertos y explicación",
+          "basico": "3 o 4 aciertos",
+          "bajo": "Menos de 3"
+        },
+        {
+          "criterio": "Estructura del instructivo",
+          "superior": "Título, materiales, 5 pasos numerados e imagen",
+          "alto": "Falta un elemento",
+          "basico": "Faltan dos elementos",
+          "bajo": "No tiene estructura de instructivo"
+        },
+        {
+          "criterio": "Claridad y orden",
+          "superior": "Pasos en orden lógico, con verbos que indican acción",
+          "alto": "Orden lógico con una imprecisión",
+          "basico": "Algunos pasos desordenados",
+          "bajo": "Pasos sin orden"
+        }
+      ]
+    },
+    {
+      "id": "reto_3",
+      "caso": 3,
+      "titulo": "Mis preguntas de detective",
+      "duracion": "45 minutos",
+      "pasos": [
+        "Lee de nuevo \"La liebre y la tortuga\" o \"Los libros viajeros de la vereda\" (tú eliges).",
+        "Escribe dos preguntas de cada lupa (seis en total).",
+        "Responde tus seis preguntas. En las críticas, usa \"porque\".",
+        "Publica tus preguntas en el muro del caso 3 y responde las de un compañero."
+      ],
+      "producto": "Una tabla con seis preguntas, su nivel y su respuesta, descargada como PDF, más la respuesta publicada en el muro.",
+      "campos": [
+        {
+          "id": "texto_elegido",
+          "etiqueta": "Texto que elegí",
+          "tipo": "texto"
+        },
+        {
+          "id": "l1_p1",
+          "etiqueta": "Pregunta 1",
+          "tipo": "texto",
+          "grupo": "Lupa 1: lo que dice"
+        },
+        {
+          "id": "l1_r1",
+          "etiqueta": "Mi respuesta a la pregunta 1",
+          "tipo": "texto",
+          "grupo": "Lupa 1: lo que dice"
+        },
+        {
+          "id": "l1_p2",
+          "etiqueta": "Pregunta 2",
+          "tipo": "texto",
+          "grupo": "Lupa 1: lo que dice"
+        },
+        {
+          "id": "l1_r2",
+          "etiqueta": "Mi respuesta a la pregunta 2",
+          "tipo": "texto",
+          "grupo": "Lupa 1: lo que dice"
+        },
+        {
+          "id": "l2_p1",
+          "etiqueta": "Pregunta 1",
+          "tipo": "texto",
+          "grupo": "Lupa 2: lo que sugiere"
+        },
+        {
+          "id": "l2_r1",
+          "etiqueta": "Mi respuesta a la pregunta 1",
+          "tipo": "texto",
+          "grupo": "Lupa 2: lo que sugiere"
+        },
+        {
+          "id": "l2_p2",
+          "etiqueta": "Pregunta 2",
+          "tipo": "texto",
+          "grupo": "Lupa 2: lo que sugiere"
+        },
+        {
+          "id": "l2_r2",
+          "etiqueta": "Mi respuesta a la pregunta 2",
+          "tipo": "texto",
+          "grupo": "Lupa 2: lo que sugiere"
+        },
+        {
+          "id": "l3_p1",
+          "etiqueta": "Pregunta 1",
+          "tipo": "texto",
+          "grupo": "Lupa 3: lo que pienso"
+        },
+        {
+          "id": "l3_r1",
+          "etiqueta": "Mi respuesta a la pregunta 1",
+          "tipo": "texto",
+          "grupo": "Lupa 3: lo que pienso",
+          "ayuda": "En las preguntas críticas, usa \"porque\"."
+        },
+        {
+          "id": "l3_p2",
+          "etiqueta": "Pregunta 2",
+          "tipo": "texto",
+          "grupo": "Lupa 3: lo que pienso"
+        },
+        {
+          "id": "l3_r2",
+          "etiqueta": "Mi respuesta a la pregunta 2",
+          "tipo": "texto",
+          "grupo": "Lupa 3: lo que pienso",
+          "ayuda": "En las preguntas críticas, usa \"porque\"."
+        }
+      ],
+      "rubrica": [
+        {
+          "criterio": "Preguntas por nivel",
+          "superior": "Seis preguntas bien ubicadas en su nivel",
+          "alto": "Cinco bien ubicadas",
+          "basico": "Tres o cuatro",
+          "bajo": "Menos de tres"
+        },
+        {
+          "criterio": "Respuestas",
+          "superior": "Respuestas correctas y completas; las críticas con razón",
+          "alto": "Respuestas correctas con algún detalle faltante",
+          "basico": "Algunas respuestas incompletas",
+          "bajo": "Respuestas ausentes o sin relación"
+        },
+        {
+          "criterio": "Intercambio en el muro",
+          "superior": "Responde las preguntas del compañero y le da una sugerencia",
+          "alto": "Responde las preguntas del compañero",
+          "basico": "Responde parcialmente",
+          "bajo": "No participa"
+        }
+      ]
+    },
+    {
+      "id": "reto_4",
+      "caso": 4,
+      "titulo": "Detective de noticias",
+      "duracion": "50 minutos",
+      "pasos": [
+        "Tu docente comparte una noticia infantil real y actual.",
+        "Responde qué, quién, cuándo, dónde, cómo y por qué.",
+        "Copia tres hechos y dos opiniones (o escribe \"no encontré opiniones\" y explica).",
+        "Aplica la lista LUPA y decide si confías en la fuente. Explica tu decisión."
+      ],
+      "producto": "Una ficha de análisis de la noticia completada en el sitio y descargada como PDF.",
+      "campos": [
+        {
+          "id": "noticia",
+          "etiqueta": "Título de la noticia y su fuente",
+          "tipo": "texto",
+          "grupo": "La noticia"
+        },
+        {
+          "id": "que",
+          "etiqueta": "¿Qué pasó?",
+          "tipo": "texto",
+          "grupo": "Las seis preguntas"
+        },
+        {
+          "id": "quien",
+          "etiqueta": "¿Quiénes?",
+          "tipo": "texto",
+          "grupo": "Las seis preguntas"
+        },
+        {
+          "id": "cuando",
+          "etiqueta": "¿Cuándo?",
+          "tipo": "texto",
+          "grupo": "Las seis preguntas"
+        },
+        {
+          "id": "donde",
+          "etiqueta": "¿Dónde?",
+          "tipo": "texto",
+          "grupo": "Las seis preguntas"
+        },
+        {
+          "id": "como",
+          "etiqueta": "¿Cómo?",
+          "tipo": "texto",
+          "grupo": "Las seis preguntas"
+        },
+        {
+          "id": "por_que",
+          "etiqueta": "¿Por qué?",
+          "tipo": "texto",
+          "grupo": "Las seis preguntas"
+        },
+        {
+          "id": "hecho_1",
+          "etiqueta": "Hecho 1",
+          "tipo": "texto",
+          "grupo": "Hechos y opiniones"
+        },
+        {
+          "id": "hecho_2",
+          "etiqueta": "Hecho 2",
+          "tipo": "texto",
+          "grupo": "Hechos y opiniones"
+        },
+        {
+          "id": "hecho_3",
+          "etiqueta": "Hecho 3",
+          "tipo": "texto",
+          "grupo": "Hechos y opiniones"
+        },
+        {
+          "id": "opinion_1",
+          "etiqueta": "Opinión 1",
+          "tipo": "texto",
+          "grupo": "Hechos y opiniones",
+          "ayuda": "Si no encontraste opiniones, escribe \"no encontré opiniones\" y explica."
+        },
+        {
+          "id": "opinion_2",
+          "etiqueta": "Opinión 2",
+          "tipo": "texto",
+          "grupo": "Hechos y opiniones"
+        },
+        {
+          "id": "lupa_l",
+          "etiqueta": "L: ¿Leo quién lo escribió?",
+          "tipo": "texto",
+          "grupo": "Lista LUPA"
+        },
+        {
+          "id": "lupa_u",
+          "etiqueta": "U: ¿Ubico la fecha?",
+          "tipo": "texto",
+          "grupo": "Lista LUPA"
+        },
+        {
+          "id": "lupa_p",
+          "etiqueta": "P: ¿Pregunto a otras fuentes?",
+          "tipo": "texto",
+          "grupo": "Lista LUPA"
+        },
+        {
+          "id": "lupa_a",
+          "etiqueta": "A: ¿Analizo si quiere asustarme o emocionarme?",
+          "tipo": "texto",
+          "grupo": "Lista LUPA"
+        },
+        {
+          "id": "decision",
+          "etiqueta": "Mi decisión: ¿confío en la fuente? Explica por qué",
+          "tipo": "texto_largo",
+          "grupo": "Lista LUPA"
+        }
+      ],
+      "rubrica": [
+        {
+          "criterio": "Partes de la noticia",
+          "superior": "Responde las 6 preguntas con datos precisos",
+          "alto": "Responde 5",
+          "basico": "Responde 3 o 4",
+          "bajo": "Menos de 3"
+        },
+        {
+          "criterio": "Hechos y opiniones",
+          "superior": "Tres hechos y dos opiniones bien identificados",
+          "alto": "Una confusión",
+          "basico": "Dos o tres confusiones",
+          "bajo": "No distingue"
+        },
+        {
+          "criterio": "Evaluación de la fuente",
+          "superior": "Aplica las 4 letras de LUPA y justifica su decisión",
+          "alto": "Aplica 3 letras y justifica",
+          "basico": "Aplica 1 o 2",
+          "bajo": "No aplica la lista"
+        }
+      ]
+    },
+    {
+      "id": "reto_5",
+      "caso": 5,
+      "titulo": "Mi voz cuenta",
+      "duracion": "50 minutos (más la presentación en la Feria de detectives virtual)",
+      "pasos": [
+        "Elige una de las tres preguntas.",
+        "Arma tu texto en el constructor de argumentos: opinión, dos razones, un ejemplo y conclusión.",
+        "Revisa que usaste al menos tres conectores distintos.",
+        "Graba tu texto en voz alta con la grabadora de esta página y preséntalo en la Feria de detectives virtual."
+      ],
+      "producto": "Un texto de opinión de 8 a 10 líneas en PDF, descargado desde el sitio, y su grabación de voz.",
+      "campos": [
+        {
+          "id": "pregunta",
+          "etiqueta": "Pregunta que elegí",
+          "tipo": "texto"
+        },
+        {
+          "id": "opinion",
+          "etiqueta": "Mi opinión (Yo pienso que...)",
+          "tipo": "texto"
+        },
+        {
+          "id": "razon_1",
+          "etiqueta": "Razón (porque...)",
+          "tipo": "texto"
+        },
+        {
+          "id": "ejemplo",
+          "etiqueta": "Ejemplo (Por ejemplo,...)",
+          "tipo": "texto"
+        },
+        {
+          "id": "razon_2",
+          "etiqueta": "Otra razón (Además,...)",
+          "tipo": "texto"
+        },
+        {
+          "id": "contraria",
+          "etiqueta": "Otra mirada (Sin embargo,...)",
+          "tipo": "texto"
+        },
+        {
+          "id": "conclusion",
+          "etiqueta": "Conclusión (En conclusión,...)",
+          "tipo": "texto"
+        }
+      ],
+      "rubrica": [
+        {
+          "criterio": "Opinión clara",
+          "superior": "Opinión clara al inicio y sostenida hasta el final",
+          "alto": "Opinión clara",
+          "basico": "Opinión confusa",
+          "bajo": "Sin opinión"
+        },
+        {
+          "criterio": "Razones y ejemplo",
+          "superior": "Dos razones sólidas y un ejemplo pertinente",
+          "alto": "Dos razones o una razón y un ejemplo",
+          "basico": "Una razón",
+          "bajo": "Sin razones"
+        },
+        {
+          "criterio": "Conectores y orden",
+          "superior": "Tres o más conectores bien usados; introducción, desarrollo y conclusión",
+          "alto": "Dos conectores y buen orden",
+          "basico": "Un conector",
+          "bajo": "Sin conectores ni orden"
+        }
+      ]
+    }
+  ],
+  "producto_final": {
+    "titulo": "Expediente del detective lector",
+    "descripcion": "Reúne en un solo PDF la bitácora del caso 1, el instructivo del caso 2, las preguntas del caso 3, el análisis de noticia del caso 4 y el texto de opinión del caso 5. Agrega una portada con tu nombre y una frase: \"Lo que más aprendí como detective fue...\".",
+    "rubrica": [
+      {
+        "criterio": "Completitud",
+        "superior": "Los 5 retos y la portada",
+        "alto": "4 retos",
+        "basico": "2 o 3 retos",
+        "bajo": "1 o ninguno"
+      },
+      {
+        "criterio": "Mejora",
+        "superior": "Corrigió los retos con la retroalimentación recibida",
+        "alto": "Corrigió algunos",
+        "basico": "Corrigió uno",
+        "bajo": "No corrigió"
+      },
+      {
+        "criterio": "Reflexión",
+        "superior": "La frase final explica un aprendizaje concreto con un ejemplo",
+        "alto": "Explica un aprendizaje",
+        "basico": "Frase general",
+        "bajo": "Sin frase"
+      }
+    ]
+  }
+}

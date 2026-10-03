@@ -1,0 +1,61 @@
+---
+// course symbol: ink ring and green handle
+interface Props {
+  size?: number;
+  class?: string;
+}
+const { size = 32, class: clase = '' } = Astro.props;
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 64 64"
+  width={size}
+  height={size}
+  class={clase}
+  aria-hidden="true"
+  focusable="false"
+>
+  <!-- Handle shadow -->
+  <path d="M42 42 L56 56" stroke="#2c2e2a" stroke-width="16" stroke-linecap="round" opacity="0.15"></path>
+  
+  <!-- Handle Outline -->
+  <path d="M40 40 L54 54" stroke="#2c2e2a" stroke-width="16" stroke-linecap="round"></path>
+  <!-- Handle Fill -->
+  <path d="M40 40 L54 54" stroke="#8ed462" stroke-width="10" stroke-linecap="round"></path>
+  <!-- Handle highlight -->
+  <path d="M41 39 L53 51" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.6"></path>
+
+  <!-- Handle connector -->
+  <rect x="36" y="36" width="8" height="8" rx="2" fill="#d5d5d4" stroke="#2c2e2a" stroke-width="3" transform="rotate(45 40 40)"></rect>
+
+  <!-- Glass shadow -->
+  <circle cx="29" cy="29" r="17" fill="#2c2e2a" opacity="0.15"></circle>
+
+  <!-- Glass Outer Ring -->
+  <circle cx="27" cy="27" r="18" fill="#e0dbce" stroke="#2c2e2a" stroke-width="4"></circle>
+  
+  <!-- Glass Inner -->
+  <circle cx="27" cy="27" r="14" fill="#f5f1e4" stroke="#2c2e2a" stroke-width="2"></circle>
+
+  <!-- Inner glass shadow -->
+  <path d="M16 27 A11 11 0 0 0 38 27 A11 11 0 0 1 16 27" fill="#2c2e2a" opacity="0.05"></path>
+
+  <!-- Reflections -->
+  <path
+    d="M17 24 A10 10 0 0 1 25 17"
+    stroke="#ffffff"
+    stroke-width="4"
+    stroke-linecap="round"
+    fill="none"
+    opacity="0.9"
+  ></path>
+  <path
+    d="M33 35 A4 4 0 0 1 35 33"
+    stroke="#ffffff"
+    stroke-width="3"
+    stroke-linecap="round"
+    fill="none"
+    opacity="0.8"
+  ></path>
+</svg>

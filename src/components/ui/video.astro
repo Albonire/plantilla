@@ -1,0 +1,34 @@
+---
+import { VideoOverview } from '../islas/video_overview';
+import Pendiente from './pendiente.astro';
+import { existsSync } from 'node:fs';
+import { pieza, transcripcion_de } from '../../lib/multimedia';
+
+interface Props {
+  id: string;
+  etiqueta?: string;
+  descripcion?: string;
+}
+const { id, etiqueta = 'Mira la explicación', descripcion } = Astro.props;
+const p = pieza(id);
+const base = p.archivo as string;
+const existe = existsSync(new URL(`../../../public${base}.mp4`, import.meta.url));
+---
+
+{existe ? (
+  <VideoOverview
+    client:visible
+    titulo={p.titulo}
+    etiqueta={etiqueta}
+    webm={`${base}.webm`}
+    mp4={`${base}.mp4`}
+    poster={p.poster as string}
+    duracion={p.duracion as string}
+    transcripcion={transcripcion_de(p.transcripcion)}
+    descripcion={descripcion}
+  />
+) : (
+  <div class="rounded-card border-2 border-ink-black bg-pure-white p-5 md:p-8">
+    <Pendiente texto={`falta el video ${base}.mp4`} />
+  </div>
+)}

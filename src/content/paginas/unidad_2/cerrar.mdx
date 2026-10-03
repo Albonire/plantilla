@@ -1,0 +1,16 @@
+import Seccion from '../../../components/ui/seccion.astro';
+import { ChallengeCard } from '../../../components/islas/challenge_card';
+import datos_retos from '../../../data/retos.json';
+import { LienzoDibujo } from '../../../components/islas/lienzo_dibujo';
+
+<Seccion id="reto" titulo="Reto del caso" etiqueta="Actividad sumativa">
+
+<div class="flex flex-col gap-8">
+
+<LienzoDibujo client:visible unidad={2} />
+
+<ChallengeCard client:visible reto={datos_retos.retos[1]} unidad={2} titulo_caso={props.unidad.titulo} />
+
+</div>
+
+</Seccion>

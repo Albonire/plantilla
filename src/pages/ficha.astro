@@ -1,0 +1,205 @@
+---
+import { getCollection } from 'astro:content';
+import CursoLayout from '../layouts/curso_layout.astro';
+import EncabezadoPagina from '../components/curso/encabezado_pagina.astro';
+import Seccion from '../components/ui/seccion.astro';
+import Apa from '../components/ui/apa.astro';
+import recursos from '../data/recursos.json';
+import datos_retos from '../data/retos.json';
+import { filas_curso, resumen_unidades } from '../data/ficha';
+import { nombre_de, sitio } from '../config/sitio';
+import { ruta_seccion } from '../config/paginas';
+
+const unidades = (await getCollection('unidades')).sort((a, b) => a.data.numero - b.data.numero);
+
+const etiqueta_recurso = (r: (typeof recursos)[number]) =>
+  r.tipo === 'propio' ? 'Creación propia' : 'Recurso de la web';
+
+const filas_unidad = (n: number) => {
+  const u = unidades.find((x) => x.data.numero === n)!;
+  const reto = datos_retos.retos[n - 1];
+  const resumen = resumen_unidades[n];
+  return [
+    {
+      elemento: 'Imagen de la unidad de aprendizaje',
+      descripcion: u.data.imagen_portada.alt,
+      seccion: ruta_seccion(n, 'portada'),
+      recurso: u.data.imagen_portada.credito,
+    },
+    {
+      elemento: 'Aprendizajes esperados',
+      descripcion: u.data.aprendizajes_esperados.join(' '),
+      seccion: ruta_seccion(n, 'mision'),
+      recurso: 'DBA y estándar de Lenguaje de 5.º (ver la sección Para docentes de la unidad).',
+    },
+    {
+      elemento: 'Introducción a la unidad',
+      descripcion: 'Texto de lectura que presenta la unidad.',
+      seccion: ruta_seccion(n, 'introduccion'),
+      recurso: 'Creación propia.',
+    },
+    {
+      elemento: 'Contenidos / temáticas',
+      descripcion: resumen.contenidos,
+      seccion: ruta_seccion(n, 'contenidos'),
+      recurso: 'Creación propia con infografía elaborada con herramientas digitales.',
+    },
+    {
+      elemento: 'Desarrollo de las temáticas y materiales de estudio',
+      descripcion: resumen.desarrollo,
+      seccion: ruta_seccion(n, 'desarrollo'),
+      recurso: 'Recursos propios y recursos de la web citados en APA 7.',
+    },
+    {
+      elemento: 'Actividades formativas',
+      descripcion: resumen.formativas,
+      seccion: ruta_seccion(n, 'practica'),
+      recurso: 'Recursos propios (sitio) y kit multimedia elaborado con herramientas digitales.',
+    },
+    {
+      elemento: 'Actividades sumativas',
+      descripcion: `${reto.titulo}, ${reto.duracion}. Producto: ${reto.producto}`,
+      seccion: ruta_seccion(n, 'reto'),
+      recurso: 'Creación propia con rúbrica de cuatro niveles.',
+    },
+  ];
+};
+---
+
+<CursoLayout
+  titulo="Ficha de diseño"
+  descripcion="La ficha de diseño del curso fila por fila, con el enlace a la sección del sitio donde está montada cada una."
+  titulo_cabecera="Ficha de diseño"
+  sin_paginador
+>
+  <EncabezadoPagina etiqueta="Para la evaluadora" titulo="Ficha de diseño" color="sky-pop">
+    <p>
+      {sitio.seminario}. Actividad: {sitio.actividad}. Cada fila de la ficha enlaza con la sección
+      del sitio donde está montada.
+    </p>
+  </EncabezadoPagina>
+
+  <Seccion id="ficha-curso" titulo="Introducción al curso" etiqueta="Primera parte de la ficha">
+    <div
+      class="overflow-x-auto rounded-card bg-pure-white p-3 md:p-6"
+      tabindex="0"
+      role="region"
+      aria-label="Tabla con desplazamiento horizontal"
+    >
+      <table class="w-full min-w-[40rem] text-left text-body-sm">
+        <caption class="sr-only">
+          Filas de la introducción al curso y su ubicación en el sitio
+        </caption>
+        <thead>
+          <tr class="border-b border-hairline-mist">
+            <th scope="col" class="px-3 py-3 font-medium">
+              Elemento
+            </th>
+            <th scope="col" class="px-3 py-3 font-medium">
+              Descripción
+            </th>
+            <th scope="col" class="px-3 py-3 font-medium">
+              Responsable
+            </th>
+            <th scope="col" class="px-3 py-3 font-medium">
+              Dónde está
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {filas_curso.map((f) => (
+            <tr class="border-b border-hairline-mist align-top last:border-0">
+              <th scope="row" class="px-3 py-4 font-medium">
+                {f.elemento}
+              </th>
+              <td class="px-3 py-4">{f.descripcion}</td>
+              <td class="px-3 py-4">Todo el grupo</td>
+              <td class="px-3 py-4">
+                <a href={f.seccion} class="font-medium underline decoration-2 underline-offset-4">
+                  Ver en el sitio<span class="sr-only">: {f.elemento}</span>
+                </a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </Seccion>
+
+  {unidades.map((u) => (
+    <Seccion
+      id={`ficha-unidad-${u.data.numero}`}
+      titulo={`Unidad ${u.data.numero}: ${u.data.titulo}`}
+      etiqueta={`Estructuración didáctica. Responsable: ${nombre_de(u.data.responsable)}`}
+      fondo={u.data.numero % 2 === 0 ? 'arena' : 'crema'}
+    >
+      <div
+        class="overflow-x-auto rounded-card bg-pure-white p-3 md:p-6"
+        tabindex="0"
+        role="region"
+        aria-label="Tabla con desplazamiento horizontal"
+      >
+        <table class="w-full min-w-[46rem] text-left text-body-sm">
+          <caption class="sr-only">
+            Filas de la unidad {u.data.numero} y su ubicación en el sitio
+          </caption>
+          <thead>
+            <tr class="border-b border-hairline-mist">
+              <th scope="col" class="px-3 py-3 font-medium">
+                Elemento
+              </th>
+              <th scope="col" class="px-3 py-3 font-medium">
+                Descripción
+              </th>
+              <th scope="col" class="px-3 py-3 font-medium">
+                Recurso o actividad
+              </th>
+              <th scope="col" class="px-3 py-3 font-medium">
+                Dónde está
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {filas_unidad(u.data.numero).map((f) => (
+              <tr class="border-b border-hairline-mist align-top last:border-0">
+                <th scope="row" class="px-3 py-4 font-medium">
+                  {f.elemento}
+                </th>
+                <td class="px-3 py-4">{f.descripcion}</td>
+                <td class="px-3 py-4 text-stone-text">{f.recurso}</td>
+                <td class="px-3 py-4">
+                  <a href={f.seccion} class="font-medium underline decoration-2 underline-offset-4">
+                    Ver en el sitio
+                    <span class="sr-only">
+                      : {f.elemento}, unidad {u.data.numero}
+                    </span>
+                  </a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="mt-10 text-subheading font-medium">Recursos de la unidad {u.data.numero}</h3>
+      <ul class="mt-4 grid gap-3 md:grid-cols-2">
+        {recursos
+          .filter((r) => r.unidad === u.data.numero)
+          .map((r) => (
+            <li class="rounded-soft bg-pure-white p-4 text-body-sm">
+              <p class="font-medium">
+                {etiqueta_recurso(r)}: {r.titulo}
+              </p>
+              <p class="text-stone-text">{r.herramienta}</p>
+              {r.tipo === 'web' && r.apa && (
+                <Apa texto={r.apa} class="mt-1 block text-stone-text" />
+              )}
+              {r.tipo === 'web' && !r.verificado && (
+                <p class="mt-1 font-medium">Enlace por confirmar</p>
+              )}
+            </li>
+          ))}
+      </ul>
+    </Seccion>
+  ))}
+</CursoLayout>

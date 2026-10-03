@@ -1,0 +1,32 @@
+---
+import { AudioPodcast } from '../islas/audio_podcast';
+import Pendiente from './pendiente.astro';
+import { existsSync } from 'node:fs';
+import { pieza, transcripcion_de } from '../../lib/multimedia';
+
+interface Props {
+  id: string;
+  titulo?: string;
+  etiqueta?: string;
+  descripcion?: string;
+}
+const { id, titulo, etiqueta = 'Escucha el repaso del caso', descripcion } = Astro.props;
+const p = pieza(id);
+const existe = existsSync(new URL(`../../../public${p.archivo}`, import.meta.url));
+---
+
+{existe ? (
+  <AudioPodcast
+    client:visible
+    src={p.archivo as string}
+    titulo={titulo ?? p.titulo}
+    etiqueta={etiqueta}
+    duracion={p.duracion as string}
+    transcripcion={transcripcion_de(p.transcripcion)}
+    descripcion={descripcion}
+  />
+) : (
+  <div class="rounded-card border-2 border-ink-black bg-pure-white p-5 md:p-8">
+    <Pendiente texto={`falta el archivo de audio ${p.archivo}`} />
+  </div>
+)}

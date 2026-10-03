@@ -1,0 +1,124 @@
+---
+// frame of the book: fixed bar, index beside the page, the page itself and the previous/next links.
+// 'hoja' is a page of the book (cases, program, closing, references); 'portada' is the full-width cover.
+import { getCollection } from 'astro:content';
+import BaseLayout from './base_layout.astro';
+import Cabecera from '../components/curso/cabecera.astro';
+import IndiceCurso from '../components/curso/indice_curso.astro';
+import Paginador from '../components/curso/paginador.astro';
+import FooterBand from '../components/ui/footer_band.astro';
+import {
+  destino_de,
+  folio,
+  id_pagina,
+  pagina_por_slug,
+  vecinos,
+  type Ubicacion,
+} from '../config/paginas';
+
+interface Props {
+  titulo: string;
+  descripcion?: string;
+  modo?: 'hoja' | 'portada';
+  // absent on the pages that are outside the reading order (design sheet, teachers)
+  ubicacion?: Ubicacion;
+  // title of the bar when there is no ubicacion
+  titulo_cabecera?: string;
+  sin_paginador?: boolean;
+}
+const {
+  titulo,
+  descripcion,
+  modo = 'hoja',
+  ubicacion,
+  titulo_cabecera,
+  sin_paginador = false,
+} = Astro.props;
+
+const unidades = (await getCollection('unidades'))
+  .sort((a, b) => a.data.numero - b.data.numero)
+  .map((u) => ({
+    numero: u.data.numero,
+    titulo: u.data.titulo,
+    color: u.data.color,
+    contenidos: u.data.contenidos.map((c) => ({ id: c.id, titulo: c.titulo })),
+  }));
+const titulos_casos = Object.fromEntries(unidades.map((u) => [u.numero, u.titulo]));
+const ruta_actual = Astro.url.pathname.replace(/\/$/, '') || '/';
+
+let linea1: string | undefined = titulo_cabecera;
+let linea2: string | undefined;
+let contenidos: { id: string; titulo: string }[] = [];
+let folio_texto: string | undefined;
+let pagina_id: string | undefined;
+let titulo_pagina: string | undefined;
+let pasar = false;
+
+if (ubicacion?.tipo === 'caso') {
+  const pagina = pagina_por_slug(ubicacion.pagina);
+  const caso = unidades.find((u) => u.numero === ubicacion.caso);
+  folio_texto = folio(ubicacion.pagina);
+  linea1 = `Caso ${ubicacion.caso}: ${caso?.titulo ?? ''}`;
+  linea2 = `${pagina?.titulo} · ${folio_texto}`;
+  contenidos = caso?.contenidos ?? [];
+  pagina_id = id_pagina(ubicacion.caso, ubicacion.pagina);
+  titulo_pagina = pagina?.titulo;
+  pasar = ubicacion.pagina === 'cerrar';
+} else if (ubicacion && ubicacion.tipo !== 'inicio') {
+  const destino = destino_de(ubicacion, titulos_casos);
+  linea1 = destino.titulo;
+  linea2 = destino.contexto;
+}
+
+const { anterior, siguiente } =
+  ubicacion && !sin_paginador
+    ? vecinos(ubicacion, titulos_casos)
+    : { anterior: null, siguiente: null };
+---
+
+<BaseLayout titulo={titulo} descripcion={descripcion}>
+  <Cabecera
+    linea1={linea1}
+    linea2={linea2}
+    unidades={unidades}
+    ubicacion={ubicacion}
+    ruta_actual={ruta_actual}
+  />
+
+  {modo === 'portada' ? (
+    <div>
+      <main id="contenido" class="hoja-portada">
+        <slot />
+      </main>
+      <FooterBand />
+    </div>
+  ) : (
+    <div class="curso-cuerpo">
+      <div class="curso-indice">
+        <p class="px-3 pb-2 text-body-sm font-medium text-stone-text">Índice del curso</p>
+        <IndiceCurso
+          variante="lateral"
+          unidades={unidades}
+          ubicacion={ubicacion}
+          contenidos={contenidos}
+        />
+      </div>
+      <div class="curso-fondo">
+        <main id="contenido" class="hoja">
+          <slot />
+          {(anterior || siguiente) && (
+            <Paginador
+              anterior={anterior}
+              siguiente={siguiente}
+              folio={folio_texto}
+              pagina_id={pagina_id}
+              titulo_pagina={titulo_pagina}
+              pasar={pasar}
+            />
+          )}
+        </main>
+        <FooterBand />
+      </div>
+    </div>
+  )}
+</BaseLayout>

@@ -1,0 +1,625 @@
+{
+  "comic": {
+    "titulo": "Tres textos, tres misiones",
+    "vinetas": [
+      {
+        "id": "v1",
+        "escena": "caja",
+        "descripcion": "Sofía y Mateo encuentran una caja con tres hojas.",
+        "dialogos": [
+          {
+            "personaje": "Mateo",
+            "texto": "¡Tres textos misteriosos! ¿Cómo sabemos qué es cada uno?"
+          },
+          {
+            "personaje": "Sofía",
+            "texto": "Un detective se pregunta para qué sirve el texto."
+          }
+        ]
+      },
+      {
+        "id": "v2",
+        "escena": "narrativo",
+        "descripcion": "Hoja 1: \"Había una vez un renacuajo...\".",
+        "dialogos": [
+          {
+            "personaje": "Sofía",
+            "texto": "Este cuenta una historia con personajes. Es un texto narrativo y tiene inicio, nudo y desenlace."
+          }
+        ]
+      },
+      {
+        "id": "v3",
+        "escena": "informativo",
+        "descripcion": "Hoja 2: \"Rafael Pombo nació en Bogotá en 1833...\".",
+        "dialogos": [
+          {
+            "personaje": "Mateo",
+            "texto": "Este da datos reales. Es un texto informativo: quiere que aprendamos algo."
+          }
+        ]
+      },
+      {
+        "id": "v4",
+        "escena": "instructivo",
+        "descripcion": "Hoja 3: \"Materiales... Paso 1... Paso 2...\".",
+        "dialogos": [
+          {
+            "personaje": "Sofía",
+            "texto": "Este dice cómo hacer algo en orden. Es un texto instructivo."
+          }
+        ]
+      },
+      {
+        "id": "v5",
+        "escena": "mezcla",
+        "descripcion": "Mateo mezcla los pasos del instructivo.",
+        "dialogos": [
+          {
+            "personaje": "Mateo",
+            "texto": "¿Y si mezclo los pasos?"
+          },
+          {
+            "personaje": "Sofía",
+            "texto": "¡El separador te quedaría mal! En un instructivo el orden importa."
+          }
+        ]
+      },
+      {
+        "id": "v6",
+        "escena": "pista",
+        "descripcion": "Los dos detectives cierran el caso.",
+        "dialogos": [
+          {
+            "personaje": "Sofía y Mateo",
+            "texto": "Pista del día: pregúntate si el texto te cuenta, te informa o te enseña a hacer algo."
+          }
+        ]
+      }
+    ]
+  },
+  "sendero": [
+    {
+      "id": "estacion-narrativo",
+      "titulo": "Texto narrativo",
+      "mision": "Contar una historia.",
+      "partes": [
+        [
+          "Inicio",
+          "presenta personajes y lugar"
+        ],
+        [
+          "Nudo",
+          "aparece el problema"
+        ],
+        [
+          "Desenlace",
+          "se resuelve"
+        ]
+      ],
+      "pistas": "\"Había una vez\", personajes, diálogos."
+    },
+    {
+      "id": "estacion-informativo",
+      "titulo": "Texto informativo",
+      "mision": "Dar a conocer datos reales.",
+      "partes": [
+        [
+          "Título",
+          ""
+        ],
+        [
+          "Entrada",
+          "con la idea principal"
+        ],
+        [
+          "Desarrollo",
+          "con datos"
+        ],
+        [
+          "Cierre",
+          ""
+        ]
+      ],
+      "pistas": "Fechas, lugares, nombres reales, datos que se pueden comprobar."
+    },
+    {
+      "id": "estacion-instructivo",
+      "titulo": "Texto instructivo",
+      "mision": "Enseñar a hacer algo.",
+      "partes": [
+        [
+          "Título",
+          ""
+        ],
+        [
+          "Materiales",
+          ""
+        ],
+        [
+          "Pasos numerados en orden",
+          "a veces con imágenes"
+        ]
+      ],
+      "pistas": "Verbos que dan órdenes (corta, pega, dobla), números de pasos."
+    }
+  ],
+  "renacuajo": {
+    "titulo": "El renacuajo paseador",
+    "autor": "Rafael Pombo",
+    "estrofas": [
+      {
+        "id": "e1",
+        "versos": [
+          "El hijo de rana, Rinrín renacuajo",
+          "Salió esta mañana muy tieso y muy majo",
+          "Con pantalón corto, corbata a la moda",
+          "Sombrero encintado y chupa de boda."
+        ],
+        "parte": "inicio"
+      },
+      {
+        "id": "e2",
+        "versos": [
+          "-¡Muchacho, no salgas!- le grita mamá",
+          "pero él hace un gesto y orondo se va."
+        ],
+        "parte": "inicio"
+      },
+      {
+        "id": "e3",
+        "versos": [
+          "Halló en el camino, a un ratón vecino",
+          "Y le dijo: -¡amigo!- venga usted conmigo,",
+          "Visitemos juntos a doña ratona",
+          "Y habrá francachela y habrá comilona."
+        ],
+        "parte": "inicio"
+      },
+      {
+        "id": "e4",
+        "versos": [
+          "A poco llegaron, y avanza ratón,",
+          "Estírase el cuello, coge el aldabón,",
+          "Da dos o tres golpes, preguntan: ¿quién es?",
+          "-Yo doña ratona, beso a usted los pies"
+        ],
+        "parte": "inicio"
+      },
+      {
+        "id": "e5",
+        "versos": [
+          "¿Está usted en casa? -Sí señor sí estoy,",
+          "y celebro mucho ver a ustedes hoy;",
+          "estaba en mi oficio, hilando algodón,",
+          "pero eso no importa; bienvenidos son."
+        ],
+        "parte": "nudo"
+      },
+      {
+        "id": "e6",
+        "versos": [
+          "Se hicieron la venia, se dieron la mano,",
+          "Y dice Ratico, que es más veterano :",
+          "Mi amigo el de verde rabia de calor,",
+          "Démele cerveza, hágame el favor."
+        ],
+        "parte": "nudo"
+      },
+      {
+        "id": "e7",
+        "versos": [
+          "Y en tanto que el pillo consume la jarra",
+          "Mandó la señora traer la guitarra",
+          "Y a renacuajo le pide que cante",
+          "Versitos alegres, tonada elegante."
+        ],
+        "parte": "nudo"
+      },
+      {
+        "id": "e8",
+        "versos": [
+          "-¡Ay! de mil amores lo hiciera, señora,",
+          "pero es imposible darle gusto ahora,",
+          "que tengo el gaznate más seco que estopa",
+          "y me aprieta mucho esta nueva ropa."
+        ],
+        "parte": "nudo"
+      },
+      {
+        "id": "e9",
+        "versos": [
+          "-Lo siento infinito, responde tía rata,",
+          "aflójese un poco chaleco y corbata,",
+          "y yo mientras tanto les voy a cantar",
+          "una cancioncita muy particular."
+        ],
+        "parte": "nudo"
+      },
+      {
+        "id": "e10",
+        "versos": [
+          "Mas estando en esta brillante función",
+          "De baile y cerveza, guitarra y canción,",
+          "La gata y sus gatos salvan el umbral,",
+          "Y vuélvese aquello el juicio final"
+        ],
+        "parte": "nudo"
+      },
+      {
+        "id": "e11",
+        "versos": [
+          "Doña gata vieja trinchó por la oreja",
+          "Al niño Ratico maullándole: ¡Hola!",
+          "Y los niños gatos a la vieja rata",
+          "Uno por la pata y otro por la cola"
+        ],
+        "parte": "desenlace"
+      },
+      {
+        "id": "e12",
+        "versos": [
+          "Don Renacuajito mirando este asalto",
+          "Tomó su sombrero, dio un tremendo salto",
+          "Y abriendo la puerta con mano y narices,",
+          "Se fue dando a todos noches muy felices"
+        ],
+        "parte": "desenlace"
+      },
+      {
+        "id": "e13",
+        "versos": [
+          "Y siguió saltando tan alto y aprisa,",
+          "Que perdió el sombrero, rasgó la camisa,",
+          "se coló en la boca de un pato tragón",
+          "y éste se lo embucha de un solo estirón"
+        ],
+        "parte": "desenlace"
+      },
+      {
+        "id": "e14",
+        "versos": [
+          "Y así concluyeron, uno, dos y tres",
+          "Ratón y Ratona, y el Rana después;",
+          "Los gatos comieron y el pato cenó,",
+          "¡y mamá Ranita solita quedó!"
+        ],
+        "parte": "desenlace"
+      }
+    ],
+    "clave": {
+      "inicio": "Rinrín sale de casa sin hacer caso a su mamá, se encuentra con el ratón y llegan a casa de doña Ratona.",
+      "nudo": "Durante la visita y la fiesta llegan la gata y sus gatos.",
+      "desenlace": "Los gatos atrapan al ratón y a doña Ratona, un pato se come a Rinrín y mamá rana se queda sola."
+    },
+    "verificacion": {
+      "por": "Claude Code (asistente de IA)",
+      "fecha": "2026-09-25",
+      "texto": "Los 54 versos se compararon con la edición de la Biblioteca Luis Ángel Arango (Banco de la República) y con otras tres ediciones en línea. Coinciden salvo variantes menores de ortografía y puntuación (por ejemplo, \"bien venidos\" o \"les voy cantar\" en la edición del Banco de la República). La clave de inicio, nudo y desenlace se comprobó estrofa por estrofa contra el texto y coincide con la que definió el equipo."
+    }
+  },
+  "pombo": {
+    "titulo": "¿Quién fue Rafael Pombo?",
+    "parrafos": [
+      "Rafael Pombo fue un poeta colombiano. Nació en Bogotá en 1833 y murió en 1912. Estudió ingeniería y también trabajó como diplomático.",
+      "Aunque escribió poemas para adultos, se hizo famoso por sus cuentos en verso para niños. Entre ellos están \"El renacuajo paseador\", \"La pobre viejecita\", \"Simón el bobito\" y \"El gato bandido\".",
+      "Sus obras completas se publicaron por primera vez a partir de 1916, en cuatro tomos. Hoy muchas familias colombianas todavía recitan de memoria las aventuras de Rinrín renacuajo."
+    ],
+    "pregunta_enlace": "Compara este texto con el cuento. ¿Cuál te cuenta una historia y cuál te da datos reales? ¿Cómo lo sabes?",
+    "verificacion": {
+      "por": "Claude Code (asistente de IA)",
+      "fecha": "2026-09-25",
+      "texto": "Los datos se confirmaron con una segunda fuente, la Enciclopedia de la Red Cultural del Banco de la República (nacimiento y muerte en Bogotá, estudios de ingeniería, poemas para niños). La fecha de la edición completa de 1916 la trae Biografías y Vidas; otras fuentes hablan de 1916 y 1917, por eso el texto dice \"a partir de 1916\"."
+    }
+  },
+  "instructivo": {
+    "titulo": "Cómo hacer un separador de libros de Rinrín renacuajo",
+    "materiales": "Una tira de cartulina verde de 5 x 20 centímetros, un pedazo de papel blanco, un marcador negro, tijeras de punta redonda y pegante.",
+    "nota": "Este texto es un modelo de instructivo: no vas a fabricar el separador, solo vas a practicar el orden de los pasos en pantalla.",
+    "pasos": [
+      {
+        "id": "s1",
+        "texto": "Dibuja en la parte de arriba de la cartulina la cabeza redonda de Rinrín."
+      },
+      {
+        "id": "s2",
+        "texto": "Recorta dos círculos pequeños de papel blanco para los ojos."
+      },
+      {
+        "id": "s3",
+        "texto": "Pega los ojos sobre la cabeza."
+      },
+      {
+        "id": "s4",
+        "texto": "Dibuja con el marcador los puntos de los ojos y una sonrisa."
+      },
+      {
+        "id": "s5",
+        "texto": "Escribe en la tira el título de tu libro favorito."
+      },
+      {
+        "id": "s6",
+        "texto": "Deja secar el pegante y usa tu separador en tu próxima lectura."
+      }
+    ],
+    "retro_error": "Si pegas los ojos antes de recortarlos, no funciona: en un instructivo el orden importa.",
+    "retro_acierto": "Orden correcto. En un instructivo el orden importa."
+  },
+  "quiz": [
+    {
+      "id": "u2_q1",
+      "nivel": "Literal",
+      "pregunta": "¿Qué le gritó mamá rana a Rinrín cuando salía?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Que no saliera de la casa"
+        },
+        {
+          "id": "b",
+          "texto": "Que volviera antes de la cena"
+        },
+        {
+          "id": "c",
+          "texto": "Que llevara su sombrero nuevo"
+        }
+      ],
+      "correcta": "a",
+      "retro": "Al comienzo, la mamá le grita que no salga, pero él no hace caso."
+    },
+    {
+      "id": "u2_q2",
+      "nivel": "Literal",
+      "pregunta": "¿A quién fueron a visitar Rinrín y el ratón?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "A doña Ratona"
+        },
+        {
+          "id": "b",
+          "texto": "A mamá rana"
+        },
+        {
+          "id": "c",
+          "texto": "A los gatos del barrio"
+        }
+      ],
+      "correcta": "a",
+      "retro": "El ratón invita a Rinrín a casa de doña Ratona."
+    },
+    {
+      "id": "u2_q3",
+      "nivel": "Estructura",
+      "pregunta": "¿Qué parte del cuento es el nudo?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Cuando llegan la gata y sus gatos a la fiesta"
+        },
+        {
+          "id": "b",
+          "texto": "Cuando Rinrín sale de su casa"
+        },
+        {
+          "id": "c",
+          "texto": "Cuando mamá rana se queda sola"
+        }
+      ],
+      "correcta": "a",
+      "retro": "El problema aparece con la llegada de la gata y sus gatos."
+    },
+    {
+      "id": "u2_q4",
+      "nivel": "Estructura",
+      "pregunta": "¿Cuál es el desenlace?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Mamá rana se queda sola"
+        },
+        {
+          "id": "b",
+          "texto": "Rinrín conoce al ratón vecino"
+        },
+        {
+          "id": "c",
+          "texto": "Doña Ratona hila algodón"
+        }
+      ],
+      "correcta": "a",
+      "retro": "El final cuenta cómo termina todo: la mamá sin su hijo."
+    },
+    {
+      "id": "u2_q5",
+      "nivel": "Inferencial",
+      "pregunta": "¿Por qué mamá rana termina sola?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Porque su hijo no volvió nunca"
+        },
+        {
+          "id": "b",
+          "texto": "Porque se fue de viaje lejos"
+        },
+        {
+          "id": "c",
+          "texto": "Porque los gatos se la llevaron"
+        }
+      ],
+      "correcta": "a",
+      "retro": "Rinrín no regresó a casa."
+    },
+    {
+      "id": "u2_q6",
+      "nivel": "Crítico",
+      "pregunta": "¿Qué enseñanza deja el cuento?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Escuchar los consejos de quien nos cuida"
+        },
+        {
+          "id": "b",
+          "texto": "Ir a fiestas siempre trae problemas"
+        },
+        {
+          "id": "c",
+          "texto": "Los ratones son malos amigos"
+        }
+      ],
+      "correcta": "a",
+      "retro": "Todo empezó cuando Rinrín desobedeció el consejo de su mamá."
+    }
+  ],
+  "clasificador": {
+    "cajas": [
+      {
+        "id": "narrativo",
+        "titulo": "Narrativo",
+        "descripcion": "Cuenta una historia"
+      },
+      {
+        "id": "informativo",
+        "titulo": "Informativo",
+        "descripcion": "Da datos reales"
+      },
+      {
+        "id": "instructivo",
+        "titulo": "Instructivo",
+        "descripcion": "Enseña a hacer algo"
+      }
+    ],
+    "items": [
+      {
+        "id": "t1",
+        "texto": "Había una vez un sapo que quería aprender a volar.",
+        "caja": "narrativo"
+      },
+      {
+        "id": "t2",
+        "texto": "El colibrí es un ave pequeña que mueve sus alas muy rápido.",
+        "caja": "informativo"
+      },
+      {
+        "id": "t3",
+        "texto": "Paso 1: lava las manos con agua y jabón.",
+        "caja": "instructivo"
+      },
+      {
+        "id": "t4",
+        "texto": "La tortuga se detuvo, miró a la liebre y le propuso una carrera.",
+        "caja": "narrativo"
+      },
+      {
+        "id": "t5",
+        "texto": "Rafael Pombo nació en Bogotá en 1833.",
+        "caja": "informativo"
+      },
+      {
+        "id": "t6",
+        "texto": "Materiales: una hoja, un lápiz y tijeras.",
+        "caja": "instructivo"
+      }
+    ]
+  },
+  "tarjetas": [
+    {
+      "frente": "\"Había una vez un renacuajo muy tieso y majo\". ¿Tipo?",
+      "reverso": "Es un texto narrativo."
+    },
+    {
+      "frente": "\"Rafael Pombo nació en Bogotá en 1833\". ¿Tipo de texto?",
+      "reverso": "Es un texto informativo."
+    },
+    {
+      "frente": "\"Paso 1: Dibuja la cabeza redonda de Rinrín\". ¿Tipo?",
+      "reverso": "Es un texto instructivo."
+    },
+    {
+      "frente": "\"La gata y sus gatos salvan el umbral\". ¿Tipo?",
+      "reverso": "Es un texto narrativo."
+    },
+    {
+      "frente": "\"Pombo escribió cuentos en verso para niños\". ¿Tipo de texto?",
+      "reverso": "Es un texto informativo."
+    },
+    {
+      "frente": "\"Pega los ojos de papel sobre la cabeza\". ¿Tipo?",
+      "reverso": "Es un texto instructivo."
+    },
+    {
+      "frente": "\"Rinrín se coló en la boca de un pato\". ¿Tipo?",
+      "reverso": "Es un texto narrativo."
+    },
+    {
+      "frente": "\"Sus obras completas se publicaron en 1916\". ¿Tipo de texto?",
+      "reverso": "Es un texto informativo."
+    },
+    {
+      "frente": "\"Materiales: cartulina verde, marcador negro y pegante\". ¿Tipo?",
+      "reverso": "Es un texto instructivo."
+    },
+    {
+      "frente": "\"El hijo de rana salió muy tieso esta mañana\". ¿Tipo?",
+      "reverso": "Es un texto narrativo."
+    },
+    {
+      "frente": "\"Estudió ingeniería y también trabajó como diplomático\". ¿Tipo de texto?",
+      "reverso": "Es un texto informativo."
+    },
+    {
+      "frente": "\"Escribe en la tira el título de tu libro\". ¿Tipo?",
+      "reverso": "Es un texto instructivo."
+    },
+    {
+      "frente": "¿Cuáles son las tres partes del texto narrativo?",
+      "reverso": "Son inicio, nudo y desenlace."
+    },
+    {
+      "frente": "¿Qué parte del cuento presenta a los personajes?",
+      "reverso": "Se presentan en el inicio."
+    },
+    {
+      "frente": "¿Cómo se llama cuando aparece el problema en un cuento?",
+      "reverso": "Se llama nudo."
+    },
+    {
+      "frente": "¿Qué parte del cuento resuelve el conflicto final?",
+      "reverso": "Se resuelve en el desenlace."
+    },
+    {
+      "frente": "¿Cuáles son las partes del texto informativo?",
+      "reverso": "Título, entrada, desarrollo y cierre."
+    },
+    {
+      "frente": "¿Dónde se encuentra la idea principal en un texto informativo?",
+      "reverso": "Se encuentra en la entrada."
+    },
+    {
+      "frente": "¿Qué tipo de datos ofrece un texto informativo?",
+      "reverso": "Ofrece datos reales que se pueden comprobar."
+    },
+    {
+      "frente": "¿Cuáles son las partes del texto instructivo?",
+      "reverso": "Son título, materiales y pasos numerados."
+    },
+    {
+      "frente": "¿Por qué es importante el orden en un instructivo?",
+      "reverso": "Porque si el orden cambia, el resultado sale mal."
+    },
+    {
+      "frente": "¿Qué misión principal tiene un texto narrativo?",
+      "reverso": "Su misión es contar una historia."
+    },
+    {
+      "frente": "¿Qué misión principal tiene un texto instructivo?",
+      "reverso": "Su misión es enseñar a hacer algo paso a paso."
+    },
+    {
+      "frente": "¿Qué misión principal tiene un texto informativo?",
+      "reverso": "Su misión es dar a conocer datos reales."
+    }
+  ]
+}

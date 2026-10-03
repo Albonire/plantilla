@@ -1,0 +1,20 @@
+---
+// subsection of the development part: a titled block with a stable id
+interface Props {
+  id: string;
+  titulo: string;
+  etiqueta?: string;
+}
+const { id, titulo, etiqueta } = Astro.props;
+---
+
+<div
+  id={id}
+  class="scroll-mt-24 border-t-2 border-ink-black pt-8 first:border-t-0 first:pt-0 [&:not(:first-child)]:mt-14"
+>
+  {etiqueta && <p class="interfaz text-body-sm font-medium text-stone-text">{etiqueta}</p>}
+  <h3 class="mt-1 max-w-3xl text-[1.5rem] leading-snug md:text-[1.75rem]">{titulo}</h3>
+  <div class="mt-5 flex flex-col gap-6">
+    <slot />
+  </div>
+</div>

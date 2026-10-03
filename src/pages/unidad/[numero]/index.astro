@@ -1,0 +1,18 @@
+---
+import { getCollection, getEntry, render } from 'astro:content';
+import PaginaCasoLayout from '../../../layouts/pagina_caso_layout.astro';
+
+export async function getStaticPaths() {
+  const unidades = await getCollection('unidades');
+  return unidades.map((u) => ({ params: { numero: String(u.data.numero) }, props: { unidad: u } }));
+}
+
+const { unidad } = Astro.props;
+const entrada = await getEntry('paginas', `unidad_${unidad.data.numero}/abrir`);
+if (!entrada) throw new Error(`falta la pagina abrir del caso ${unidad.data.numero}`);
+const { Content } = await render(entrada);
+---
+
+<PaginaCasoLayout unidad={unidad} pagina="abrir">
+  <Content unidad={unidad.data} />
+</PaginaCasoLayout>

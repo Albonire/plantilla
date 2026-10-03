@@ -1,0 +1,132 @@
+---
+// the hare: sand color, very long ears, coral scarf
+interface Props {
+  size?: number;
+  pose?: 'parada' | 'corre' | 'duerme';
+  class?: string;
+}
+const { size = 110, pose = 'parada', class: clase = '' } = Astro.props;
+const PELO = '#d8b48a';
+const VIENTRE = '#f1e2c8';
+const TINTA = '#2c2e2a';
+---
+
+<svg
+  viewBox="0 0 150 116"
+  height={size}
+  width={(size * 150) / 116}
+  class={clase}
+  aria-hidden="true"
+  focusable="false"
+>
+  {pose === 'duerme' ? (
+    <g>
+      <ellipse cx="72" cy="90" rx="50" ry="22" fill={PELO}></ellipse>
+      <ellipse cx="76" cy="98" rx="32" ry="10" fill={VIENTRE}></ellipse>
+      <circle cx="26" cy="86" r="9" fill="#ffffff"></circle>
+      <ellipse cx="112" cy="84" rx="19" ry="17" fill={PELO}></ellipse>
+      <ellipse
+        cx="100"
+        cy="64"
+        rx="6.5"
+        ry="22"
+        fill={PELO}
+        transform="rotate(-72 100 64)"
+      ></ellipse>
+      <ellipse
+        cx="100"
+        cy="66"
+        rx="3"
+        ry="16"
+        fill="#ff705d"
+        opacity="0.4"
+        transform="rotate(-72 100 66)"
+      ></ellipse>
+      <path
+        d="M108 82 Q114 86 120 82"
+        stroke={TINTA}
+        stroke-width="2.6"
+        stroke-linecap="round"
+        fill="none"
+      ></path>
+      <circle cx="128" cy="86" r="2.8" fill={TINTA}></circle>
+      <path d="M96 96 Q78 84 64 94 L70 102 Q82 94 94 104 Z" fill="#ff705d"></path>
+      <text x="118" y="46" font-size="15" font-weight="500" fill={TINTA}>
+        z
+      </text>
+      <text x="130" y="30" font-size="19" font-weight="500" fill={TINTA}>
+        z
+      </text>
+      <text x="144" y="12" font-size="23" font-weight="500" fill={TINTA}>
+        Z
+      </text>
+    </g>
+  ) : pose === 'corre' ? (
+    <g transform="rotate(-8 75 70)">
+      <ellipse cx="66" cy="66" rx="40" ry="19" fill={PELO}></ellipse>
+      <ellipse cx="70" cy="72" rx="26" ry="9" fill={VIENTRE}></ellipse>
+      <circle cx="24" cy="60" r="8" fill="#ffffff"></circle>
+      <path d="M34 74 L6 96" stroke={PELO} stroke-width="11" stroke-linecap="round"></path>
+      <ellipse cx="6" cy="98" rx="11" ry="5" fill={PELO} transform="rotate(-30 6 98)"></ellipse>
+      <path d="M92 76 L124 96" stroke={PELO} stroke-width="10" stroke-linecap="round"></path>
+      <ellipse cx="128" cy="98" rx="10" ry="5" fill={PELO} transform="rotate(20 128 98)"></ellipse>
+      <circle cx="104" cy="48" r="17" fill={PELO}></circle>
+      <ellipse cx="84" cy="34" rx="6" ry="22" fill={PELO} transform="rotate(-78 84 34)"></ellipse>
+      <ellipse cx="88" cy="46" rx="6" ry="22" fill={PELO} transform="rotate(-84 88 46)"></ellipse>
+      <circle cx="110" cy="45" r="2.8" fill={TINTA}></circle>
+      <circle cx="120" cy="52" r="2.6" fill={TINTA}></circle>
+      <path d="M84 60 Q66 50 50 58 L54 66 Q68 60 82 68 Z" fill="#ff705d"></path>
+      <ellipse
+        cx="86"
+        cy="62"
+        rx="8"
+        ry="5.5"
+        fill="#ff705d"
+        transform="rotate(20 86 62)"
+      ></ellipse>
+    </g>
+  ) : (
+    <g>
+      <path d="M30 70 C30 45 102 45 102 70 C102 95 30 95 30 70 Z" fill={PELO}/>
+<path d="M40 70 C40 55 92 55 92 70 C92 85 40 85 40 70 Z" fill="#c9a377" opacity="0.3"/>
+      <path d="M48 78 C48 65 92 65 92 78 C92 91 48 91 48 78 Z" fill={VIENTRE}/>
+      <circle cx="30" cy="70" r="9" fill="#ffffff"></circle>
+      <rect x="48" y="88" width="14" height="22" rx="7" fill={PELO}></rect>
+      <ellipse cx="52" cy="110" rx="12" ry="5" fill={PELO}></ellipse>
+      <rect x="76" y="88" width="12" height="20" rx="6" fill={PELO}></rect>
+      <ellipse cx="82" cy="108" rx="11" ry="5" fill={PELO}></ellipse>
+      <path d="M83 50 C83 25 121 25 121 50 C121 70 83 70 83 50 Z" fill={PELO}/>
+      <ellipse cx="94" cy="20" rx="7" ry="22" fill={PELO} transform="rotate(-10 94 20)"></ellipse>
+      <ellipse
+        cx="94"
+        cy="22"
+        rx="3.4"
+        ry="16"
+        fill="#ff705d"
+        opacity="0.4"
+        transform="rotate(-10 94 22)"
+      ></ellipse>
+      <ellipse cx="110" cy="22" rx="7" ry="22" fill={PELO} transform="rotate(10 110 22)"></ellipse>
+      <ellipse
+        cx="110"
+        cy="24"
+        rx="3.4"
+        ry="16"
+        fill="#ff705d"
+        opacity="0.4"
+        transform="rotate(10 110 24)"
+      ></ellipse>
+      <circle cx="109" cy="47" r="2.8" fill={TINTA}></circle>
+      <circle cx="119" cy="55" r="2.8" fill={TINTA}></circle>
+      <path
+        d="M108 60 Q113 64 118 60"
+        stroke={TINTA}
+        stroke-width="2"
+        stroke-linecap="round"
+        fill="none"
+      ></path>
+      <path d="M88 66 Q70 60 56 68 L62 76 Q74 68 86 74 Z" fill="#ff705d"></path>
+      <ellipse cx="90" cy="66" rx="9" ry="6" fill="#ff705d" transform="rotate(20 90 66)"></ellipse>
+    </g>
+  )}
+</svg>

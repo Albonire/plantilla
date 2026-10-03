@@ -1,0 +1,16 @@
+import Seccion from '../../../components/ui/seccion.astro';
+import { ChallengeCard } from '../../../components/islas/challenge_card';
+import datos_retos from '../../../data/retos.json';
+import { GrabadoraVoz } from '../../../components/islas/grabadora_voz';
+
+<Seccion id="reto" titulo="Reto del caso" etiqueta="Actividad sumativa">
+
+<div class="flex flex-col gap-8">
+
+<GrabadoraVoz client:visible unidad={5} />
+
+<ChallengeCard client:visible reto={datos_retos.retos[4]} unidad={5} titulo_caso={props.unidad.titulo} campos_en="constructor" ancla_constructor="#constructor" />
+
+</div>
+
+</Seccion>

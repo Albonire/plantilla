@@ -1,0 +1,47 @@
+import Seccion from '../../../components/ui/seccion.astro';
+import Subseccion from '../../../components/ui/subseccion.astro';
+import Podcast from '../../../components/ui/podcast.astro';
+import Video from '../../../components/ui/video.astro';
+import ResourceTag from '../../../components/ui/resource_tag.astro';
+import datos_retos from '../../../data/retos.json';
+import { ModeloOpinion } from '../../../components/islas/modelo_opinion';
+import { DragSort } from '../../../components/islas/drag_sort';
+import { ArgumentBuilder } from '../../../components/islas/argument_builder';
+import { MuroDetective } from '../../../components/islas/muro_detective';
+import act from '../../../data/actividades/unidad_5.json';
+
+<Seccion id="desarrollo" titulo="Sigue las pistas" etiqueta="Desarrollo y materiales de estudio" titulo_visible={false}>
+
+<Video id="c5_video" descripcion="Un texto de opinión se arma como una torre de bloques: base, razones, ejemplo, otra mirada y techo." />
+
+<Subseccion id="opinion-argumentos" etiqueta="Modelo de texto de opinión" titulo="Una opinión con razones y ejemplos">
+
+<div id="texto-opinion" class="scroll-mt-28">
+  <ModeloOpinion client:visible pregunta={act.modelo.pregunta} partes={act.modelo.partes} etiqueta="Recurso propio" />
+</div>
+
+</Subseccion>
+
+<Subseccion id="conectores" etiqueta="Los conectores" titulo="Palabras que ordenan las ideas">
+
+<DragSort client:visible items={act.conectores.items} cajas={act.conectores.cajas} unidad={5} id="conectores" etiqueta="Recurso propio" instruccion="Cada conector sirve para algo. Pon cada uno en la caja que le corresponde." />
+
+</Subseccion>
+
+<Subseccion id="constructor-argumentos" etiqueta="Constructor de argumentos" titulo="Arma tu opinión como una torre">
+
+<ArgumentBuilder client:visible preguntas={act.constructor.preguntas} conectores={act.constructor.conectores} unidad={5} titulo_caso={props.unidad.titulo} titulo_reto={datos_retos.retos[4].titulo} />
+
+</Subseccion>
+
+<Subseccion id="escuchar" etiqueta="Escuchar y responder con respeto" titulo="El gran debate: velocidad o constancia">
+
+<Podcast id="c5_podcast" etiqueta="Escucha el gran debate" descripcion="Dos voces defienden ideas distintas y se responden con respeto. Escucha cómo lo hacen." />
+
+<MuroDetective client:visible muro_id="caso_5" titulo="Muro de debate" etiqueta="Recurso propio" pregunta={act.debate.pregunta} columnas={act.debate.columnas} inicio_respuesta={act.debate.inicio_respuesta} ayuda_publicar={act.debate.ayuda} />
+
+<ResourceTag id="p5_practica" />
+
+</Subseccion>
+
+</Seccion>

@@ -1,0 +1,59 @@
+---
+// the tortoise: green shell with hexagons and yellow dots
+interface Props {
+  size?: number;
+  class?: string;
+}
+const { size = 80, class: clase = '' } = Astro.props;
+const hex = (cx: number, cy: number, r: number) =>
+  Array.from({ length: 6 }, (_, i) => {
+    const a = (Math.PI / 3) * i + Math.PI / 6;
+    return `${(cx + r * Math.cos(a)).toFixed(1)},${(cy + r * Math.sin(a)).toFixed(1)}`;
+  }).join(' ');
+const centros: [number, number][] = [
+  [48, 52],
+  [68, 44],
+  [88, 52],
+  [58, 64],
+  [78, 64],
+];
+---
+
+<svg
+  viewBox="0 0 146 92"
+  height={size}
+  width={(size * 146) / 92}
+  class={clase}
+  aria-hidden="true"
+  focusable="false"
+>
+  <path d="M10 74 L22 68 L22 78 Z" fill="#8ed462" />
+  <path d="M12 74 L20 70 L20 76 Z" fill="#6db841" />
+  <path d="M34 70 Q42 66 50 70 L48 86 Q40 90 34 86 Z" fill="#8ed462" />
+  <path d="M36 78 L46 78" stroke="#4f9a34" stroke-width="2" stroke-linecap="round" />
+  <path d="M86 70 Q94 66 102 70 L100 86 Q92 90 86 86 Z" fill="#8ed462" />
+  <path d="M88 78 L98 78" stroke="#4f9a34" stroke-width="2" stroke-linecap="round" />
+  <path d="M106 60 Q114 55 120 60 L120 72 Q112 76 106 72 Z" fill="#8ed462" />
+  <circle cx="126" cy="58" r="14" fill="#8ed462" />
+  <circle cx="128" cy="52" r="3" fill="#ffffff" />
+  <circle cx="131" cy="55" r="3.5" fill="#2c2e2a" />
+  <circle cx="132" cy="54" r="1" fill="#ffffff" />
+  <path d="M126 64 Q131 69 136 64" stroke="#2c2e2a" stroke-width="2.5" stroke-linecap="round" fill="none" />
+  <circle cx="122" cy="62" r="3" fill="#6db841" opacity="0.5" />
+  <path d="M20 72 C20 20 108 20 112 72 Z" fill="#4f9a34" />
+  <path d="M24 70 C28 30 104 30 108 70 Z" fill="#58ad3a" />
+  {centros.map(([x, y]) => (
+    <polygon points={hex(x, y, 10.5)} fill="#4f9a34" />
+  ))}
+  {centros.map(([x, y]) => (
+    <polygon points={hex(x, y, 9)} fill="#8ed462" />
+  ))}
+  {centros.map(([x, y]) => (
+    <circle cx={x} cy={y} r="3.5" fill="#d6c800" />
+  ))}
+  {centros.map(([x, y]) => (
+    <circle cx={x - 0.5} cy={y - 0.5} r="2" fill="#f5e211" />
+  ))}
+  <rect x="18" y="70" width="96" height="8" rx="4" fill="#e0dbce" />
+  <rect x="18" y="74" width="96" height="4" rx="2" fill="#d1cbbd" />
+</svg>

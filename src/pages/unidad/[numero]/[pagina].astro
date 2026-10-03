@@ -1,0 +1,27 @@
+---
+import { getCollection, getEntry, render } from 'astro:content';
+import PaginaCasoLayout from '../../../layouts/pagina_caso_layout.astro';
+import { paginas_caso, type SlugPagina } from '../../../config/paginas';
+
+// the first page of a case lives at /unidad/N (index.astro); these are the other three
+export async function getStaticPaths() {
+  const unidades = await getCollection('unidades');
+  return unidades.flatMap((u) =>
+    paginas_caso
+      .filter((p) => p.slug !== 'abrir')
+      .map((p) => ({
+        params: { numero: String(u.data.numero), pagina: p.slug },
+        props: { unidad: u, pagina: p.slug as SlugPagina },
+      })),
+  );
+}
+
+const { unidad, pagina } = Astro.props;
+const entrada = await getEntry('paginas', `unidad_${unidad.data.numero}/${pagina}`);
+if (!entrada) throw new Error(`falta la pagina ${pagina} del caso ${unidad.data.numero}`);
+const { Content } = await render(entrada);
+---
+
+<PaginaCasoLayout unidad={unidad} pagina={pagina}>
+  <Content unidad={unidad.data} />
+</PaginaCasoLayout>

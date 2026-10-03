@@ -1,0 +1,13 @@
+---
+import { Laptop } from '@phosphor-icons/react/ssr';
+
+interface Props {
+  class?: string;
+}
+const { class: clase = '' } = Astro.props;
+---
+
+<p class:list={['flex items-center gap-2 text-micro text-stone-text', clase]}>
+  <Laptop size={16} weight="bold" aria-hidden="true" />
+  Hecho con herramientas digitales y revisado por el equipo
+</p>

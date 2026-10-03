@@ -1,0 +1,96 @@
+import Seccion from '../../../components/ui/seccion.astro';
+import Subseccion from '../../../components/ui/subseccion.astro';
+import Video from '../../../components/ui/video.astro';
+import Embed from '../../../components/ui/embed.astro';
+import ResourceTag from '../../../components/ui/resource_tag.astro';
+import Verificacion from '../../../components/ui/verificacion.astro';
+import CamaraVinetas from '../../../components/libro/camara_vinetas.astro';
+import ComicTresTextos from '../../../components/ilustraciones/comic_tres_textos.astro';
+import Sendero from '../../../components/libro/sendero.astro';
+import { TextHighlighter } from '../../../components/islas/text_highlighter';
+import { StepOrderer } from '../../../components/islas/step_orderer';
+import act from '../../../data/actividades/unidad_2.json';
+
+export const focos_comic = act.comic.vinetas.map((v, i) => ({
+  id: v.id,
+  x: (i % 3) * (100 / 3),
+  y: Math.floor(i / 3) * 50,
+  w: 100 / 3,
+  h: 50,
+  titulo: `Viñeta ${i + 1}`,
+  texto: v.dialogos.map((d) => `${d.personaje}: ${d.texto}`).join(' '),
+}));
+
+<Seccion id="desarrollo" titulo="Sigue las pistas" etiqueta="Desarrollo y materiales de estudio" titulo_visible={false}>
+
+<Video id="c2_video" descripcion="Sofía y Mateo abren una caja con tres textos y descubren la misión de cada uno. Este video complementa el cómic que sigue." />
+
+<Subseccion id="comic" etiqueta="Actividad 1" titulo="Cómic: tres textos, tres misiones">
+
+<p class="lectura">Se explica el tema con un cómic. Baja despacio: la cámara se mueve por cada viñeta. También puedes tocar la pantalla o usar las flechas del teclado.</p>
+
+<CamaraVinetas id="comic-camara" titulo={act.comic.titulo} ratio={2} focos={focos_comic} etiqueta_paso="Viñeta" mostrar_leyenda={false}>
+  <ComicTresTextos />
+</CamaraVinetas>
+
+<ResourceTag id="p2_modelos" />
+
+</Subseccion>
+
+<Subseccion id="sendero" etiqueta="El sendero de los textos" titulo="Una estación por cada tipo de texto">
+
+<p class="lectura">Recorre el sendero y conoce la misión, las partes y las pistas de cada tipo de texto.</p>
+
+<Sendero estaciones={act.sendero} />
+
+</Subseccion>
+
+<Subseccion id="cuento" etiqueta="Actividad 2" titulo={'El cuento "El renacuajo paseador", de Rafael Pombo'}>
+
+<div class="max-w-reading text-body space-y-3">
+
+Rafael Pombo murió en 1912, así que su obra es de dominio público en Colombia. El texto que sigue se tomó del anexo 1 de la guía "Un paseo diferente" (MinTIC, Colombia Programa) y se comparó con la edición de la Biblioteca Luis Ángel Arango del Banco de la República.
+
+</div>
+
+<TextHighlighter client:visible estrofas={act.renacuajo.estrofas} unidad={2} id="renacuajo" clave={act.renacuajo.clave} etiqueta="Recurso propio con un texto de la web" instruccion="Lee el cuento y marca cada estrofa como inicio, nudo o desenlace. Luego pide revisar." />
+
+<Verificacion datos={act.renacuajo.verificacion} pendiente="el equipo verifica la clave estrofa por estrofa" />
+
+<Embed id="w2_renacuajo" etiqueta="Fuente del texto" descripcion="El cuento de arriba se tomó del anexo 1 de esta guía de MinTIC, que también propone otra actividad con el cuento." />
+
+</Subseccion>
+
+<Subseccion id="informativo" etiqueta="Material informativo" titulo={act.pombo.titulo}>
+
+<div class="lectura">
+
+{act.pombo.parrafos.map((p) => <p>{p}</p>)}
+
+</div>
+
+<p class="max-w-reading text-body font-medium">{act.pombo.pregunta_enlace}</p>
+
+<Verificacion datos={act.pombo.verificacion} pendiente="el equipo confirma los datos de la biografía con una segunda fuente" />
+
+<Embed id="w2_pombo_bio" etiqueta="Fuente del texto" descripcion="Lee la biografía completa de Rafael Pombo, de donde sale el texto informativo. Compara: ¿qué datos se repiten y cuáles son nuevos?" />
+
+</Subseccion>
+
+<Subseccion id="instructivo" etiqueta="Material instructivo" titulo={act.instructivo.titulo}>
+
+<div class="max-w-reading space-y-3 text-body">
+
+<p class="font-medium">Materiales: <span class="font-regular">{act.instructivo.materiales}</span></p>
+
+<p>{act.instructivo.nota}</p>
+
+</div>
+
+<StepOrderer client:visible pasos={act.instructivo.pasos} unidad={2} id="separador" etiqueta="Recurso propio" instruccion="Los pasos están desordenados. Arrástralos o usa las flechas para ponerlos en orden." retro_error={act.instructivo.retro_error} retro_acierto={act.instructivo.retro_acierto} />
+
+<Embed id="w2_textos_info" etiqueta="Para reforzar" descripcion="Refuerza cómo se organiza un texto informativo." />
+
+</Subseccion>
+
+</Seccion>

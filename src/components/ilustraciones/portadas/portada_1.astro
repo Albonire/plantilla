@@ -1,0 +1,195 @@
+---
+import PortadaCapitulo from '../../libro/portada_capitulo.astro';
+import Sofia from '../sofia.astro';
+import Liebre from '../liebre.astro';
+import Tortuga from '../tortuga.astro';
+import Libro from '../libro.astro';
+
+interface Props {
+  titulo: string;
+  alt: string;
+}
+const { titulo, alt } = Astro.props;
+---
+
+<PortadaCapitulo numero={1} titulo={titulo} color="fresh-grass" alt={alt}>
+  <svg
+    slot="fondo"
+    viewBox="0 0 800 800"
+    class="h-full w-full"
+    preserveAspectRatio="xMidYMid meet"
+    focusable="false"
+  >
+    <!-- Sol con rayos y sombra -->
+    <g transform="translate(640, 140)">
+      <circle cx="0" cy="0" r="94" fill="#f5e211" opacity="0.3"></circle>
+      <g stroke="#f5e211" stroke-width="14" stroke-linecap="round">
+        <line x1="0" y1="-105" x2="0" y2="-125" />
+        <line x1="0" y1="105" x2="0" y2="125" />
+        <line x1="-105" y1="0" x2="-125" y2="0" />
+        <line x1="105" y1="0" x2="125" y2="0" />
+        <line x1="-74" y1="-74" x2="-88" y2="-88" />
+        <line x1="74" y1="74" x2="88" y2="88" />
+        <line x1="-74" y1="74" x2="-88" y2="88" />
+        <line x1="74" y1="-74" x2="88" y2="-88" />
+      </g>
+      <circle cx="0" cy="0" r="84" fill="#f5e211"></circle>
+      <path d="M -70 46 A 84 84 0 0 0 70 46 A 86 86 0 0 1 -70 46 Z" fill="#e0ce0d"></path>
+    </g>
+
+    <!-- Nubes detalladas -->
+    <g fill="#ffffff">
+      <!-- Nube 1 -->
+      <path d="M 90 190 A 34 34 0 0 1 110 130 A 48 48 0 0 1 200 120 A 40 40 0 0 1 260 160 A 30 30 0 0 1 240 210 L 90 210 A 30 30 0 0 1 90 190 Z"></path>
+      <path d="M 90 210 L 240 210 A 30 30 0 0 0 258 185 C 230 195 190 200 160 195 C 130 190 110 180 90 170 A 30 30 0 0 0 90 210 Z" fill="#e0dbce" opacity="0.5"></path>
+      
+      <!-- Nube 2 -->
+      <g transform="translate(280, -60) scale(0.7)">
+        <path d="M 90 190 A 34 34 0 0 1 110 130 A 48 48 0 0 1 200 120 A 40 40 0 0 1 260 160 A 30 30 0 0 1 240 210 L 90 210 A 30 30 0 0 1 90 190 Z"></path>
+        <path d="M 90 210 L 240 210 A 30 30 0 0 0 258 185 C 230 195 190 200 160 195 C 130 190 110 180 90 170 A 30 30 0 0 0 90 210 Z" fill="#e0dbce" opacity="0.5"></path>
+      </g>
+    </g>
+
+    <!-- Colina verde de fondo -->
+    <path
+      d="M0 610 C180 520 360 540 560 470 C660 436 740 440 800 456 V800 H0 Z"
+      fill="#6fbb47"
+    ></path>
+    <!-- Detalle de la colina (sombra/relieve) -->
+    <path
+      d="M0 650 C180 560 360 580 560 510 C660 476 740 480 800 496 V800 H0 Z"
+      fill="#5aa03a"
+      opacity="0.3"
+    ></path>
+  </svg>
+  <svg
+    slot="medio"
+    viewBox="0 0 800 800"
+    class="h-full w-full"
+    preserveAspectRatio="xMidYMid meet"
+    focusable="false"
+  >
+    <!-- Camino -->
+    <path d="M250 800 C330 640 540 560 800 570 V800 Z" fill="#f5f1e4"></path>
+    <!-- Sombra del camino -->
+    <path d="M250 800 C330 640 540 560 800 570 V800 Z" fill="#e0dbce" opacity="0.4" transform="translate(10, 15)"></path>
+    <path
+      d="M330 800 C420 690 560 640 800 646"
+      stroke="#e0dbce"
+      stroke-width="34"
+      stroke-linecap="round"
+      fill="none"
+    ></path>
+    <!-- Piedras en el camino -->
+    <g fill="#d5d5d4">
+      <ellipse cx="400" cy="740" rx="15" ry="8"></ellipse>
+      <ellipse cx="500" cy="680" rx="20" ry="10"></ellipse>
+      <ellipse cx="650" cy="650" rx="12" ry="6"></ellipse>
+    </g>
+
+    <!-- Árbol detallado -->
+    <g transform="translate(640 380)">
+      <!-- Sombra del tronco -->
+      <rect x="-16" y="10" width="32" height="190" rx="10" fill="#725538"></rect>
+      <!-- Tronco principal -->
+      <rect x="-10" y="10" width="26" height="190" rx="8" fill="#8b6b4a"></rect>
+      <!-- Líneas de corteza -->
+      <path d="M-2 20 V180 M6 40 V160 M14 60 V190" stroke="#725538" stroke-width="3" stroke-linecap="round"></path>
+      <!-- Ramas pequeñas -->
+      <path d="M-10 80 Q-30 60 -40 40 M16 100 Q30 80 45 60" stroke="#8b6b4a" stroke-width="12" stroke-linecap="round" fill="none"></path>
+      
+      <!-- Hojas del árbol con volumen -->
+      <g fill="#4f9a34">
+        <circle cx="0" cy="-20" r="84"></circle>
+        <circle cx="-62" cy="14" r="58"></circle>
+      </g>
+      <g fill="#5aa03a">
+        <circle cx="64" cy="18" r="56"></circle>
+        <circle cx="-14" cy="-66" r="46"></circle>
+      </g>
+      <!-- Sombras en las hojas -->
+      <g fill="#3e7a29" opacity="0.4">
+        <path d="M-120 14 A 58 58 0 0 0 -4 14 A 84 84 0 0 1 -70 -20 A 58 58 0 0 0 -120 14 Z"></path>
+        <path d="M8 74 A 56 56 0 0 0 120 18 A 84 84 0 0 1 30 -20 A 56 56 0 0 0 8 74 Z"></path>
+      </g>
+      <!-- Brillo en las hojas -->
+      <g fill="#8ed462" opacity="0.6">
+        <path d="M-14 -112 A 46 46 0 0 1 32 -66 A 84 84 0 0 0 -50 -40 A 46 46 0 0 1 -14 -112 Z"></path>
+      </g>
+    </g>
+
+    <!-- Bandera/Letrero detallado -->
+    <g transform="translate(180 650)">
+      <rect x="-2" y="-120" width="14" height="150" rx="6" fill="#2c2e2a"></rect>
+      <!-- Sombra en el poste -->
+      <rect x="6" y="-120" width="4" height="150" fill="#ffffff" opacity="0.3"></rect>
+      <!-- Tela de la bandera -->
+      <path d="M12 -120 Q40 -125 74 -100 Q40 -85 12 -78 Z" fill="#ff705d"></path>
+      <!-- Sombra de la tela -->
+      <path d="M12 -98 Q40 -105 74 -100 Q40 -85 12 -78 Z" fill="#d95444"></path>
+      <!-- Costura / Detalle -->
+      <circle cx="6" cy="-114" r="3" fill="#ffffff"></circle>
+      <circle cx="6" cy="-84" r="3" fill="#ffffff"></circle>
+    </g>
+  </svg>
+  <svg
+    slot="frente"
+    viewBox="0 0 800 800"
+    class="h-full w-full"
+    preserveAspectRatio="xMidYMid meet"
+    focusable="false"
+  >
+    <g transform="translate(250 250)">
+      <Sofia size={430} pose="lupa" />
+    </g>
+    <g transform="translate(60 610)">
+      <Libro size={130} />
+    </g>
+    <g transform="translate(410 650)">
+      <Liebre size={120} pose="parada" />
+    </g>
+    <g transform="translate(560 668)">
+      <Tortuga size={82} />
+    </g>
+    
+    <!-- Signo de interrogación interactivo -->
+    <g font-size="86" font-weight="500" fill="#2c2e2a">
+      <circle cx="100" cy="230" r="46" fill="#2c2e2a"></circle>
+      <circle cx="97" cy="227" r="46" fill="#ffffff"></circle>
+      <text x="97" y="258" text-anchor="middle">?</text>
+    </g>
+
+    <!-- Elemento decorativo del sol / insignia -->
+    <g transform="translate(470 150)">
+      <circle cx="0" cy="0" r="44" fill="#2c2e2a"></circle>
+      <circle cx="-3" cy="-3" r="44" fill="#ffffff"></circle>
+      <path
+        d="M-17 5 Q-27 -11 -13 -23 Q-3 -33 9 -23 Q21 -11 11 5 Z"
+        fill="#f5e211"
+        stroke="#2c2e2a"
+        stroke-width="5"
+        stroke-linejoin="round"
+      ></path>
+      <path d="M-11 13 H5" stroke="#2c2e2a" stroke-width="6" stroke-linecap="round"></path>
+    </g>
+
+    <!-- Botones de texto con volumen -->
+    <g font-size="30" font-weight="500" fill="#2c2e2a">
+      <g transform="translate(40 330)">
+        <rect x="0" y="4" width="150" height="50" rx="25" fill="#2c2e2a"></rect>
+        <rect x="-3" y="-3" width="150" height="50" rx="25" fill="#ffffff"></rect>
+        <text x="72" y="31" text-anchor="middle">predigo</text>
+      </g>
+      <g transform="translate(40 396)">
+        <rect x="0" y="4" width="150" height="50" rx="25" fill="#2c2e2a"></rect>
+        <rect x="-3" y="-3" width="150" height="50" rx="25" fill="#ffffff"></rect>
+        <text x="72" y="31" text-anchor="middle">pregunto</text>
+      </g>
+      <g transform="translate(40 462)">
+        <rect x="0" y="4" width="150" height="50" rx="25" fill="#2c2e2a"></rect>
+        <rect x="-3" y="-3" width="150" height="50" rx="25" fill="#ffffff"></rect>
+        <text x="72" y="31" text-anchor="middle">opino</text>
+      </g>
+    </g>
+  </svg>
+</PortadaCapitulo>

@@ -1,0 +1,33 @@
+import Seccion from '../../../components/ui/seccion.astro';
+import Subseccion from '../../../components/ui/subseccion.astro';
+import Video from '../../../components/ui/video.astro';
+import TresLupas from '../../../components/libro/tres_lupas.astro';
+import LecturaConPausas from '../../../components/libro/lectura_con_pausas.astro';
+import { DragSort } from '../../../components/islas/drag_sort';
+import act from '../../../data/actividades/unidad_3.json';
+
+<Seccion id="desarrollo" titulo="Sigue las pistas" etiqueta="Desarrollo y materiales de estudio" titulo_visible={false}>
+
+<Video id="c3_video" descripcion="Con un caso de la vereda El Roble, Sofía y Mateo muestran cómo se usa cada lupa." />
+
+<Subseccion id="las-lupas" etiqueta="Las tres lupas" titulo="Baja de nivel: de lo que dice a lo que pienso">
+
+<p class="lectura">Mientras bajas por la página, cada lupa te lleva un nivel más adentro del texto.</p>
+
+<TresLupas lupas={act.lupas} />
+
+</Subseccion>
+
+<Subseccion id="lectura" etiqueta="Lectura" titulo="Lee con las tres lupas: Los libros viajeros de la vereda">
+
+<LecturaConPausas id="libros-viajeros" unidad={3} titulo={act.lectura.titulo} autoria={act.lectura.autoria} parrafos={act.lectura.parrafos} modo="panel" />
+
+</Subseccion>
+
+<Subseccion id="semaforo" etiqueta="Semáforo de preguntas" titulo="¿Con qué lupa se responde?">
+
+<DragSort client:visible items={act.semaforo.items} cajas={act.semaforo.cajas} unidad={3} id="semaforo" etiqueta="Recurso propio" instruccion="Pon cada pregunta en la lupa que se necesita para responderla." />
+
+</Subseccion>
+
+</Seccion>

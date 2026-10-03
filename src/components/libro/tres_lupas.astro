@@ -1,0 +1,51 @@
+---
+// three nested lenses: literal, inferential and critical. Each one sits inside the previous one,
+// so the student goes deeper into the text as the blocks get more saturated. It reads the same with or without scripts.
+interface Lupa {
+  id: string;
+  titulo: string;
+  descripcion: string;
+  preguntas: string;
+}
+interface Props {
+  lupas: Lupa[];
+}
+const { lupas } = Astro.props;
+const tonos = ['bg-sunshine-pop/25', 'bg-sunshine-pop/55', 'bg-sunshine-pop'];
+---
+
+<ol class="flex flex-col">
+  {lupas.map((l, i) => (
+    <li
+      id={l.id}
+      class:list={[
+        'scroll-mt-28 rounded-card border-2 border-ink-black p-5 text-ink-black md:p-7',
+        tonos[i % tonos.length],
+        i > 0 ? 'mt-6' : '',
+      ]}
+    >
+      <div class="flex items-center gap-4">
+        <svg
+          viewBox="0 0 80 80"
+          width={52 + i * 10}
+          height={52 + i * 10}
+          aria-hidden="true"
+          focusable="false"
+          class="shrink-0"
+        >
+          <path d="M50 50 L72 72" stroke="#2c2e2a" stroke-width="9" stroke-linecap="round" />
+          <circle cx="34" cy="34" r="26" fill="#f5f1e4" stroke="#2c2e2a" stroke-width="6" />
+          {i > 0 && (
+            <circle cx="34" cy="34" r="15" fill="#f5e211" stroke="#2c2e2a" stroke-width="4" />
+          )}
+          {i > 1 && (
+            <circle cx="34" cy="34" r="6" fill="#ffffff" stroke="#2c2e2a" stroke-width="3" />
+          )}
+        </svg>
+        <h4 class="text-heading-sm leading-tight">{l.titulo}</h4>
+      </div>
+      <p class="mt-4 max-w-reading text-reading">{l.descripcion}</p>
+      <p class="mt-3 max-w-reading text-body">{l.preguntas}</p>
+    </li>
+  ))}
+</ol>

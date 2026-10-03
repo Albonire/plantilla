@@ -1,0 +1,175 @@
+---
+// strip with a scroll-driven camera (mechanic taken from the trabajo2 presentation).
+// Without scripts or with reduced motion the whole strip is visible, followed by its script as text.
+import { CaretLeft, CaretRight } from '@phosphor-icons/react/ssr';
+
+interface Rect {
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+}
+interface Foco extends Rect {
+  id: string;
+  // rectangle used on narrow screens when the strip has another layout (in percent of the strip)
+  movil?: Rect;
+  titulo?: string;
+  texto: string;
+  hablante?: string;
+}
+interface Props {
+  id: string;
+  titulo: string;
+  ratio: number;
+  ratio_movil?: number;
+  focos: Foco[];
+  etiqueta_paso?: string;
+  mostrar_leyenda?: boolean;
+  // the strip is an image that gets zoomed a lot: the script asks for its biggest size
+  nitida?: boolean;
+}
+const {
+  id,
+  titulo,
+  ratio,
+  ratio_movil,
+  focos,
+  etiqueta_paso = 'Paso',
+  mostrar_leyenda = true,
+  nitida = false,
+} = Astro.props;
+---
+
+<section id={id} data-camara aria-label={titulo} class="camara relative scroll-mt-24">
+  <div data-estatica class="camara-estatica">
+    <div
+      data-tira-estatica
+      data-nitida={nitida ? '' : undefined}
+      class="camara-tira-estatica overflow-hidden rounded-card bg-ink-black"
+      style={`--ratio:${ratio};--ratio-m:${ratio_movil ?? ratio}`}
+    >
+      <slot />
+    </div>
+    <ol class="mt-6 grid gap-3 md:grid-cols-2" aria-label={`Guion: ${titulo}`}>
+      {focos.map((f, i) => (
+        <li
+          data-foco
+          data-x={f.x}
+          data-y={f.y}
+          data-w={f.w}
+          data-h={f.h}
+          data-mx={f.movil?.x}
+          data-my={f.movil?.y}
+          data-mw={f.movil?.w}
+          data-mh={f.movil?.h}
+          data-titulo={f.titulo ?? ''}
+          data-texto={(f.hablante ? `${f.hablante}: ` : '') + f.texto}
+          class="rounded-soft bg-pure-white p-4 text-body"
+        >
+          <span class="text-body-sm font-medium text-stone-text">
+            {etiqueta_paso} {i + 1}
+            {f.titulo ? `: ${f.titulo}` : ''}
+          </span>
+          <br />
+          {f.hablante && <span class="font-medium">{f.hablante}: </span>}
+          {f.texto}
+        </li>
+      ))}
+    </ol>
+  </div>
+
+  <div
+    data-escenario
+    hidden
+    class="camara-escenario sticky top-14 overflow-hidden rounded-card bg-ink-black text-cream-paper"
+  >
+    <div
+      data-vista
+      class="camara-vista absolute inset-0 flex cursor-pointer items-center justify-center select-none"
+    >
+      <div data-tira class="camara-tira relative shrink-0" style="will-change: transform;"></div>
+      <div
+        data-mascara
+        aria-hidden="true"
+        class="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+        style="box-shadow: 0 0 48px 100vmax rgba(44, 46, 42, 0.78);"
+      ></div>
+    </div>
+
+    <div
+      class="pointer-events-none absolute inset-x-0 top-0 h-1.5 bg-cream-paper/20"
+      aria-hidden="true"
+    >
+      <div data-barra class="h-full bg-fresh-grass" style="width:0%"></div>
+    </div>
+
+    <p class="pointer-events-none absolute left-4 top-6 rounded-pill bg-pure-white px-4 py-1.5 text-micro font-medium text-ink-black sm:left-6">
+      {etiqueta_paso} <span data-contador>1 de {focos.length}</span>
+    </p>
+    <p
+      data-aviso
+      class="interfaz pointer-events-none absolute right-4 top-6 max-w-[45%] rounded-pill border-2 border-ink-black bg-sunshine-pop px-3.5 py-1.5 text-micro font-medium text-ink-black sm:right-6 sm:max-w-none"
+    >
+      Baja o toca la pantalla para avanzar
+    </p>
+    {mostrar_leyenda && (
+      <p
+        data-leyenda
+        aria-hidden="true"
+        class="pointer-events-none absolute inset-x-0 bottom-24 mx-auto w-fit max-w-[90%] rounded-pill bg-sunshine-pop px-5 py-2 text-body-sm font-medium text-ink-black empty:hidden"
+      />
+    )}
+    <p data-vivo role="status" aria-live="polite" class="sr-only"></p>
+
+    <div class="absolute inset-x-0 bottom-6 flex flex-wrap items-center justify-center gap-3">
+      <button
+        type="button"
+        data-anterior
+        aria-label={`${etiqueta_paso} anterior`}
+        class="interfaz inline-flex min-h-11 items-center gap-1.5 rounded-pill border-2 border-ink-black bg-pure-white px-4 text-body-sm font-medium text-ink-black hover:bg-sandstone disabled:opacity-30"
+      >
+        <CaretLeft size={20} weight="bold" aria-hidden="true" />
+        <span class="hidden sm:inline">Anterior</span>
+      </button>
+      <button
+        type="button"
+        data-siguiente
+        aria-label={`Siguiente ${etiqueta_paso.toLowerCase()}`}
+        class="interfaz inline-flex min-h-11 items-center gap-1.5 rounded-pill border-2 border-ink-black bg-fresh-grass px-5 text-body-sm font-medium text-ink-black hover:bg-ink-black hover:text-cream-paper"
+      >
+        <span>Siguiente {etiqueta_paso.toLowerCase()}</span>
+        <CaretRight size={20} weight="bold" aria-hidden="true" />
+      </button>
+      <a
+        href={`#${id}-fin`}
+        class="interfaz inline-flex min-h-11 items-center rounded-pill border-2 border-ink-black bg-pure-white px-4 text-body-sm font-medium text-ink-black hover:bg-sandstone"
+      >
+        Saltar esta parte
+      </a>
+    </div>
+  </div>
+  <span id={`${id}-fin`} class="block h-px"></span>
+</section>
+
+<style>
+  .camara-tira-estatica {
+    aspect-ratio: var(--ratio);
+  }
+  @media (max-width: 767px) {
+    .camara-tira-estatica {
+      aspect-ratio: var(--ratio-m);
+    }
+  }
+  .camara-estatica-oculta {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+</style>
+
+<script>
+  import '../../lib/scroll/camara_vinetas';
+</script>

@@ -1,0 +1,26 @@
+import Seccion from '../../../components/ui/seccion.astro';
+import Podcast from '../../../components/ui/podcast.astro';
+import Tarjetas from '../../../components/ui/tarjetas.astro';
+import ResourceTag from '../../../components/ui/resource_tag.astro';
+import { QuizCard } from '../../../components/islas/quiz_card';
+import act from '../../../data/actividades/unidad_4.json';
+
+<Seccion id="practica" titulo="Entrena tu lupa" etiqueta="Actividades formativas" fondo="arena" titulo_visible={false}>
+
+<p class="lectura mb-10">Estas actividades no llevan nota: sirven para practicar. Puedes equivocarte y volver a intentar.</p>
+
+<div class="flex flex-col gap-8">
+
+<Podcast id="c4_podcast" descripcion="Hecho u opinión, las partes de la noticia y la lista LUPA, en un repaso rápido." />
+
+<QuizCard client:visible preguntas={act.quiz} unidad={4} titulo="Cuestionario del caso" etiqueta="Resuélvelo para ganar la insignia" marca_caso />
+
+<QuizCard client:visible preguntas={act.fuentes} unidad={4} variante="fuente" sin_barajar titulo="Detector de fuentes" etiqueta="Todas las noticias son inventadas para practicar" />
+
+<Tarjetas tarjetas={act.tarjetas} unidad={4} />
+
+<ResourceTag id="p4_detector" />
+
+</div>
+
+</Seccion>

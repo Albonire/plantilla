@@ -1,0 +1,321 @@
+{
+  "modelo": {
+    "pregunta": "Para llegar a una meta, ¿qué es más importante: la velocidad o la constancia?",
+    "partes": [
+      {
+        "id": "opinion",
+        "etiqueta": "Opinión",
+        "texto": "Yo pienso que la constancia es más importante que la velocidad."
+      },
+      {
+        "id": "razon_1",
+        "etiqueta": "Razón 1",
+        "texto": "Primero, porque quien avanza sin rendirse termina llegando, aunque vaya despacio."
+      },
+      {
+        "id": "ejemplo",
+        "etiqueta": "Ejemplo",
+        "texto": "Por ejemplo, en la fábula, la tortuga ganó la carrera porque nunca se detuvo."
+      },
+      {
+        "id": "razon_2",
+        "etiqueta": "Razón 2",
+        "texto": "Además, la velocidad no sirve de mucho si uno se confía, como le pasó a la liebre."
+      },
+      {
+        "id": "contraria",
+        "etiqueta": "Idea contraria",
+        "texto": "Sin embargo, reconozco que la velocidad ayuda en algunas cosas, como en una emergencia."
+      },
+      {
+        "id": "conclusion",
+        "etiqueta": "Conclusión",
+        "texto": "En conclusión, para lograr una meta vale más no rendirse que correr rápido."
+      }
+    ]
+  },
+  "conectores": {
+    "cajas": [
+      {
+        "id": "razon",
+        "titulo": "Dar una razón"
+      },
+      {
+        "id": "ejemplo",
+        "titulo": "Mostrar un ejemplo"
+      },
+      {
+        "id": "otra",
+        "titulo": "Agregar otra razón"
+      },
+      {
+        "id": "contraria",
+        "titulo": "Mostrar una idea contraria"
+      },
+      {
+        "id": "cierre",
+        "titulo": "Cerrar"
+      }
+    ],
+    "items": [
+      {
+        "id": "c1",
+        "texto": "porque",
+        "caja": "razon"
+      },
+      {
+        "id": "c2",
+        "texto": "por ejemplo",
+        "caja": "ejemplo"
+      },
+      {
+        "id": "c3",
+        "texto": "además",
+        "caja": "otra"
+      },
+      {
+        "id": "c4",
+        "texto": "sin embargo",
+        "caja": "contraria"
+      },
+      {
+        "id": "c5",
+        "texto": "en conclusión",
+        "caja": "cierre"
+      }
+    ]
+  },
+  "constructor": {
+    "preguntas": [
+      "Para llegar a una meta, ¿qué es más importante: la velocidad o la constancia?",
+      "¿Debería Rinrín renacuajo haber obedecido a su mamá? ¿Por qué?",
+      "¿Es buena idea que cada familia preste un libro a la escuela, como en \"Los libros viajeros\"?"
+    ],
+    "conectores": ["porque", "por ejemplo", "además", "sin embargo", "en conclusión"]
+  },
+  "debate": {
+    "pregunta": "Para llegar a una meta, ¿qué es más importante: la velocidad o la constancia?",
+    "columnas": [
+      {
+        "id": "velocidad",
+        "titulo": "Velocidad"
+      },
+      {
+        "id": "constancia",
+        "titulo": "Constancia"
+      }
+    ],
+    "inicio_respuesta": "Entiendo tu idea, pero yo pienso que...",
+    "ayuda": "Escribe tu opinión con una razón. Para responder a un compañero de la otra columna, empieza con \"Entiendo tu idea, pero yo pienso que...\"."
+  },
+  "quiz": [
+    {
+      "id": "u5_q1",
+      "nivel": "Estructura",
+      "pregunta": "¿Qué necesita una opinión para convencer?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Razones y ejemplos que la apoyen"
+        },
+        {
+          "id": "b",
+          "texto": "Palabras largas y difíciles"
+        },
+        {
+          "id": "c",
+          "texto": "Repetirla muchas veces seguidas"
+        }
+      ],
+      "correcta": "a",
+      "retro": "Las razones y los ejemplos le dan fuerza."
+    },
+    {
+      "id": "u5_q2",
+      "nivel": "Conectores",
+      "pregunta": "\"Me gusta leer ___ aprendo cosas nuevas.\" ¿Qué conector va?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "porque"
+        },
+        {
+          "id": "b",
+          "texto": "en conclusión"
+        },
+        {
+          "id": "c",
+          "texto": "sin embargo"
+        }
+      ],
+      "correcta": "a",
+      "retro": "\"Porque\" introduce la razón."
+    },
+    {
+      "id": "u5_q3",
+      "nivel": "Conectores",
+      "pregunta": "¿Qué conector usas para cerrar tu texto?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "En conclusión"
+        },
+        {
+          "id": "b",
+          "texto": "Por ejemplo"
+        },
+        {
+          "id": "c",
+          "texto": "Además"
+        }
+      ],
+      "correcta": "a",
+      "retro": "\"En conclusión\" anuncia el cierre."
+    },
+    {
+      "id": "u5_q4",
+      "nivel": "Estructura",
+      "pregunta": "En el modelo, \"la tortuga ganó porque nunca se detuvo\" es...",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Un ejemplo"
+        },
+        {
+          "id": "b",
+          "texto": "La conclusión"
+        },
+        {
+          "id": "c",
+          "texto": "Una idea contraria"
+        }
+      ],
+      "correcta": "a",
+      "retro": "Muestra un caso concreto que apoya la opinión."
+    },
+    {
+      "id": "u5_q5",
+      "nivel": "Crítico",
+      "pregunta": "Un compañero piensa distinto a ti. ¿Qué es lo más respetuoso?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "Escucharlo y responder con razones"
+        },
+        {
+          "id": "b",
+          "texto": "Decirle que está equivocado y ya"
+        },
+        {
+          "id": "c",
+          "texto": "Dejar de hablarle en el descanso"
+        }
+      ],
+      "correcta": "a",
+      "retro": "Se puede no estar de acuerdo y respetar."
+    },
+    {
+      "id": "u5_q6",
+      "nivel": "Crítico",
+      "pregunta": "¿Cuál opinión está mejor argumentada?",
+      "opciones": [
+        {
+          "id": "a",
+          "texto": "\"Prefiero leer en papel porque descanso la vista\""
+        },
+        {
+          "id": "b",
+          "texto": "\"Prefiero leer en papel y ya está\""
+        },
+        {
+          "id": "c",
+          "texto": "\"Prefiero leer en papel, es obvio\""
+        }
+      ],
+      "correcta": "a",
+      "retro": "Es la única que da una razón."
+    }
+  ],
+  "tarjetas": [
+    {
+      "frente": "¿Qué es una opinión?",
+      "reverso": "Es decir lo que yo pienso sobre un tema. Ejemplo: Pienso que la tortuga ganó bien."
+    },
+    {
+      "frente": "¿Qué es un argumento?",
+      "reverso": "Es la razón que sostiene lo que pienso. Ejemplo: La constancia sirve para aprender música."
+    },
+    {
+      "frente": "¿Qué es un ejemplo en un texto de opinión?",
+      "reverso": "Un caso concreto que demuestra mi razón. Ejemplo: La tortuga ganó porque nunca se detuvo."
+    },
+    {
+      "frente": "¿Para qué sirve el conector \"porque\"?",
+      "reverso": "Sirve para dar una razón. Ejemplo: La tortuga ganó porque nunca se rindió."
+    },
+    {
+      "frente": "¿Para qué sirve el conector \"por ejemplo\"?",
+      "reverso": "Sirve para mostrar un caso concreto. Ejemplo: Por ejemplo, la tortuga ganó la carrera."
+    },
+    {
+      "frente": "¿Para qué sirve el conector \"además\"?",
+      "reverso": "Sirve para agregar otra razón. Ejemplo: La liebre se confió; además, se quedó dormida."
+    },
+    {
+      "frente": "¿Para qué sirve el conector \"sin embargo\"?",
+      "reverso": "Sirve para mostrar una idea contraria. Ejemplo: La liebre corría; sin embargo, la tortuga ganó."
+    },
+    {
+      "frente": "¿Para qué sirve el conector \"en conclusión\"?",
+      "reverso": "Sirve para cerrar el texto. Ejemplo: En conclusión, vale más no rendirse que correr."
+    },
+    {
+      "frente": "¿Cuál es la base o primer paso de la torre del argumento?",
+      "reverso": "Mi opinión personal. Ejemplo: Yo pienso que la constancia es mejor que la velocidad."
+    },
+    {
+      "frente": "¿Cómo se debe escuchar a quien piensa distinto?",
+      "reverso": "Escucho la idea completa antes de responder con respeto. Ejemplo: Entiendo lo que dices."
+    },
+    {
+      "frente": "¿A quién debemos responder durante un debate?",
+      "reverso": "Respondemos a la idea y no a la persona. Ejemplo: Tienes razón en eso."
+    },
+    {
+      "frente": "¿Qué frase podemos usar para respetar la opinión ajena?",
+      "reverso": "Uso: \"Entiendo tu idea, pero yo pienso que...\". Ejemplo: Entiendo tu idea sobre la liebre."
+    },
+    {
+      "frente": "¿Por qué es importante la constancia según la fábula?",
+      "reverso": "Porque quien no se rinde termina llegando. Ejemplo: La tortuga avanzó despacio pero llegó."
+    },
+    {
+      "frente": "¿En qué situaciones es más importante la velocidad?",
+      "reverso": "En emergencias o cuando hay una hora de entrega. Ejemplo: Debemos correr en emergencias."
+    },
+    {
+      "frente": "¿Qué le pasó a la liebre por confiarse?",
+      "reverso": "Perdió la carrera a pesar de ser muy rápida. Ejemplo: La liebre perdió por confiada."
+    },
+    {
+      "frente": "¿Qué se aprendió en el Caso 1 del curso?",
+      "reverso": "A leer antes, durante y después del texto. Ejemplo: Leo el título antes de empezar."
+    },
+    {
+      "frente": "¿Qué se aprendió en el Caso 2 del curso?",
+      "reverso": "A reconocer textos narrativos, informativos e instructivos. Ejemplo: La fábula es un texto narrativo."
+    },
+    {
+      "frente": "¿Qué se aprendió en el Caso 3 del curso?",
+      "reverso": "A preguntar usando tres lupas diferentes. Ejemplo: Uso las lupas para investigar el texto."
+    },
+    {
+      "frente": "¿Qué se aprendió en el Caso 4 del curso?",
+      "reverso": "A separar hechos de opiniones y buscar fuentes confiables. Ejemplo: Es un hecho que ganó."
+    },
+    {
+      "frente": "¿Cuál es la misión final del Caso 5?",
+      "reverso": "Construir una opinión propia con razones y ejemplos. Ejemplo: Mi opinión tiene bases firmes."
+    }
+  ]
+}

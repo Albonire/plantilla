@@ -1,0 +1,22 @@
+---
+// coral button, reserved for the summative challenge of each case
+interface Props {
+  href?: string;
+  class?: string;
+  [atributo: string]: unknown;
+}
+const { href, class: clase = '', ...resto } = Astro.props;
+const Etiqueta = href ? 'a' : 'button';
+const extra = href ? { href } : { type: 'button' };
+---
+
+<Etiqueta
+  {...extra}
+  {...resto}
+  class:list={[
+    'inline-flex min-h-12 items-center justify-center gap-3 rounded-pill bg-coral-pop px-6 py-3 text-body-sm font-medium text-ink-black transition-colors hover:bg-ink-black hover:text-cream-paper',
+    clase,
+  ]}
+>
+  <slot />
+</Etiqueta>

@@ -1,0 +1,25 @@
+import Seccion from '../../../components/ui/seccion.astro';
+import ListaPistas from '../../../components/ui/lista_pistas.astro';
+import InfographicViewer from '../../../components/ui/infographic_viewer.astro';
+
+<Seccion id="introduccion" titulo="Introducción" etiqueta="Antes de empezar">
+
+<div class="lectura">
+
+Leer no se limita a pronunciar correctamente las palabras que se encuentran en una página. Al leer, también pensamos, imaginamos, formulamos preguntas, conectamos la información con nuestros conocimientos previos y buscamos entender lo que el autor desea comunicar.
+
+En esta unidad nos enfocaremos en emplear diversas estrategias que facilitarán una mejor comprensión de lo que leemos. Abordaremos la lectura en tres etapas: antes, durante y después.
+
+</div>
+
+</Seccion>
+
+<Seccion id="contenidos" titulo="Las pistas del caso" etiqueta="Contenidos">
+
+<ListaPistas items={props.unidad.contenidos} unidad={props.unidad.numero} />
+
+<div class="mt-14">
+  <InfographicViewer id="c1_infografia" />
+</div>
+
+</Seccion>

@@ -1,0 +1,14 @@
+---
+// renders an apa 7 reference, turning *text* into italics (titles)
+interface Props {
+  texto: string;
+  class?: string;
+}
+const { texto, class: clase = '' } = Astro.props;
+const partes = texto.split('*');
+// long urls have no break points, so they are allowed to wrap anywhere
+---
+
+<span class:list={['[overflow-wrap:anywhere]', clase]}>
+  {partes.map((p, i) => (i % 2 === 1 ? <em>{p}</em> : p))}
+</span>

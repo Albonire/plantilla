@@ -1,0 +1,67 @@
+---
+// race track for the fable of case 1. The hare and the tortoise advance with the reading (see lectura.ts).
+import Liebre from '../ilustraciones/liebre.astro';
+import Tortuga from '../ilustraciones/tortuga.astro';
+
+interface Props {
+  descripcion: string;
+}
+const { descripcion } = Astro.props;
+---
+
+<div
+  class="mx-auto max-w-lg rounded-soft border-2 border-ink-black bg-cream-paper p-1.5"
+  data-carrera
+>
+  <p class="sr-only">{descripcion}</p>
+  <svg viewBox="0 0 900 162" class="block h-auto w-full" aria-hidden="true" focusable="false">
+    <rect width="900" height="162" rx="24" fill="#cfe6f7"></rect>
+    <path
+      d="M0 132 C200 116 380 128 560 108 C700 92 800 100 900 96 V190 H0 Z"
+      fill="#8ed462"
+    ></path>
+    <path d="M0 160 C260 148 560 156 900 140 V190 H0 Z" fill="#6fbb47"></path>
+    <path
+      d="M40 118 H820"
+      stroke="#f5f1e4"
+      stroke-width="10"
+      stroke-dasharray="4 16"
+      stroke-linecap="round"
+    ></path>
+    <path
+      d="M40 154 H820"
+      stroke="#f5f1e4"
+      stroke-width="10"
+      stroke-dasharray="4 16"
+      stroke-linecap="round"
+    ></path>
+    <g transform="translate(24 22)">
+      <rect x="0" y="0" width="6" height="86" rx="3" fill="#2c2e2a"></rect>
+      <path d="M6 0 L44 12 L6 26 Z" fill="#ff705d"></path>
+    </g>
+    <g transform="translate(826 8)">
+      <rect x="-6" y="52" width="12" height="60" rx="4" fill="#8b6b4a"></rect>
+      <circle cx="0" cy="30" r="34" fill="#4f9a34"></circle>
+      <circle cx="-22" cy="50" r="24" fill="#4f9a34"></circle>
+      <circle cx="24" cy="52" r="22" fill="#5aa03a"></circle>
+      <circle cx="-4" cy="10" r="19" fill="#5aa03a"></circle>
+    </g>
+
+    <!-- the wrapper groups hold the lane position; the inner groups are the ones the script moves -->
+    <g transform="translate(60 44)">
+      <g data-corredor="liebre" transform="translate(610 0)">
+        <g data-pose="corre">
+          <Liebre size={72} pose="corre" />
+        </g>
+        <g data-pose="duerme" style="opacity:0">
+          <Liebre size={72} pose="duerme" />
+        </g>
+      </g>
+    </g>
+    <g transform="translate(60 100)">
+      <g data-corredor="tortuga" transform="translate(700 0)">
+        <Tortuga size={56} />
+      </g>
+    </g>
+  </svg>
+</div>

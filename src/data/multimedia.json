@@ -1,0 +1,445 @@
+[
+  {
+    "id": "c1_infografia",
+    "unidad": 1,
+    "tipo": "infografia",
+    "titulo": "Leo como detective",
+    "archivo": "caso_1_infografia.png",
+    "alt": "Infografía Leo como detective: una liebre y una tortuga en la línea de salida y tres tarjetas con las etapas antes, durante y después de leer.",
+    "texto_alternativo": "Leo como detective.\nAntes de leer: predigo. Miro el título y la imagen. Me pregunto de qué se trata.\nDurante: hago pausas. Me pregunto qué pasa. Descubro palabras por el contexto. Busco pistas.\nDespués: opino. Recuerdo lo importante. Busco la enseñanza. Digo qué pienso y por qué.",
+    "fondo": "#f8efde",
+    "herramienta": "Herramientas digitales",
+    "fecha_generacion": "2026-09-24",
+    "revisado_por": "Selene María Caballero Valle",
+    "focos": [
+      {
+        "id": "titulo",
+        "x": 4,
+        "y": 4,
+        "w": 93,
+        "h": 33,
+        "titulo": "Leo como detective",
+        "texto": "Leo como detective."
+      },
+      {
+        "id": "antes",
+        "x": 17,
+        "y": 40.5,
+        "w": 73,
+        "h": 16,
+        "titulo": "Antes de leer",
+        "texto": "Antes de leer: predigo. Miro el título y la imagen. Me pregunto de qué se trata."
+      },
+      {
+        "id": "durante",
+        "x": 17,
+        "y": 59.5,
+        "w": 74,
+        "h": 16,
+        "titulo": "Durante la lectura",
+        "texto": "Durante: hago pausas. Me pregunto qué pasa. Descubro palabras por el contexto. Busco pistas."
+      },
+      {
+        "id": "despues",
+        "x": 17,
+        "y": 78.5,
+        "w": 74,
+        "h": 16,
+        "titulo": "Después de leer",
+        "texto": "Después: opino. Recuerdo lo importante. Busco la enseñanza. Digo qué pienso y por qué."
+      }
+    ]
+  },
+  {
+    "id": "c1_video",
+    "unidad": 1,
+    "tipo": "video",
+    "titulo": "Leo como detective",
+    "archivo": "/media/video/caso_1_video",
+    "poster": "/media/video/caso_1_poster.webp",
+    "duracion": "1:08",
+    "transcripcion": "caso_1_video",
+    "herramienta": "Herramientas digitales",
+    "fecha_generacion": "2026-09-24",
+    "revisado_por": "Selene María Caballero Valle"
+  },
+  {
+    "id": "c1_podcast",
+    "unidad": 1,
+    "tipo": "audio",
+    "titulo": "Repaso del caso 1",
+    "archivo": "/media/audio/caso_1_podcast.mp3",
+    "duracion": "1:31",
+    "transcripcion": "caso_1_podcast",
+    "herramienta": "Herramientas digitales",
+    "fecha_generacion": "2026-09-24",
+    "revisado_por": "Selene María Caballero Valle"
+  },
+  {
+    "id": "c2_infografia",
+    "unidad": 2,
+    "tipo": "infografia",
+    "titulo": "El sendero de los textos",
+    "archivo": "caso_2_infografia.png",
+    "alt": "Infografía El sendero de los textos: un sendero con tres estaciones, texto narrativo, informativo e instructivo, y Sofía con su lupa al final.",
+    "texto_alternativo": "El sendero de los textos.\nTexto narrativo: cuenta una historia. Partes: inicio, nudo, desenlace. Pista: \"Había una vez...\".\nTexto informativo: da datos reales. Partes: título, entrada, desarrollo, cierre. Pista: fechas, lugares y nombres reales.\nTexto instructivo: enseña a hacer algo. Partes: materiales y pasos en orden. Pista: números y verbos como corto o pega.\nPregunta final de Sofía para identificar la misión de cualquier texto: ¿me cuenta, me informa o me enseña?",
+    "fondo": "#5bafde",
+    "herramienta": "Herramientas digitales",
+    "fecha_generacion": "2026-09-24",
+    "revisado_por": "Luz Marina Castillo Cuadrado",
+    "focos": [
+      {
+        "id": "titulo",
+        "x": 8,
+        "y": 6,
+        "w": 84,
+        "h": 11,
+        "titulo": "El sendero de los textos",
+        "texto": "El sendero de los textos."
+      },
+      {
+        "id": "narrativo",
+        "x": 7,
+        "y": 17,
+        "w": 66,
+        "h": 26,
+        "titulo": "Texto narrativo",
+        "texto": "Texto narrativo: cuenta una historia. Partes: inicio, nudo, desenlace. Pista: \"Había una vez...\"."
+      },
+      {
+        "id": "informativo",
+        "x": 53,
+        "y": 30.5,
+        "w": 42,
+        "h": 32,
+        "titulo": "Texto informativo",
+        "texto": "Texto informativo: da datos reales. Partes: título, entrada, desarrollo, cierre. Pista: fechas, lugares y nombres reales."
+      },
+      {
+        "id": "instructivo",
+        "x": 4,
+        "y": 52.5,
+        "w": 37,
+        "h": 31,
+        "titulo": "Texto instructivo",
+        "texto": "Texto instructivo: enseña a hacer algo. Partes: materiales y pasos en orden. Pista: números y verbos como corto o pega."
+      },
+      {
+        "id": "pregunta",
+        "x": 20,
+        "y": 64,
+        "w": 72,
+        "h": 34,
+        "titulo": "La pregunta de Sofía",
+        "texto": "Pregunta final de Sofía para identificar la misión de cualquier texto: ¿me cuenta, me informa o me enseña?"
+      }
+    ]
+  },
+  {
+    "id": "c2_video",
+    "unidad": 2,
+    "tipo": "video",
+    "titulo": "Tres textos, tres misiones",
+    "archivo": "/media/video/caso_2_video",
+    "poster": "/media/video/caso_2_poster.webp",
+    "duracion": "1:04",
+    "transcripcion": "caso_2_video",
+    "herramienta": "Herramientas digitales",
+    "fecha_generacion": "2026-09-24",
+    "revisado_por": "Luz Marina Castillo Cuadrado"
+  },
+  {
+    "id": "c2_podcast",
+    "unidad": 2,
+    "tipo": "audio",
+    "titulo": "Repaso del caso 2",
+    "archivo": "/media/audio/caso_2_podcast.mp3",
+    "duracion": "1:45",
+    "transcripcion": "caso_2_podcast",
+    "herramienta": "Herramientas digitales",
+    "fecha_generacion": "2026-09-24",
+    "revisado_por": "Luz Marina Castillo Cuadrado"
+  },
+  {
+    "id": "c3_infografia",
+    "unidad": 3,
+    "tipo": "infografia",
+    "titulo": "Las tres lupas",
+    "archivo": "caso_3_infografia.png",
+    "alt": "Infografía Las tres lupas: tres lupas amarillas cada vez más grandes, con el nivel literal, inferencial y crítico.",
+    "texto_alternativo": "Las tres lupas.\nLupa 1: nivel literal. Información directa. ¿Quién, qué, dónde? Ejemplo: ¿cuántos libros tenía el estante?\nLupa 2: nivel inferencial. Une pistas con lo que sabes. Ejemplo: ¿por qué temblaba Julián?\nLupa 3: nivel crítico. Tu opinión con razones. Ejemplo: ¿prestarías un libro? ¿Por qué?",
+    "fondo": "#fdf3e7",
+    "herramienta": "Herramientas digitales",
+    "fecha_generacion": "2026-09-24",
+    "revisado_por": "Ingrid Yuliana González Flores",
+    "focos": [
+      {
+        "id": "titulo",
+        "x": 10,
+        "y": 2,
+        "w": 80,
+        "h": 25,
+        "titulo": "Las tres lupas",
+        "texto": "Las tres lupas."
+      },
+      {
+        "id": "lupa1",
+        "x": 14,
+        "y": 26,
+        "w": 78,
+        "h": 22,
+        "titulo": "Lupa 1: literal",
+        "texto": "Lupa 1: nivel literal. Información directa. ¿Quién, qué, dónde? Ejemplo: ¿cuántos libros tenía el estante?"
+      },
+      {
+        "id": "lupa2",
+        "x": 12,
+        "y": 48,
+        "w": 80,
+        "h": 22,
+        "titulo": "Lupa 2: inferencial",
+        "texto": "Lupa 2: nivel inferencial. Une pistas con lo que sabes. Ejemplo: ¿por qué temblaba Julián?"
+      },
+      {
+        "id": "lupa3",
+        "x": 10,
+        "y": 69,
+        "w": 82,
+        "h": 27,
+        "titulo": "Lupa 3: crítico",
+        "texto": "Lupa 3: nivel crítico. Tu opinión con razones. Ejemplo: ¿prestarías un libro? ¿Por qué?"
+      }
+    ]
+  },
+  {
+    "id": "c3_video",
+    "unidad": 3,
+    "tipo": "video",
+    "titulo": "Las tres lupas",
+    "archivo": "/media/video/caso_3_video",
+    "poster": "/media/video/caso_3_poster.webp",
+    "duracion": "1:14",
+    "transcripcion": "caso_3_video",
+    "herramienta": "Herramientas digitales",
+    "fecha_generacion": "2026-09-24",
+    "revisado_por": "Ingrid Yuliana González Flores"
+  },
+  {
+    "id": "c3_podcast",
+    "unidad": 3,
+    "tipo": "audio",
+    "titulo": "Repaso del caso 3",
+    "archivo": "/media/audio/caso_3_podcast.mp3",
+    "duracion": "1:33",
+    "transcripcion": "caso_3_podcast",
+    "herramienta": "Herramientas digitales",
+    "fecha_generacion": "2026-09-24",
+    "revisado_por": "Ingrid Yuliana González Flores"
+  },
+  {
+    "id": "c4_infografia",
+    "unidad": 4,
+    "tipo": "infografia",
+    "titulo": "La lista LUPA",
+    "archivo": "caso_4_infografia.png",
+    "alt": "Infografía La lista LUPA: cuatro tarjetas con las letras L, U, P y A, y una banda amarilla con la regla de oro.",
+    "texto_alternativo": "La lista LUPA: ¿confío en esta noticia?\nL: ¿Leo quién lo escribió? Busco el autor o el medio.\nU: ¿Ubico la fecha? Una noticia vieja puede parecer nueva.\nP: ¿Pregunto a otras fuentes? Si es verdad, otros medios serios lo dicen.\nA: ¿Analizo si quiere asustarme o emocionarme? \"Urgente\" y \"compártelo ya\" son alertas.\nRegla de oro: si tengo dudas, no lo comparto y le pregunto a un adulto.",
+    "fondo": "#faecd1",
+    "herramienta": "Herramientas digitales",
+    "fecha_generacion": "2026-09-24",
+    "revisado_por": "Maribel León Grillo",
+    "focos": [
+      {
+        "id": "titulo",
+        "x": 15,
+        "y": 3,
+        "w": 70,
+        "h": 14,
+        "titulo": "La lista LUPA",
+        "texto": "La lista LUPA: ¿confío en esta noticia?"
+      },
+      {
+        "id": "l",
+        "x": 37,
+        "y": 18.5,
+        "w": 58,
+        "h": 15,
+        "titulo": "L: leo quién lo escribió",
+        "texto": "L: ¿Leo quién lo escribió? Busco el autor o el medio."
+      },
+      {
+        "id": "u",
+        "x": 37,
+        "y": 34.5,
+        "w": 58,
+        "h": 15.5,
+        "titulo": "U: ubico la fecha",
+        "texto": "U: ¿Ubico la fecha? Una noticia vieja puede parecer nueva."
+      },
+      {
+        "id": "p",
+        "x": 5,
+        "y": 51,
+        "w": 90,
+        "h": 16,
+        "titulo": "P: pregunto a otras fuentes",
+        "texto": "P: ¿Pregunto a otras fuentes? Si es verdad, otros medios serios lo dicen."
+      },
+      {
+        "id": "a",
+        "x": 5,
+        "y": 68,
+        "w": 90,
+        "h": 16,
+        "titulo": "A: analizo",
+        "texto": "A: ¿Analizo si quiere asustarme o emocionarme? \"Urgente\" y \"compártelo ya\" son alertas."
+      },
+      {
+        "id": "regla",
+        "x": 5,
+        "y": 84,
+        "w": 90,
+        "h": 12,
+        "titulo": "Regla de oro",
+        "texto": "Regla de oro: si tengo dudas, no lo comparto y le pregunto a un adulto."
+      }
+    ]
+  },
+  {
+    "id": "c4_video",
+    "unidad": 4,
+    "tipo": "video",
+    "titulo": "¿Puedo confiar en esta noticia?",
+    "archivo": "/media/video/caso_4_video",
+    "poster": "/media/video/caso_4_poster.webp",
+    "duracion": "1:06",
+    "transcripcion": "caso_4_video",
+    "herramienta": "Herramientas digitales",
+    "fecha_generacion": "2026-09-24",
+    "revisado_por": "Maribel León Grillo"
+  },
+  {
+    "id": "c4_podcast",
+    "unidad": 4,
+    "tipo": "audio",
+    "titulo": "Repaso del caso 4",
+    "archivo": "/media/audio/caso_4_podcast.mp3",
+    "duracion": "1:37",
+    "transcripcion": "caso_4_podcast",
+    "herramienta": "Herramientas digitales",
+    "fecha_generacion": "2026-09-24",
+    "revisado_por": "Maribel León Grillo"
+  },
+  {
+    "id": "c5_infografia",
+    "unidad": 5,
+    "tipo": "infografia",
+    "titulo": "La torre del argumento",
+    "archivo": "caso_5_infografia.png",
+    "alt": "Infografía La torre del argumento: seis bloques de colores apilados, de la opinión a la conclusión, con dos niños y una tortuga.",
+    "texto_alternativo": "La torre del argumento. De abajo hacia arriba:\nMi opinión: yo pienso que la constancia es más importante.\nRazón: porque quien no se rinde termina llegando.\nEjemplo: por ejemplo, la tortuga ganó sin detenerse.\nOtra razón: además, la velocidad falla si uno se confía.\nIdea contraria: sin embargo, la velocidad ayuda en una emergencia.\nConclusión: en conclusión, vale más no rendirse.\nNotas de la misión: escuchar y responder con respeto. Responde a la idea, no a la persona, escuchando siempre antes de hablar.",
+    "fondo": "#feefdc",
+    "herramienta": "Herramientas digitales",
+    "fecha_generacion": "2026-09-24",
+    "revisado_por": "Silvia Gabriela Rincón Pérez",
+    "focos": [
+      {
+        "id": "titulo",
+        "x": 4,
+        "y": 8,
+        "w": 38,
+        "h": 24,
+        "titulo": "La torre del argumento",
+        "texto": "La torre del argumento. De abajo hacia arriba:"
+      },
+      {
+        "id": "opinion",
+        "x": 37,
+        "y": 75,
+        "w": 45,
+        "h": 17,
+        "titulo": "Mi opinión",
+        "texto": "Mi opinión: yo pienso que la constancia es más importante."
+      },
+      {
+        "id": "razon",
+        "x": 39,
+        "y": 62,
+        "w": 41,
+        "h": 15,
+        "titulo": "Razón",
+        "texto": "Razón: porque quien no se rinde termina llegando."
+      },
+      {
+        "id": "ejemplo",
+        "x": 41,
+        "y": 51,
+        "w": 37,
+        "h": 14,
+        "titulo": "Ejemplo",
+        "texto": "Ejemplo: por ejemplo, la tortuga ganó sin detenerse."
+      },
+      {
+        "id": "otra",
+        "x": 44,
+        "y": 39,
+        "w": 28,
+        "h": 14,
+        "titulo": "Otra razón",
+        "texto": "Otra razón: además, la velocidad falla si uno se confía."
+      },
+      {
+        "id": "contraria",
+        "x": 46,
+        "y": 27,
+        "w": 27,
+        "h": 14,
+        "titulo": "Idea contraria",
+        "texto": "Idea contraria: sin embargo, la velocidad ayuda en una emergencia."
+      },
+      {
+        "id": "conclusion",
+        "x": 46,
+        "y": 13,
+        "w": 25,
+        "h": 15,
+        "titulo": "Conclusión",
+        "texto": "Conclusión: en conclusión, vale más no rendirse."
+      },
+      {
+        "id": "notas",
+        "x": 8,
+        "y": 62,
+        "w": 22,
+        "h": 25,
+        "titulo": "Notas de la misión",
+        "texto": "Notas de la misión: escuchar y responder con respeto. Responde a la idea, no a la persona, escuchando siempre antes de hablar."
+      }
+    ]
+  },
+  {
+    "id": "c5_video",
+    "unidad": 5,
+    "tipo": "video",
+    "titulo": "Construye tu opinión como una torre",
+    "archivo": "/media/video/caso_5_video",
+    "poster": "/media/video/caso_5_poster.webp",
+    "duracion": "1:16",
+    "transcripcion": "caso_5_video",
+    "herramienta": "Herramientas digitales",
+    "fecha_generacion": "2026-09-24",
+    "revisado_por": "Silvia Gabriela Rincón Pérez"
+  },
+  {
+    "id": "c5_podcast",
+    "unidad": 5,
+    "tipo": "audio",
+    "titulo": "El gran debate: ¿velocidad o constancia?",
+    "archivo": "/media/audio/caso_5_podcast.mp3",
+    "duracion": "2:47",
+    "transcripcion": "caso_5_podcast",
+    "herramienta": "Herramientas digitales",
+    "fecha_generacion": "2026-09-24",
+    "revisado_por": "Silvia Gabriela Rincón Pérez"
+  }
+]

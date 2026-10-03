@@ -1,0 +1,38 @@
+---
+// thin colophon at the end of every page
+import { sitio } from '../../config/sitio';
+---
+
+<footer class="mx-auto w-full max-w-[62rem] px-5 py-10 text-body-sm text-stone-text md:px-8">
+  <p class="font-medium text-ink-black">{sitio.nombre_curso}</p>
+  <p class="mt-2 max-w-2xl">
+    {sitio.pie_portada}. Hecho por el equipo de la {sitio.programa}, {sitio.universidad}.
+  </p>
+  <p class="mt-2 max-w-2xl">
+    Los podcasts, videos, infografías y tarjetas se elaboraron con herramientas digitales a partir de textos del equipo y se revisaron antes de publicarse.
+  </p>
+  <nav aria-label="Pie de página" class="mt-4">
+    <ul class="flex flex-wrap gap-x-6 gap-y-1 font-medium text-ink-black">
+      <li>
+        <a class="underline decoration-2 underline-offset-4" href="/referencias">
+          Referencias
+        </a>
+      </li>
+      <li>
+        <a class="underline decoration-2 underline-offset-4" href="/docentes">
+          Para docentes
+        </a>
+      </li>
+      <li>
+        <a class="underline decoration-2 underline-offset-4" href="/ficha">
+          Ficha de diseño
+        </a>
+      </li>
+      <li>
+        <a class="underline decoration-2 underline-offset-4" href="/">
+          Portada
+        </a>
+      </li>
+    </ul>
+  </nav>
+</footer>

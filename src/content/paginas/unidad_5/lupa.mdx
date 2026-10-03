@@ -1,0 +1,25 @@
+import Seccion from '../../../components/ui/seccion.astro';
+import Tarjetas from '../../../components/ui/tarjetas.astro';
+import Embed from '../../../components/ui/embed.astro';
+import { QuizCard } from '../../../components/islas/quiz_card';
+import act from '../../../data/actividades/unidad_5.json';
+
+<Seccion id="practica" titulo="Entrena tu lupa" etiqueta="Actividades formativas" fondo="arena" titulo_visible={false}>
+
+<p class="lectura mb-10">Estas actividades no llevan nota: sirven para practicar. Puedes equivocarte y volver a intentar.</p>
+
+<div class="flex flex-col gap-8">
+
+<QuizCard client:visible preguntas={act.quiz} unidad={5} titulo="Cuestionario del caso" etiqueta="Resuélvelo para ganar la insignia" marca_caso />
+
+<Tarjetas tarjetas={act.tarjetas} unidad={5} />
+
+<Embed id="w5_punto_vista" etiqueta="Para practicar más" />
+
+<Embed id="w5_debate" etiqueta="Para practicar más" />
+
+<Embed id="w5_argumentativos" etiqueta="Para practicar más" />
+
+</div>
+
+</Seccion>

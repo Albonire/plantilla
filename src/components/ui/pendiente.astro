@@ -1,0 +1,11 @@
+---
+// visible marker for data the team still has to provide
+interface Props {
+  texto: string;
+}
+const { texto } = Astro.props;
+---
+
+<span class="inline-block rounded-chip border-2 border-dashed border-ink-black bg-sunshine-pop px-2 py-0.5 text-body-sm font-medium text-ink-black">
+  [PENDIENTE: {texto}]
+</span>

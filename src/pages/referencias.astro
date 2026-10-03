@@ -1,0 +1,162 @@
+---
+import CursoLayout from '../layouts/curso_layout.astro';
+import EncabezadoPagina from '../components/curso/encabezado_pagina.astro';
+import Seccion from '../components/ui/seccion.astro';
+import ButtonGhost from '../components/ui/button_ghost.astro';
+import Apa from '../components/ui/apa.astro';
+import recursos from '../data/recursos.json';
+import { referencias_extra } from '../data/referencias_extra';
+import { integrantes, sitio } from '../config/sitio';
+
+interface Referencia {
+  apa: string;
+  url: string;
+}
+
+// only references whose link was opened and checked are published
+const citadas: Referencia[] = [
+  ...recursos
+    .filter((r) => (r.tipo === 'web' || r.tipo === 'referente') && r.verificado && r.apa)
+    .map((r) => ({ apa: r.apa, url: r.url })),
+  ...referencias_extra.filter((r) => r.verificado).map((r) => ({ apa: r.apa, url: r.url })),
+];
+
+const plano = (t: string) =>
+  t.replace(/\*/g, '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+
+const ordenadas = [...new Map(citadas.map((c) => [c.apa, c])).values()].sort((a, b) =>
+  plano(a.apa).localeCompare(plano(b.apa), 'es'),
+);
+
+const declaracion_herramientas =
+  'Los podcasts, videos, infografías y tarjetas fueron elaborados con herramientas digitales a partir de textos escritos por el equipo, y revisados antes de publicarse. El código del sitio, la adaptación de La cigarra y la hormiga, los textos de retroalimentación y las verificaciones de textos indicadas en cada página se elaboraron con apoyo de software educativo y fueron revisados por el equipo.';
+
+const herramientas = [
+  ['Astro', 'Framework del sitio', 'MIT'],
+  ['React', 'Actividades interactivas', 'MIT'],
+  ['GSAP y ScrollTrigger', 'Animaciones ligadas al scroll', 'Licencia estándar de GSAP, gratuita'],
+  ['Tailwind CSS', 'Estilos', 'MIT'],
+  [
+    'Inter (Rasmus Andersson)',
+    'Tipografía de la interfaz, autoalojada',
+    'SIL Open Font License 1.1',
+  ],
+  [
+    'Andika (SIL International)',
+    'Tipografía de las lecturas, autoalojada',
+    'SIL Open Font License 1.1',
+  ],
+  ['Phosphor Icons', 'Iconos', 'MIT'],
+  ['dnd kit', 'Arrastrar y soltar accesible', 'MIT'],
+  ['jsPDF', 'Descarga de PDF en el navegador', 'MIT'],
+];
+---
+
+<CursoLayout
+  titulo="Referencias"
+  descripcion="Referencias en formato APA 7 y créditos del curso Aventura lectora."
+  ubicacion={{ tipo: 'referencias' }}
+>
+  <EncabezadoPagina etiqueta="Última página del libro" titulo="Referencias" color="coral-pop">
+    <p>Formato APA 7.ª edición. Solo aparecen las fuentes cuyo enlace se abrió y se revisó.</p>
+  </EncabezadoPagina>
+
+  <Seccion id="lista" titulo="Lista de referencias" etiqueta="APA 7">
+    {ordenadas.length === 0 ? (
+      <p class="text-body">Todavía no hay referencias confirmadas.</p>
+    ) : (
+      <ul class="max-w-4xl space-y-5">
+        {ordenadas.map((r) => (
+          <li class="ref text-body">
+            <Apa texto={r.apa} />
+          </li>
+        ))}
+      </ul>
+    )}
+  </Seccion>
+
+  <Seccion id="creditos" titulo="Créditos" etiqueta="Quién hizo qué" fondo="arena">
+    <div class="grid gap-4 md:grid-cols-2">
+      <div class="rounded-soft bg-pure-white p-6">
+        <h3 class="text-subheading font-medium">Equipo de trabajo</h3>
+        <ul class="mt-3 space-y-1 text-body">
+          {integrantes.map((i) => (
+            <li>{i.nombre}</li>
+          ))}
+        </ul>
+        <p class="mt-4 text-body-sm text-stone-text">
+          {sitio.seminario}. Actividad: {sitio.actividad}. Docente: {sitio.docente}.{' '}
+          {sitio.universidad}, {sitio.sede}.{sitio.division}. {sitio.facultad}. {sitio.programa}.
+        </p>
+      </div>
+      <div class="rounded-soft bg-pure-white p-6">
+        <h3 class="text-subheading font-medium">Ilustraciones y textos</h3>
+        <p class="mt-3 text-body">
+          Las ilustraciones son originales del equipo, dibujadas en SVG con formas simples en estilo
+          papel recortado. Los textos del curso son del equipo. "La liebre y la tortuga" y "La
+          cigarra y la hormiga" son adaptaciones de fábulas de Esopo (dominio público). "El
+          renacuajo paseador", de Rafael Pombo (1833 a 1912), es de dominio público en Colombia.
+        </p>
+      </div>
+      <div class="rounded-soft bg-pure-white p-6 md:col-span-2">
+        <h3 class="text-subheading font-medium">Elaboración de recursos digitales</h3>
+        <p class="mt-3 max-w-3xl text-body">{declaracion_herramientas}</p>
+      </div>
+    </div>
+
+    <div
+      class="mt-10 overflow-x-auto rounded-card bg-pure-white p-3 md:p-6"
+      tabindex="0"
+      role="region"
+      aria-label="Tabla con desplazamiento horizontal"
+    >
+      <table class="w-full min-w-[32rem] text-left text-body-sm">
+        <caption class="px-3 pb-2 pt-3 text-left text-body font-medium">
+          Herramientas de software del sitio
+        </caption>
+        <thead>
+          <tr class="border-b border-hairline-mist">
+            <th scope="col" class="px-3 py-3 font-medium">
+              Herramienta
+            </th>
+            <th scope="col" class="px-3 py-3 font-medium">
+              Para qué se usó
+            </th>
+            <th scope="col" class="px-3 py-3 font-medium">
+              Licencia
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {herramientas.map(([h, u, l]) => (
+            <tr class="border-b border-hairline-mist last:border-0">
+              <th scope="row" class="px-3 py-3 font-medium">
+                {h}
+              </th>
+              <td class="px-3 py-3">{u}</td>
+              <td class="px-3 py-3">{l}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </Seccion>
+
+  <section class="py-section">
+    <div class="contenedor flex flex-wrap items-center justify-between gap-6">
+      <p class="max-w-lg text-heading-sm font-medium leading-tight tracking-tight">
+        Fin del libro. Gracias por leer.
+      </p>
+      <ButtonGhost href="/" color="grass">
+        Volver a la portada
+      </ButtonGhost>
+    </div>
+  </section>
+</CursoLayout>
+
+<style>
+  .ref {
+    padding-left: 2rem;
+    text-indent: -2rem;
+  }
+</style>

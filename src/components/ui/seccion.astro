@@ -1,0 +1,35 @@
+---
+// section of a book page with a stable id (the /ficha page links to it)
+interface Props {
+  id: string;
+  titulo: string;
+  etiqueta?: string;
+  // kept so older pages compile: sections are no longer painted with a colored band
+  fondo?: 'crema' | 'arena';
+  // false when the page title already says it: the h2 stays for screen readers and the design sheet
+  titulo_visible?: boolean;
+  class?: string;
+}
+const { id, titulo, etiqueta, titulo_visible = true, class: clase = '' } = Astro.props;
+---
+
+<section
+  id={id}
+  aria-labelledby={`${id}-titulo`}
+  class:list={['scroll-mt-20 py-10 md:py-14', clase]}
+>
+  <div class="contenedor">
+    <header class="mb-6 flex flex-col gap-2 md:mb-8">
+      {etiqueta && <p class="interfaz text-body-sm font-medium text-stone-text">{etiqueta}</p>}
+      <h2
+        id={`${id}-titulo`}
+        class:list={[
+          titulo_visible ? 'text-heading-sm leading-tight md:text-[2.25rem]' : 'sr-only',
+        ]}
+      >
+        {titulo}
+      </h2>
+    </header>
+    <slot />
+  </div>
+</section>

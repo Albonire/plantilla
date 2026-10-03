@@ -1,0 +1,40 @@
+---
+// numbered clues of the case: a real sequence, each one jumps to its part of the development
+import { ruta_pagina } from '../../config/paginas';
+
+interface Item {
+  id: string;
+  titulo: string;
+  detalle?: string;
+}
+interface Props {
+  items: Item[];
+  unidad: number;
+}
+const { items, unidad } = Astro.props;
+const pagina_pistas = ruta_pagina(unidad, 'pistas');
+---
+
+<ol class="grid gap-4 md:grid-cols-3">
+  {items.map((it, i) => (
+    <li class="flex flex-col rounded-soft bg-pure-white p-6">
+      <span
+        class="flex size-11 items-center justify-center rounded-full border-2 border-ink-black bg-sunshine-pop text-body font-medium"
+        aria-hidden="true"
+      >
+        {i + 1}
+      </span>
+      <p class="mt-4 text-subheading font-medium leading-snug">
+        <span class="sr-only">Pista {i + 1}: </span>
+        {it.titulo}
+      </p>
+      {it.detalle && <p class="mt-2 flex-1 text-body text-stone-text">{it.detalle}</p>}
+      <a
+        href={`${pagina_pistas}#${it.id}`}
+        class="mt-4 inline-flex min-h-11 items-center gap-2 text-body-sm font-medium underline decoration-2 underline-offset-4"
+      >
+        Ir a esta parte<span class="sr-only">: {it.titulo}</span>
+      </a>
+    </li>
+  ))}
+</ol>

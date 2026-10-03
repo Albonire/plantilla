@@ -1,0 +1,110 @@
+---
+// reading with detective pauses. Works as plain text; scroll scripts add the race track or side panel.
+import { ReadAloud } from '../islas/read_aloud';
+import PistaCarrera from './pista_carrera.astro';
+import BloqueCabecera from '../ui/bloque_cabecera.astro';
+import EscenasLibros from '../ilustraciones/escenas_libros.astro';
+
+interface Parrafo {
+  texto: string;
+  pausa?: string;
+}
+interface Props {
+  id: string;
+  unidad: number;
+  titulo: string;
+  autoria?: string;
+  parrafos: Parrafo[];
+  moraleja?: string;
+  // "carrera" adds the sticky race track at the bottom, "panel" a sticky side scene
+  modo?: 'simple' | 'carrera' | 'panel';
+  descripcion_pista?: string;
+}
+const {
+  id,
+  unidad,
+  titulo,
+  autoria,
+  parrafos,
+  moraleja,
+  modo = 'simple',
+  descripcion_pista = '',
+} = Astro.props;
+const texto_completo = [
+  titulo,
+  ...parrafos.map((p) => p.texto),
+  moraleja ? `Moraleja: ${moraleja}` : '',
+].join('. ');
+---
+
+<div
+  id={id}
+  data-lectura
+  data-modo={modo}
+  data-unidad={unidad}
+  class="scroll-mt-28 rounded-card border-2 border-ink-black bg-pure-white p-5 text-ink-black md:p-8"
+>
+  <div class="flex flex-wrap items-start justify-between gap-4">
+    <div class="min-w-0 flex-1">
+      <BloqueCabecera tipo="lee" etiqueta={autoria} titulo={titulo} />
+    </div>
+    <ReadAloud client:visible texto={texto_completo} etiqueta="Escuchar la lectura" />
+  </div>
+
+  <div
+    class:list={['mt-4 grid gap-8', modo === 'panel' ? 'lg:grid-cols-[minmax(0,38rem)_1fr]' : '']}
+  >
+    <ol class:list={['flex max-w-reading flex-col gap-8', modo === 'panel' ? '' : 'mx-auto']}>
+      {parrafos.map((p, i) => (
+        <li data-paso={i + 1} class="relative">
+          <p class="mb-1 text-micro font-medium text-stone-text">Párrafo {i + 1}</p>
+          <p class="text-reading font-regular">{p.texto}</p>
+          {p.pausa && (
+            <aside
+              data-pausa
+              class="mt-5 rounded-soft bg-sunshine-pop p-5"
+              aria-label="Pausa del detective"
+            >
+              <p class="text-body-sm font-medium">Pausa del detective</p>
+              <p class="mt-1 text-body font-medium">{p.pausa}</p>
+              <label class="mt-3 block text-body-sm" for={`${id}-pausa-${i + 1}`}>
+                Tu idea (puedes responder o seguir leyendo)
+              </label>
+              <textarea
+                id={`${id}-pausa-${i + 1}`}
+                data-almacen={`pausa:${unidad}:${id}:${i + 1}`}
+                rows="2"
+                maxlength="300"
+                class="mt-1 w-full rounded-soft border-2 border-transparent bg-pure-white p-3 text-body focus:border-ink-black"
+              ></textarea>
+            </aside>
+          )}
+        </li>
+      ))}
+      {moraleja && (
+        <li class="rounded-soft bg-cream-paper p-5">
+          <p class="text-body-sm font-medium text-stone-text">Moraleja</p>
+          <p class="mt-1 text-reading font-medium">{moraleja}</p>
+        </li>
+      )}
+    </ol>
+
+    {modo === 'panel' && (
+      <div class="hidden lg:block">
+        <div data-panel class="sticky top-28" aria-hidden="true">
+          <EscenasLibros />
+        </div>
+      </div>
+    )}
+  </div>
+
+  {modo === 'carrera' && (
+    <div data-pista class="sticky bottom-3 z-20 mt-8">
+      <PistaCarrera descripcion={descripcion_pista} />
+    </div>
+  )}
+</div>
+
+<script>
+  import '../../lib/scroll/lectura';
+</script>

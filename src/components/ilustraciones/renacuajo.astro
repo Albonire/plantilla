@@ -1,0 +1,52 @@
+---
+// Rinrín renacuajo: green tadpole with a hat with ribbon and a bow tie
+interface Props {
+  size?: number;
+  class?: string;
+}
+const { size = 130, class: clase = '' } = Astro.props;
+const TINTA = '#2c2e2a';
+---
+
+<svg
+  viewBox="0 0 120 152"
+  height={size}
+  width={(size * 120) / 152}
+  class={clase}
+  aria-hidden="true"
+  focusable="false"
+>
+  <path
+    d="M60 100 C30 125 85 135 45 150 C55 140 35 125 55 105"
+    fill="#8ed462"
+  />
+  <path
+    d="M62 104 C36 122 74 132 50 148"
+    stroke="#4f9a34"
+    stroke-width="5"
+    stroke-linecap="round"
+    fill="none"
+  />
+  <path d="M24 80 C24 45 96 45 96 80 C96 115 75 110 60 110 C45 110 24 115 24 80 Z" fill="#8ed462" />
+  <path d="M37 94 C37 80 83 80 83 94 C83 105 70 108 60 108 C50 108 37 105 37 94 Z" fill="#b8e594" />
+  <path d="M33 64 C33 52 55 52 55 64 C55 76 33 76 33 64 Z" fill="#ffffff" stroke={TINTA} stroke-width="2.5" />
+  <path d="M65 64 C65 52 87 52 87 64 C87 76 65 76 65 64 Z" fill="#ffffff" stroke={TINTA} stroke-width="2.5" />
+  <circle cx="47" cy="66" r="5" fill={TINTA} />
+  <circle cx="49" cy="64" r="1.5" fill="#ffffff" />
+  <circle cx="79" cy="66" r="5" fill={TINTA} />
+  <circle cx="81" cy="64" r="1.5" fill="#ffffff" />
+  <path d="M42 88 Q60 102 78 88" stroke={TINTA} stroke-width="3" stroke-linecap="round" fill="none" />
+  <circle cx="34" cy="84" r="4.5" fill="#c94a3a" opacity="0.4" />
+  <circle cx="86" cy="84" r="4.5" fill="#c94a3a" opacity="0.4" />
+  <path d="M60 108 L40 96 L42 116 Z" fill="#ff705d" />
+  <path d="M42 98 L50 106 M44 112 L50 106" stroke="#c94a3a" stroke-width="2" stroke-linecap="round" />
+  <path d="M60 108 L80 96 L78 116 Z" fill="#ff705d" />
+  <path d="M78 98 L70 106 M76 112 L70 106" stroke="#c94a3a" stroke-width="2" stroke-linecap="round" />
+  <circle cx="60" cy="106" r="5" fill="#c94a3a" />
+  <circle cx="58" cy="104" r="1.5" fill="#ffffff" opacity="0.6" />
+  <ellipse cx="60" cy="48" rx="36" ry="7" fill="#1a1b19" />
+  <path d="M40 45 L44 20 Q60 16 76 20 L80 45 Z" fill={TINTA} />
+  <path d="M41 38 L79 38 L80 45 L40 45 Z" fill="#ff705d" />
+  <path d="M41 42 L79 42 L80 45 L40 45 Z" fill="#c94a3a" />
+  <path d="M24 48 C24 56 96 56 96 48 C96 44 24 44 24 48 Z" fill={TINTA} />
+</svg>

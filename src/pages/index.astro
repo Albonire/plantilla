@@ -1,0 +1,154 @@
+---
+import { getCollection } from 'astro:content';
+import CursoLayout from '../layouts/curso_layout.astro';
+import TapaLibro from '../components/libro/tapa_libro.astro';
+import Seccion from '../components/ui/seccion.astro';
+import ButtonGhost from '../components/ui/button_ghost.astro';
+import { id_pagina, paginas_caso, ruta_pagina } from '../config/paginas';
+
+const unidades = (await getCollection('unidades')).sort((a, b) => a.data.numero - b.data.numero);
+
+const fondos: Record<string, string> = {
+  'fresh-grass': 'bg-fresh-grass',
+  'sky-pop': 'bg-sky-pop',
+  'sunshine-pop': 'bg-sunshine-pop',
+  'coral-pop': 'bg-coral-pop',
+  mixto: 'bg-fresh-grass',
+};
+---
+
+<CursoLayout titulo="Aventura lectora" modo="portada" ubicacion={{ tipo: 'inicio' }}>
+  <TapaLibro />
+
+  <Seccion
+    id="bienvenida"
+    titulo="Bienvenidos, exploradores de historias"
+    etiqueta="Bienvenida al curso"
+  >
+    <div class="lectura">
+      <p>
+        En este curso nos convertiremos en verdaderos detectives de la lectura: aprenderemos a
+        predecir, a preguntar, a distinguir hechos de opiniones y a construir nuestras propias ideas
+        frente a lo que leemos. A lo largo de 5 unidades leeremos cuentos, noticias y textos
+        informativos, resolveremos misterios de comprensión y aprenderemos a pensar de forma crítica
+        sobre todo lo que llega a nuestras manos... ¡y a nuestras pantallas! Preparen su lupa y su
+        curiosidad: la aventura comienza ahora.
+      </p>
+    </div>
+    <div class="mt-10">
+      <ButtonGhost href="/unidad/1" color="grass">
+        Empezar por el caso 1
+      </ButtonGhost>
+    </div>
+  </Seccion>
+
+  <Seccion id="indice" titulo="Índice del libro" etiqueta="Elige por dónde seguir">
+    <p class="lectura">
+      Cada caso tiene cuatro páginas: abrir el caso, seguir las pistas, entrenar la lupa y cerrar el
+      caso. Al cerrar cada caso ganas una insignia para tu pasaporte de detective.
+    </p>
+
+    <div
+      data-seguir-caja
+      hidden
+      class="mt-8 max-w-4xl rounded-soft border-2 border-ink-black bg-sunshine-pop p-5 md:p-6"
+    >
+      <p class="interfaz text-body-sm font-medium">Sigue donde ibas</p>
+      <p data-seguir-texto class="mt-1 text-subheading font-bold"></p>
+      <a
+        data-seguir-enlace
+        href="/"
+        class="interfaz mt-3 inline-flex min-h-11 items-center rounded-pill border-2 border-ink-black bg-pure-white px-5 text-body-sm font-medium hover:bg-ink-black hover:text-cream-paper"
+      >
+        Continuar
+      </a>
+    </div>
+
+    <ol data-indice-libro class="mt-6 flex max-w-4xl flex-col gap-4">
+      <li class="rounded-soft border-2 border-ink-black bg-pure-white p-5 md:p-6">
+        <p class="text-body-sm font-medium text-stone-text">Antes de empezar</p>
+        <a
+          href="/programa"
+          class="mt-1 inline-flex min-h-11 items-center text-subheading font-medium underline decoration-2 underline-offset-4"
+        >
+          Programa del curso
+        </a>
+        <p class="mt-1 text-body text-stone-text">
+          Lo que vas a lograr, cómo se trabaja, cómo se evalúa y cuándo nos vemos.
+        </p>
+      </li>
+
+      {unidades.map((u) => (
+        <li
+          data-caso={u.data.numero}
+          class="rounded-soft border-2 border-ink-black bg-pure-white p-5 md:p-6"
+        >
+          <div class="flex items-start gap-4">
+            <span
+              class:list={[
+                'flex size-14 shrink-0 items-center justify-center rounded-full border-2 border-ink-black text-subheading font-medium',
+                fondos[u.data.color],
+              ]}
+              aria-hidden="true"
+            >
+              0{u.data.numero}
+            </span>
+            <div class="min-w-0 flex-1">
+              <p class="text-body-sm font-medium text-stone-text">
+                Caso {u.data.numero}
+                <span class="estado-etiqueta ml-2 text-micro"></span>
+              </p>
+              <h3 class="mt-0.5 text-heading-sm font-medium leading-tight tracking-tight">
+                {u.data.titulo}
+              </h3>
+              <p class="mt-2 max-w-reading text-body">{u.data.mision}</p>
+              <p class="mt-2 text-body-sm text-stone-text">Insignia: {u.data.insignia.nombre}</p>
+            </div>
+          </div>
+          <ol class="mt-5 grid gap-2 sm:grid-cols-2">
+            {paginas_caso.map((p, i) => (
+              <li>
+                <a
+                  href={ruta_pagina(u.data.numero, p.slug)}
+                  data-pagina={id_pagina(u.data.numero, p.slug)}
+                  data-titulo={p.titulo}
+                  class="flex min-h-11 items-center gap-3 rounded-soft bg-cream-paper px-4 py-2 text-body-sm font-medium hover:bg-sandstone"
+                >
+                  <span class="flex-1">
+                    <span class="sr-only">Página </span>
+                    {i + 1}. {p.titulo}
+                  </span>
+                  <span class="estado-pagina text-micro"></span>
+                </a>
+              </li>
+            ))}
+          </ol>
+        </li>
+      ))}
+
+      <li class="rounded-soft border-2 border-ink-black bg-pure-white p-5 md:p-6">
+        <p class="text-body-sm font-medium text-stone-text">Al terminar</p>
+        <a
+          href="/cierre"
+          class="mt-1 inline-flex min-h-11 items-center text-subheading font-medium underline decoration-2 underline-offset-4"
+        >
+          Expediente y certificado
+        </a>
+      </li>
+      <li class="rounded-soft border-2 border-ink-black bg-pure-white p-5 md:p-6">
+        <p class="text-body-sm font-medium text-stone-text">Última página</p>
+        <a
+          href="/referencias"
+          class="mt-1 inline-flex min-h-11 items-center text-subheading font-medium underline decoration-2 underline-offset-4"
+        >
+          Referencias
+        </a>
+      </li>
+    </ol>
+
+    <p class="mt-10 max-w-3xl text-body text-stone-text">
+      La ruta va de cómo leo (1), a qué leo (2), a qué tan profundo leo (3), a en qué confío (4), a
+      qué pienso y por qué (5).
+    </p>
+  </Seccion>
+</CursoLayout>
